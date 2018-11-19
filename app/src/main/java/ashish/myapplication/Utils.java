@@ -15,6 +15,7 @@ import android.provider.Settings;
 import android.widget.Toast;
 
 
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,5 +38,17 @@ public class Utils {
             Toast.makeText(act, "Internet Unavailable", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+
+    public static boolean getStatus(String value)
+    {
+        try{
+            JSONObject jsonObject=new JSONObject(value);
+            return jsonObject.getBoolean("Status");
+        }catch (Exception ex){
+            ex.fillInStackTrace();
+        }
+        return false;
     }
 }

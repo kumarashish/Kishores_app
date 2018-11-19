@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+
+        android:background="@color/pink"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/back"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/white"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+        <ashish.myapplication.Bold_TextView
+            android:id="@+id/heading"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:text="Personal Information"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search by Employee Id"
+
+            android:textColor="@color/blue"
+            android:textSize="14dp" />
+
+        <EditText
+            android:maxLength="8"
+            android:id="@+id/serachId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:inputType="textPersonName|textNoSuggestions"
+            android:imeOptions="actionDone"
+            android:textColor="@color/blue"
+
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/pink" />
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progress"
+            android:indeterminateTint="@color/pink"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -9,9 +9,14 @@ public class AppController extends Application {
     public void onCreate() {
         super.onCreate();
         validation=new Validation(getApplicationContext());
+        webApiCall=new WebApiCall(getApplicationContext());
     }
 
     public Validation getValidation() {
         return validation;
+    }
+
+    public WebApiCall getWebApiCall() {
+        return webApiCall;
     }
 }

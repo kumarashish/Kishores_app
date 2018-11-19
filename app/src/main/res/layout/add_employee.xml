@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    android:orientation="vertical">
+    <RelativeLayout
+
+        android:background="@color/blue"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/back"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/white"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+        <ashish.myapplication.Bold_TextView
+            android:id="@+id/heading"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:text="Add Employee"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="First Name"
+
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+    <EditText
+        android:id="@+id/fname"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:inputType="textPersonName|textNoSuggestions"
+
+        android:textColor="@color/white"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+
+        android:background="@color/white" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Last Name"
+
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+    <EditText
+        android:id="@+id/lname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:inputType="textPersonName|textNoSuggestions"
+        android:textColor="@color/white"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+
+        android:background="@color/white" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Address"
+
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:inputType="textPostalAddress|textNoSuggestions"
+        android:textColor="@color/white"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+
+        android:background="@color/white" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Salary"
+
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+    <EditText
+        android:id="@+id/salary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:textColor="@color/white"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+
+        android:background="@color/white" />
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progress"
+            android:indeterminateTint="@color/blue"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="130dp"
+            android:layout_height="35dp"
+         android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rectangle"
+            android:text="SUBMIT"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -21,6 +21,7 @@
         android:fitsSystemWindows="true"
 >
         <LinearLayout
+
         android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -47,11 +48,12 @@
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
-
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ashish.myapplication.Bold_TextView
-                    android:gravity="center"
+                    android:id="@+id/heading1"
+                    android:gravity="left"
                     android:paddingLeft="10dp"
                     android:layout_gravity="center"
                     android:textSize="18dp"
@@ -60,41 +62,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <LinearLayout
+                    android:id="@+id/entry_llout"
+                   android:visibility="gone"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ashish.myapplication.Bold_TextView
-                        android:gravity="center"
-                        android:paddingLeft="15dp"
-
+                        android:id="@+id/heading11"
+                        android:gravity="left"
+                        android:paddingLeft="30dp"
                         android:layout_gravity="center"
+                        android:paddingTop="10dp"
                         android:textSize="16dp"
                         android:textColor="@color/blue"
                         android:text="Employee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ashish.myapplication.Bold_TextView
-                        android:gravity="center"
-                        android:paddingLeft="20dp"
-                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        android:id="@+id/heading111"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="left"
                         android:textSize="14dp"
                         android:textColor="@color/purple"
                         android:text="Add Employee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ashish.myapplication.Bold_TextView
-                        android:gravity="center"
-                        android:paddingLeft="15dp"
-
+                        android:id="@+id/heading12"
+                        android:gravity="left"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
                         android:layout_gravity="center"
                         android:textSize="16dp"
                         android:textColor="@color/blue"
                         android:text="Lorry"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ashish.myapplication.Bold_TextView
-                        android:gravity="center"
-                        android:paddingLeft="20dp"
+                        android:id="@+id/heading121"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:paddingLeft="50dp"
+                        android:paddingTop="5dp"
                         android:layout_gravity="center"
                         android:textSize="14dp"
                         android:textColor="@color/purple"
@@ -102,8 +114,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ashish.myapplication.Bold_TextView
-                        android:gravity="center"
-                        android:paddingLeft="20dp"
+                        android:id="@+id/heading122"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="50dp"
                         android:layout_gravity="center"
                         android:textSize="14dp"
                         android:textColor="@color/purple"
@@ -116,35 +131,46 @@
             </LinearLayout>
             <View
                 android:background="@color/blue"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+            <ashish.myapplication.Bold_TextView
+                android:gravity="left"
+                android:id="@+id/heading2"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="15dp"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:text="Reports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <LinearLayout
+android:id="@+id/report_llout"
+               android:visibility="gone"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ashish.myapplication.Bold_TextView
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:textSize="14dp"
-                    android:textColor="@color/white"
-                    android:text="Reports"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <ashish.myapplication.Bold_TextView
-                    android:gravity="center"
-                    android:paddingLeft="15dp"
 
+                <ashish.myapplication.Bold_TextView
+                    android:gravity="left"
+                    android:id="@+id/heading21"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
                     android:layout_gravity="center"
                     android:textSize="16dp"
                     android:textColor="@color/blue"
+
                     android:text="Employee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <ashish.myapplication.Bold_TextView
-                    android:gravity="center"
-                    android:paddingLeft="20dp"
+                    android:gravity="left"
+                    android:id="@+id/heading211"
+                    android:paddingLeft="50dp"
                     android:layout_gravity="center"
                     android:textSize="14dp"
+                    android:paddingTop="5dp"
+                    android:visibility="gone"
                     android:textColor="@color/purple"
                     android:text="Personal Information"
                     android:layout_width="match_parent"
