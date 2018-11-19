@@ -5,7 +5,139 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:context="ashish.myapplication.MainActivity"
 
+    tools:showIn="@layout/app_bar_main">
+      <LinearLayout
+
+        android:background="@color/white"
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+          <ImageView
+              android:scaleType="fitXY"
+              android:src="@drawable/header"
+              android:layout_width="match_parent"
+              android:layout_height="200dp" />
+          <ashish.myapplication.Bold_TextView
+              android:textColor="@color/blue"
+              android:textSize="24dp"
+              android:text="DHTCSky"
+              android:gravity="center"
+              android:padding="5dp"
+              android:background="@color/creamcolor"
+              android:layout_width="match_parent"
+              android:layout_height="40dp" />
+        <LinearLayout
+
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+            <LinearLayout
+                android:background="@color/green"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_marginTop="60dp"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    android:src="@android:drawable/ic_menu_info_details"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <ashish.myapplication.Bold_TextView
+                    android:layout_gravity="center"
+                    android:text="Employee(Add)"
+                    android:textSize="14dp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:background="@color/pink"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_marginTop="60dp"
+                    android:tint="@color/white"
+                    android:src="@android:drawable/ic_menu_info_details"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <ashish.myapplication.Bold_TextView
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/white"
+                    android:text="Employee(Details)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+          <LinearLayout
+
+              android:orientation="horizontal"
+              android:weightSum="2"
+              android:layout_width="match_parent"
+              android:layout_height="180dp">
+              <LinearLayout
+                  android:background="@color/yellow"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:layout_width="0dp"
+                  android:layout_height="match_parent">
+                  <ImageView
+                      android:layout_marginTop="60dp"
+                      android:layout_gravity="center"
+                      android:tint="@color/white"
+                      android:src="@android:drawable/ic_menu_info_details"
+                      android:layout_width="50dp"
+                      android:layout_height="50dp" />
+                  <ashish.myapplication.Bold_TextView
+                      android:layout_gravity="center"
+                      android:text="Delivery Details(Add)"
+                      android:textSize="14dp"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content" />
+              </LinearLayout>
+              <LinearLayout
+
+                  android:background="@color/purple"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:layout_width="0dp"
+                  android:layout_height="match_parent">
+                  <ImageView
+                      android:layout_marginTop="60dp"
+                      android:layout_gravity="center"
+                      android:tint="@color/white"
+                      android:src="@android:drawable/ic_menu_info_details"
+                      android:layout_width="50dp"
+                      android:layout_height="50dp" />
+                  <ashish.myapplication.Bold_TextView
+                      android:layout_gravity="center"
+                      android:text="PickUp Details(Add)"
+                      android:textSize="14dp"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content" />
+              </LinearLayout>
+
+          </LinearLayout>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
+
+
+
+

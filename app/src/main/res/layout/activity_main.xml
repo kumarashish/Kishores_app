@@ -19,7 +19,140 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+>
+        <LinearLayout
+        android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/green"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+                <ImageView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="60dp"
+                    android:src="@drawable/default_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp" />
+                <ashish.myapplication.Bold_TextView
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/white"
+                    android:text="demo@gmail.com"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ashish.myapplication.Bold_TextView
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:text="Entry Form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ashish.myapplication.Bold_TextView
+                        android:gravity="center"
+                        android:paddingLeft="15dp"
+
+                        android:layout_gravity="center"
+                        android:textSize="16dp"
+                        android:textColor="@color/blue"
+                        android:text="Employee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ashish.myapplication.Bold_TextView
+                        android:gravity="center"
+                        android:paddingLeft="20dp"
+                        android:layout_gravity="center"
+                        android:textSize="14dp"
+                        android:textColor="@color/purple"
+                        android:text="Add Employee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ashish.myapplication.Bold_TextView
+                        android:gravity="center"
+                        android:paddingLeft="15dp"
+
+                        android:layout_gravity="center"
+                        android:textSize="16dp"
+                        android:textColor="@color/blue"
+                        android:text="Lorry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ashish.myapplication.Bold_TextView
+                        android:gravity="center"
+                        android:paddingLeft="20dp"
+                        android:layout_gravity="center"
+                        android:textSize="14dp"
+                        android:textColor="@color/purple"
+                        android:text="Add Pickup Details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ashish.myapplication.Bold_TextView
+                        android:gravity="center"
+                        android:paddingLeft="20dp"
+                        android:layout_gravity="center"
+                        android:textSize="14dp"
+                        android:textColor="@color/purple"
+                        android:text="Add Delivery Details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:background="@color/blue"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ashish.myapplication.Bold_TextView
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/white"
+                    android:text="Reports"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ashish.myapplication.Bold_TextView
+                    android:gravity="center"
+                    android:paddingLeft="15dp"
+
+                    android:layout_gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="@color/blue"
+                    android:text="Employee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ashish.myapplication.Bold_TextView
+                    android:gravity="center"
+                    android:paddingLeft="20dp"
+                    android:layout_gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/purple"
+                    android:text="Personal Information"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

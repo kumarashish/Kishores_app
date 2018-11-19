@@ -38,7 +38,7 @@ public class Splash extends Activity {
 //                i = new Intent(Splash.this, .class);
 //
 //            } else {
-                i = new Intent(Splash.this, Login.class);
+                i = new Intent(Splash.this, MainActivity.class);
            // }
             startActivity(i);
             finish();

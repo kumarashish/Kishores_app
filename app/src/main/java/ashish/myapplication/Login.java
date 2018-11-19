@@ -1,6 +1,7 @@
 package ashish.myapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -44,10 +45,18 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
             case R.id.submit:
                 if (controller.getValidation().isEmailIdValid(emailId)) {
                     if (password.getText().length() > 0) {
-                        isProgressbarVisible = true;
-                        submit.setVisibility(View.GONE);
-                        progressbar.setVisibility(View.VISIBLE);
-                    } else {
+                        if ((emailId.getText().toString().equalsIgnoreCase("demo@gmail.com")) && (password.getText().toString().equalsIgnoreCase("demo"))) {
+//                        isProgressbarVisible = true;
+//                        submit.setVisibility(View.GONE);
+//                        progressbar.setVisibility(View.VISIBLE);
+                            Toast.makeText(Login.this, "Logged in sucessfully.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(this,MainActivity.class));
+                            finish();
+
+                        }else {
+                            Toast.makeText(Login.this, "Please enter valid email id and password", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
                         Toast.makeText(Login.this, "Please enter password", Toast.LENGTH_SHORT).show();
                     }
                 }
