@@ -7,12 +7,12 @@
     android:background="@drawable/splash"
     tools:context=".Splash">
 
-    <TextView
+
+    <ashish.myapplication.Bold_TextView
 
         android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="26dp"
-        android:text="Welcome "
+        android:textSize="35dp"
+        android:text="DHTCSky"
         android:layout_width="match_parent"
         android:textColor="@color/white"
         android:layout_height="wrap_content"
@@ -27,6 +27,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </android.support.constraint.ConstraintLayout>

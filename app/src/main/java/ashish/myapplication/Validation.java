@@ -22,8 +22,6 @@ public class Validation {
     public Validation(Context context) {
         this.context = context;
     }
-
-
     /***
      * validate password with given password regular expression
      */
@@ -37,7 +35,6 @@ public class Validation {
                 return true;
             }
         }
-
         return matches;
     }
 
@@ -67,8 +64,6 @@ public class Validation {
         return false;
     }
 
-
-
     /**
      * check whether string contains value or not
      */
@@ -88,13 +83,11 @@ public class Validation {
         }
     }
 
-
     /**
      * check whether string contains value or not
      */
     public boolean isNotNull(EditText txt, String name) {
         try {
-
             if ((txt != null) && (txt.getText().toString().trim().length() > 0)) {
                 return true;
             }
@@ -107,10 +100,10 @@ public class Validation {
         }
     }
 
-
-    /***
-     * validate phone string with given phone regular expression
+    /*
+       validate phone string with given phone regular expression
      */
+
     public boolean isPhoneNumberValid(EditText phone) {
         boolean matches = false;
         if (isNotNull(phone,"Mobile Number")) {
@@ -123,9 +116,11 @@ public class Validation {
         }
         return matches;
     }
-    /***
-     * validate phone string with given phone regular expression
+
+    /*
+      validate phone string with given phone regular expression
      */
+
     public boolean isAddressValid(EditText address) {
         boolean matches = false;
         if (isNotNull(address,"Address")) {
@@ -138,5 +133,4 @@ public class Validation {
         }
         return matches;
     }
-
 }

@@ -27,7 +27,6 @@ import java.util.Locale;
 
 public class Utils {
     static String strAdd = "";
-
     public static boolean isNetworkAvailable(Activity act) {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) act.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -39,6 +38,4 @@ public class Utils {
             return false;
         }
     }
-
-
 }

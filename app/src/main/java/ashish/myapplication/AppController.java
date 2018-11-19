@@ -4,6 +4,7 @@ import android.app.Application;
 
 public class AppController extends Application {
     Validation validation;
+    WebApiCall webApiCall;
     @Override
     public void onCreate() {
         super.onCreate();
