@@ -8,11 +8,13 @@ import android.view.WindowManager;
 
 public class Splash extends Activity {
     private static int SPLASH_TIME_OUT = 3000;
+    AppController controller;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+        controller=(AppController) getApplicationContext();
             runThread();
         }
 
@@ -34,12 +36,12 @@ public class Splash extends Activity {
 
         public void launchHomeScreen() {
             Intent i;
-//            if (controller.isUserLoggedIn() == true) {
-//                i = new Intent(Splash.this, .class);
-//
-//            } else {
-                i = new Intent(Splash.this, MainActivity.class);
-           // }
+            if (controller.getManager().isUserLoggedIn() == true) {
+                i = new Intent(Splash.this,  MainActivity.class);
+
+            } else {
+                i = new Intent(Splash.this, Login.class);
+           }
             startActivity(i);
             finish();
         }

@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity
     TextView adddeliverydetails;
     @BindView(R.id.heading2)
     TextView reports;
+    @BindView(R.id.heading3)
+    TextView logout;
     @BindView(R.id.heading21)
     TextView employeereports;
     @BindView(R.id.heading211)
@@ -49,27 +52,31 @@ public class MainActivity extends AppCompatActivity
     boolean isreportsClicked=false;
     boolean isemployeereports=false;
     DrawerLayout drawer;
-
-
+    @BindView(R.id.contentdata)
+      View content;
+    View main;
+View view1,view2,view3,view4;
+AppController controller;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        controller=(AppController)getApplicationContext();
+        main=(View) content.findViewById(R.id.contentmain);
+        view1=(View)main.findViewById(R.id.view1);
+        view2=(View)main.findViewById(R.id.view2);
+        view3=(View)main.findViewById(R.id.view3);
+        view4=(View)main.findViewById(R.id.view4);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         entryForm.setOnClickListener(this);
         employee.setOnClickListener(this);
         lorry.setOnClickListener(this);
@@ -79,8 +86,11 @@ public class MainActivity extends AppCompatActivity
         reports.setOnClickListener(this);
         employeereports.setOnClickListener(this);
         employeeInformation.setOnClickListener(this);
-
-
+        logout.setOnClickListener(this);
+        view1.setOnClickListener(this);
+        view2.setOnClickListener(this);
+        view3.setOnClickListener(this);
+        view4.setOnClickListener(this);
 
 
     }
@@ -186,19 +196,45 @@ public class MainActivity extends AppCompatActivity
                 }
                 break;
             case R.id.heading21:
-                if(isemployeereports)
-                {
-                    isemployeereports=false;
+
+                if (isemployeereports) {
+                    isemployeereports = false;
                     employeeInformation.setVisibility(View.GONE);
-                }else{
-                    isemployeereports=true;
+                } else {
+                    isemployeereports = true;
                     employeeInformation.setVisibility(View.VISIBLE);
                 }
                 break;
             case R.id.heading211:
-                startActivity(new Intent(MainActivity.this,EmployeeDetails.class));
+                startActivity(new Intent(MainActivity.this, EmployeeDetails.class));
+                break;
+
+            case R.id.heading3:
+                controller.getManager().setUserLoggedIn(false);
+                Toast.makeText(this,"Logged out sucessfully",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,Login.class));
+                finish();
+                break;
+            case R.id.view1:
+                startActivity(new Intent(MainActivity.this,AddEmployee.class));
 
                 break;
+            case R.id.view2:
+                startActivity(new Intent(MainActivity.this, EmployeeDetails.class));
+                break;
+            case R.id.view3:
+                Delivery_Details.headingValue="Add Delivery Details";
+                startActivity(new Intent(MainActivity.this,Delivery_Details.class));
+                drawer.closeDrawer(GravityCompat.START);
+
+                break;
+            case R.id.view4:
+                Delivery_Details.headingValue="Add Pickup Details";
+                startActivity(new Intent(MainActivity.this,Delivery_Details.class));
+                drawer.closeDrawer(GravityCompat.START);
+
+                break;
+
         }
 
     }

@@ -10,6 +10,7 @@
 
     <include
         layout="@layout/app_bar_main"
+        android:id="@+id/contentdata"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -177,7 +178,21 @@ android:id="@+id/report_llout"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
-
+            <View
+                android:background="@color/blue"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <ashish.myapplication.Bold_TextView
+                android:gravity="left"
+                android:id="@+id/heading3"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="15dp"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:text="Logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </android.support.design.widget.NavigationView>
 

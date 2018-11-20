@@ -42,6 +42,10 @@ public class PrefManager {
         editor.putBoolean(LoggedIn , isloggedIn);
         editor.commit();
     }
+    public boolean isUserLoggedIn()
+    {
+        return pref.getBoolean(LoggedIn,false);
+    }
 
 
 

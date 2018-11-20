@@ -55,12 +55,13 @@
 
         <EditText
             android:maxLength="8"
+
             android:id="@+id/serachId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@android:color/transparent"
-            android:inputType="textPersonName|textNoSuggestions"
+            android:inputType="number|textNoSuggestions"
             android:imeOptions="actionDone"
             android:textColor="@color/blue"
 
@@ -77,6 +78,182 @@
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"/>
+        <LinearLayout
+            android:background="@drawable/edittext_bg"
+            android:id="@+id/report"
+
+            android:visibility="gone"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+
+
+                android:weightSum="7.5"
+                android:background="@color/pink"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                     android:textSize="14dp"
+                    android:layout_width="0dp"
+                    android:text="EMP. ID"
+                    android:layout_height="match_parent" />
+                <View
+                    android:background="@color/white"
+                    android:layout_width="0.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="match_parent"/>
+                <TextView
+
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_weight="2"
+                    android:textSize="14dp"
+                    android:layout_width="0dp"
+                    android:text="Name"
+                    android:layout_height="match_parent" />
+                <View
+                    android:background="@color/white"
+                    android:layout_width="0.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textSize="14dp"
+                    android:layout_width="0dp"
+                    android:text="D.O.B"
+                    android:layout_height="match_parent" />
+                <View
+                    android:background="@color/white"
+                    android:layout_width="0.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_weight="2"
+                    android:textSize="14dp"
+                    android:layout_width="0dp"
+                    android:text="ADDRESS"
+                    android:layout_height="match_parent" />
+                <View
+                    android:background="@color/white"
+                    android:layout_width="0.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_weight="1.4"
+                    android:textSize="14dp"
+                    android:layout_width="0dp"
+                    android:text="SALARY"
+                    android:layout_height="match_parent" />
+
+
+
+
+            </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="7.5"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+                    <TextView
+                        android:id="@+id/sno"
+                        android:gravity="center"
+                        android:textColor="@color/blue"
+                        android:layout_weight="1"
+                        android:textSize="12dp"
+                        android:layout_width="0dp"
+                        android:text=""
+                        android:layout_height="match_parent" />
+                    <View
+                        android:background="@color/blue"
+                        android:layout_width="0.5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:id="@+id/name"
+                        android:gravity="center"
+                        android:textColor="@color/blue"
+                        android:layout_weight="2"
+                        android:textSize="12dp"
+                        android:layout_width="0dp"
+                        android:text=""
+                        android:layout_height="match_parent" />
+                    <View
+                        android:background="@color/blue"
+                        android:layout_width="0.5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:id="@+id/dob"
+                        android:gravity="center"
+                        android:textColor="@color/blue"
+                        android:layout_weight="1"
+                        android:textSize="12dp"
+                        android:layout_width="0dp"
+                        android:text=""
+                        android:layout_height="match_parent" />
+                    <View
+                        android:background="@color/blue"
+                        android:layout_width="0.5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:id="@+id/address"
+                        android:gravity="center"
+                        android:textColor="@color/blue"
+                        android:layout_weight="2"
+                        android:textSize="12dp"
+                        android:layout_width="0dp"
+                        android:text=""
+                        android:layout_height="match_parent" />
+                    <View
+                        android:background="@color/blue"
+                        android:layout_width="0.5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:id="@+id/salary"
+                        android:gravity="center"
+                        android:textColor="@color/blue"
+                        android:layout_weight="1.4"
+                        android:textSize="12dp"
+                        android:layout_width="0dp"
+                        android:text=""
+                        android:layout_height="match_parent" />
+
+
+
+
+                </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -21,12 +22,27 @@ public class EmployeeDetails extends Activity implements View.OnClickListener ,W
     AppController controller;
     @BindView(R.id.progress)
     ProgressBar progressBar;
-@BindView(R.id.serachId)
-EditText search;
+    @BindView(R.id.serachId)
+    EditText search;
+    @BindView(R.id.report)
+    LinearLayout report;
+    WebApiResponseCallback callback;
+    @BindView(R.id.name)
+    TextView name;
+    @BindView(R.id.sno)
+    TextView sno;
+    @BindView(R.id.dob)
+    TextView dob;
+    @BindView(R.id.address)
+    TextView address;
+    @BindView(R.id.salary)
+    TextView salary;
+ DetailsModel model=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emplyee_info);
+        callback=this;
         controller=(AppController)getApplicationContext();
         ButterKnife.bind(this);
         back.setOnClickListener(this);
@@ -37,22 +53,35 @@ EditText search;
                 boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     /* Write your logic here that will be executed when user taps next button */
-
-if(search.getText().length()>0)
-{
-    if(Utils.isNetworkAvailable(EmployeeDetails.this))
-    {
-        progressBar.setVisibility(View.VISIBLE);
-        controller.getWebApiCall().postData(Common.getEmployee, getRequestJSON().toString(), this);
-    }
-}
+                    if (search.getText().length() > 0) {
+                        if (Utils.isNetworkAvailable(EmployeeDetails.this)) {
+                            progressBar.setVisibility(View.VISIBLE);
+                            controller.getWebApiCall().postData(Common.getEmployee, getRequestJSON().toString(), callback);
+                        }
+                    }else{
+                        Utils.showToast(EmployeeDetails.this,"Please enter employee id");
+                    }
                     handled = true;
                 }
                 return handled;
             }
         });
-
-
+    }
+    public void clearAll()
+    {
+        sno.setText("");
+        name.setText("");
+        dob.setText("");
+        address.setText("");
+        salary.setText("");
+    }
+    public void setValue()
+    {
+        sno.setText(model.getId());
+        name.setText(model.getName());
+        dob.setText(model.getDob());
+        address.setText(model.getAddress());
+        salary.setText(model.getSalary());
     }
 public JSONObject getRequestJSON()
 {JSONObject jsonObject=new JSONObject();
@@ -75,13 +104,37 @@ public JSONObject getRequestJSON()
     }
 
     @Override
-    public void onSucess(String value) {
-     progressBar.setVisibility(View.GONE);
+    public void onSucess(final String value) {
+        if (Utils.getStatus(value)) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(Utils.jsonObject(value)!=null) {
+                        model = new DetailsModel(Utils.jsonObject(value));
+                        clearAll();
+                        setValue();
+                        report.setVisibility(View.VISIBLE);
+                    }else{
+                        clearAll();
+                        Utils.showToast(EmployeeDetails.this, Utils.getMessage(value));
+                    }
+                    progressBar.setVisibility(View.GONE);
 
-    }
+                }
+            });
+        }
+        }
 
     @Override
     public void onError(String value) {
-        progressBar.setVisibility(View.GONE);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                clearAll();
+                progressBar.setVisibility(View.GONE);
+
+            }
+        });
+        Utils.showToast(EmployeeDetails.this, Utils.getMessage(value));
     }
 }

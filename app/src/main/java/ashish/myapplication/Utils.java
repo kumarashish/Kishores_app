@@ -15,6 +15,7 @@ import android.provider.Settings;
 import android.widget.Toast;
 
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -40,7 +41,15 @@ public class Utils {
         }
     }
 
-
+public static void showToast(final Activity activity,final String message)
+{
+    activity.runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+            Toast.makeText(activity,  message, Toast.LENGTH_SHORT).show();
+        }
+    });
+}
     public static boolean getStatus(String value)
     {
         try{
@@ -50,5 +59,26 @@ public class Utils {
             ex.fillInStackTrace();
         }
         return false;
+    }
+
+    public static JSONObject jsonObject(String value) {
+        try {
+            JSONObject jsonObject = new JSONObject(value);
+            JSONArray jsonArray = jsonObject.getJSONArray("Data");
+            return jsonArray.getJSONObject(0);
+        } catch (Exception ex) {
+            ex.fillInStackTrace();
+        }
+        return null;
+    }
+    public static String getMessage(String value)
+    {
+        try{
+            JSONObject jsonObject=new JSONObject(value);
+            return jsonObject.getString("Message");
+        }catch (Exception ex){
+            ex.fillInStackTrace();
+        }
+        return "";
     }
 }

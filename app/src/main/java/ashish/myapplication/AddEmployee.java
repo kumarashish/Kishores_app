@@ -50,28 +50,24 @@ public class AddEmployee extends Activity implements View.OnClickListener,WebApi
                 finish();
                 break;
             case R.id.submit:
-                if((fname.getText().length()>0)&&(lname.getText().length()>0)&&(adddress.getText().length()>0)&&(adddress.getText().length()>10)&&(salary.getText().length()>0))
-            {
-controller.getWebApiCall().postData(Common.addEmployee,getRequestJSON().toString(),callback);
-progressBar.setVisibility(View.VISIBLE);
-submit.setVisibility(View.GONE);
-
-            }else{
-                    if(fname.getText().length()==0)
-                    {
-                        Toast.makeText(this,"Please enter Fist Name",Toast.LENGTH_SHORT).show();
+                if ((fname.getText().length() > 0) && (lname.getText().length() > 0) && (adddress.getText().length() > 0) && (adddress.getText().length() > 10) && (salary.getText().length() > 0)) {
+                    if (Utils.isNetworkAvailable(AddEmployee.this)) {
+                        controller.getWebApiCall().postData(Common.addEmployee, getRequestJSON().toString(), callback);
+                        progressBar.setVisibility(View.VISIBLE);
+                        submit.setVisibility(View.GONE);
                     }
-                    else if(lname.getText().length()==0)
-                    {
-                        Toast.makeText(this,"Please enter Last Name",Toast.LENGTH_SHORT).show();
-                    }else if(adddress.getText().length()==0)
-                    {
-                        Toast.makeText(this,"Please enter address",Toast.LENGTH_SHORT).show();
-                    }else if(adddress.getText().length()<10)
-                    {
-                        Toast.makeText(this,"Address length should be greater than 10 letter",Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(this,"Please enter salary",Toast.LENGTH_SHORT).show();
+
+                } else {
+                    if (fname.getText().length() == 0) {
+                        Toast.makeText(this, "Please enter Fist Name", Toast.LENGTH_SHORT).show();
+                    } else if (lname.getText().length() == 0) {
+                        Toast.makeText(this, "Please enter Last Name", Toast.LENGTH_SHORT).show();
+                    } else if (adddress.getText().length() == 0) {
+                        Toast.makeText(this, "Please enter address", Toast.LENGTH_SHORT).show();
+                    } else if (adddress.getText().length() < 10) {
+                        Toast.makeText(this, "Address length should be greater than 10 letter", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Please enter salary", Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
@@ -92,18 +88,40 @@ submit.setVisibility(View.GONE);
         return jsonObject;
     }
 
+    public void clearAll() {
+        fname.setText("");
+        lname.setText("");
+        adddress.setText("");
+        salary.setText("");
+    }
     @Override
-    public void onSucess(String value) {
-        progressBar.setVisibility(View.GONE);
-        submit.setVisibility(View.VISIBLE);
+    public void onSucess(final String value) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(Utils.getStatus(value)) {
+                    clearAll();
+                }
+                Utils.showToast(AddEmployee.this,Utils.getMessage(value));
+                progressBar.setVisibility(View.GONE);
+                submit.setVisibility(View.VISIBLE);
+            }
+        });
+
 
 
     }
 
     @Override
     public void onError(String value) {
-        progressBar.setVisibility(View.GONE);
-        submit.setVisibility(View.VISIBLE);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+                submit.setVisibility(View.VISIBLE);
+            }
+        });
+        Utils.showToast(AddEmployee.this,Utils.getMessage(value));
 
     }
 }
