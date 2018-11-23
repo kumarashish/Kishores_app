@@ -42,11 +42,11 @@ public class WebApiCall {
         }
         return result;
     }
-    public void getData(String url, String token, final WebApiResponseCallback callback) {
+    public void getData(String url, final WebApiResponseCallback callback) {
         OkHttpClient client = new OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS).build();
-        final Request request = new Request.Builder().header("Token", token).url(url).build();
+        final Request request = new Request.Builder().url(url).build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

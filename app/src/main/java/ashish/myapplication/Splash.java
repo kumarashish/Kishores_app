@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 public class Splash extends Activity {
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 1500;
     AppController controller;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -71,6 +71,16 @@ public static void showToast(final Activity activity,final String message)
         }
         return null;
     }
+    public static JSONArray jsonArrayy(String value) {
+        try {
+            JSONObject jsonObject = new JSONObject(value);
+            JSONArray jsonArray = jsonObject.getJSONArray("Data");
+            return jsonArray;
+        } catch (Exception ex) {
+            ex.fillInStackTrace();
+        }
+        return null;
+    }
     public static String getMessage(String value)
     {
         try{

@@ -18,16 +18,26 @@
               android:scaleType="fitXY"
               android:src="@drawable/header"
               android:layout_width="match_parent"
-              android:layout_height="200dp" />
+              android:layout_height="190dp" />
+
           <ashish.myapplication.Bold_TextView
+
               android:textColor="@color/blue"
               android:textSize="24dp"
-              android:text="DHTCSky"
+              android:text="DHTC"
               android:gravity="center"
               android:padding="5dp"
               android:background="@color/creamcolor"
               android:layout_width="match_parent"
               android:layout_height="40dp" />
+          <TextView
+              android:background="@color/creamcolor"
+              android:gravity="center"
+              android:layout_marginTop="-5dp"
+              android:textColor="@color/blue"
+              android:text="Passion, Delivered"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
           <LinearLayout
               android:weightSum="2"
               android:orientation="vertical"

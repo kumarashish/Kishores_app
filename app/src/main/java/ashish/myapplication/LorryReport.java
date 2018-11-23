@@ -33,6 +33,20 @@ public class LorryReport extends Activity implements View.OnClickListener  ,WebA
     EditText search;
     WebApiResponseCallback callback;
     LorryReportModel model;
+    @BindView(R.id.type)
+    TextView lorryType;
+    @BindView(R.id.item)
+    TextView item;
+    @BindView(R.id.s_d)
+    TextView source_dest;
+    @BindView(R.id.weight)
+    TextView weight;
+    @BindView(R.id.pkg)
+    TextView pckg;
+
+    @BindView(R.id.report)
+    LinearLayout report;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +65,7 @@ public class LorryReport extends Activity implements View.OnClickListener  ,WebA
                     /* Write your logic here that will be executed when user taps next button */
                         if (search.getText().length() > 0) {
                             if (Utils.isNetworkAvailable(LorryReport.this)) {
+                                report.setVisibility(View.GONE);
                                 progressBar.setVisibility(View.VISIBLE);
                                 controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON().toString(), callback);
                             }
@@ -65,19 +80,23 @@ public class LorryReport extends Activity implements View.OnClickListener  ,WebA
         }
     public void clearAll()
     {
-//        sno.setText("");
-//        name.setText("");
-//        dob.setText("");
-//        address.setText("");
-//        salary.setText("");
+
+
+       lorryType.setText("");
+        item.setText("");
+        source_dest.setText("");
+         weight.setText("");
+        pckg.setText("");
     }
     public void setValue()
     {
-//        sno.setText(model.getId());
-//        name.setText(model.getName());
-//        dob.setText(model.getDob());
-//        address.setText(model.getAddress());
-//        salary.setText(model.getSalary());
+
+        lorryType.setText(model.getLorrytype());;
+        item.setText(model.getItem());;
+        source_dest.setText(model.Bookfrom+" - "+model.getBookto());;
+        weight.setText(model.getWeight());;
+        pckg.setText(model.getPackage());
+        report.setVisibility(View.VISIBLE);
     }
     public JSONObject getRequestJSON()
     {JSONObject jsonObject=new JSONObject();
@@ -115,6 +134,7 @@ public class LorryReport extends Activity implements View.OnClickListener  ,WebA
                         Utils.showToast(LorryReport.this, Utils.getMessage(value));
                     }
                 } else {
+                    clearAll();
                     Utils.showToast(LorryReport.this, Utils.getMessage(value));
                 }
                 progressBar.setVisibility(View.GONE);
@@ -125,15 +145,16 @@ public class LorryReport extends Activity implements View.OnClickListener  ,WebA
     }
 
     @Override
-    public void onError(String value) {
+    public void onError(final String value) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 clearAll();
                 progressBar.setVisibility(View.GONE);
-
+                clearAll();
+                Utils.showToast(LorryReport.this, Utils.getMessage(value));
             }
         });
-        Utils.showToast(LorryReport.this, Utils.getMessage(value));
+
     }
 }

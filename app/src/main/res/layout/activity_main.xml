@@ -116,18 +116,7 @@
                         android:text="Book Lorry"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
-                    <ashish.myapplication.Bold_TextView
-                        android:id="@+id/heading122"
-                        android:visibility="gone"
-                        android:gravity="left"
-                        android:paddingTop="5dp"
-                        android:paddingLeft="50dp"
-                        android:layout_gravity="center"
-                        android:textSize="14dp"
-                        android:textColor="@color/purple"
-                        android:text="Report"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+
 
                 </LinearLayout>
 
@@ -176,6 +165,31 @@ android:id="@+id/report_llout"
                     android:visibility="gone"
                     android:textColor="@color/purple"
                     android:text="Personal Information"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ashish.myapplication.Bold_TextView
+                    android:id="@+id/heading22"
+                    android:gravity="left"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:layout_gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="@color/blue"
+                    android:text="Lorry"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ashish.myapplication.Bold_TextView
+                    android:id="@+id/heading221"
+                    android:visibility="gone"
+                    android:gravity="left"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="50dp"
+                    android:layout_gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/purple"
+                    android:text="Lorry Information"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

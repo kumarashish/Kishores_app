@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+    android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:background="@color/yellow"
+
+        android:background="@drawable/login"
         android:orientation="vertical"
-        android:layout_marginBottom="8dp"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
     >
         <RelativeLayout
 
-            android:background="@color/yellow"
+
             android:layout_width="match_parent"
             android:layout_height="40dp">
             <Button
@@ -34,8 +36,16 @@
                 android:text="Under development"
                 />
         </RelativeLayout>
-
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progress1"
+            android:indeterminateTint="@color/white"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
             <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/form"
                 android:layout_marginTop="60dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
@@ -147,7 +157,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
 
-                    android:background="@color/white" />
+                    android:background="@color/white"/>
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
@@ -164,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@android:color/transparent"
-                    android:inputType="textPostalAddress|textNoSuggestions"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/white"
 
                     />
@@ -190,7 +200,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@android:color/transparent"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/white"
 
                     />
@@ -203,7 +213,7 @@
                 <ProgressBar
                     android:visibility="gone"
                     android:id="@+id/progress"
-                    android:indeterminateTint="@color/blue"
+                    android:indeterminateTint="@color/white"
                     android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

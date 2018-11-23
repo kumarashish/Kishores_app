@@ -8,6 +8,7 @@ public class Common {
     public static String getEmployee=baseUrl+"getEmp";
     public static String getBookLorryUrl=baseUrl+"LorryBooking";
     public static String getBookingReport=baseUrl+"LorryBookingReport";
+    public static String getLorryType=baseUrl+"GetLorryTypes";
 
     public static String [] loginKeys={"User","Password"};
     public static String [] getEmpKeys={"ID"};

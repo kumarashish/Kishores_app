@@ -54,6 +54,7 @@ public class PrefManager {
         try {
             editor.putString(userId, jsonObject.isNull("Code") ? "" : jsonObject.getString("Code"));
             editor.putString(name, jsonObject.isNull("Name") ? "" : jsonObject.getString("Name"));
+            editor.commit();
         } catch (Exception ex) {
             ex.fillInStackTrace();
         }

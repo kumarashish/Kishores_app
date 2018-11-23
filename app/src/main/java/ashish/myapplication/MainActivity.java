@@ -29,16 +29,19 @@ public class MainActivity extends AppCompatActivity
     TextView lorry;
     @BindView(R.id.heading121)
     TextView addPickupDetails;
-    @BindView(R.id.heading122)
-    TextView adddeliverydetails;
+    @BindView(R.id.heading221)
+    TextView lorryInformation;
     @BindView(R.id.heading2)
     TextView reports;
     @BindView(R.id.heading3)
     TextView logout;
     @BindView(R.id.heading21)
     TextView employeereports;
+    @BindView(R.id.heading22)
+    TextView lorryreports;
     @BindView(R.id.heading211)
     TextView employeeInformation;
+
     @BindView(R.id.entry_llout)
     LinearLayout entryLayout;
     @BindView(R.id.report_llout)
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     boolean islorryClicked=false;
     boolean isreportsClicked=false;
     boolean isemployeereports=false;
+    boolean isLorryreports=false;
     DrawerLayout drawer;
     @BindView(R.id.contentdata)
       View content;
@@ -81,10 +85,12 @@ TextView userName;
         lorry.setOnClickListener(this);
         addemployee.setOnClickListener(this);
         addPickupDetails.setOnClickListener(this);
-        adddeliverydetails.setOnClickListener(this);
+        lorryInformation.setOnClickListener(this);
         reports.setOnClickListener(this);
         employeereports.setOnClickListener(this);
         employeeInformation.setOnClickListener(this);
+        lorryreports.setOnClickListener(this);
+        lorryInformation.setOnClickListener(this);
         logout.setOnClickListener(this);
         view1.setOnClickListener(this);
         view2.setOnClickListener(this);
@@ -166,25 +172,20 @@ TextView userName;
                 if(islorryClicked)
                 {
                     islorryClicked=false;
-                    adddeliverydetails.setVisibility(View.GONE);
+
                     addPickupDetails.setVisibility(View.GONE);
                 }else{
                     islorryClicked=true;
-                    adddeliverydetails.setVisibility(View.VISIBLE);
                     addPickupDetails.setVisibility(View.VISIBLE);
                 }
 
                 break;
             case R.id.heading121:
-                Lorry_Booking.headingValue="Book Lorry";
+                Lorry_Booking.headingValue="Lorry Booking";
                 startActivity(new Intent(MainActivity.this,Lorry_Booking.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.heading122:
-                LorryReport.headingValue="Report";
-                startActivity(new Intent(MainActivity.this,LorryReport.class));
-                drawer.closeDrawer(GravityCompat.START);
-                break;
+
             case R.id.heading2:
                 if(isreportsClicked)
                 {
@@ -205,10 +206,25 @@ TextView userName;
                     employeeInformation.setVisibility(View.VISIBLE);
                 }
                 break;
+
+            case R.id.heading22:
+                if (isLorryreports) {
+                    isLorryreports= false;
+                    lorryInformation.setVisibility(View.GONE);
+                } else {
+                    isLorryreports = true;
+                    lorryInformation.setVisibility(View.VISIBLE);
+                }
+                break;
             case R.id.heading211:
                 startActivity(new Intent(MainActivity.this, EmployeeDetails.class));
                 break;
 
+            case R.id.heading221:
+                LorryReport.headingValue="Lorry Information";
+                startActivity(new Intent(MainActivity.this,LorryReport.class));
+                drawer.closeDrawer(GravityCompat.START);
+                break;
             case R.id.heading3:
                 controller.getManager().setUserLoggedIn(false);
                 Toast.makeText(this,"Logged out sucessfully",Toast.LENGTH_SHORT).show();
@@ -223,13 +239,13 @@ TextView userName;
                 startActivity(new Intent(MainActivity.this, EmployeeDetails.class));
                 break;
             case R.id.view3:
-                Lorry_Booking.headingValue="Book Lorry";
+                Lorry_Booking.headingValue="Lorry Booking";
                 startActivity(new Intent(MainActivity.this,Lorry_Booking.class));
                 drawer.closeDrawer(GravityCompat.START);
 
                 break;
             case R.id.view4:
-                LorryReport.headingValue="Report";
+                LorryReport.headingValue="Lorry Information";
                 startActivity(new Intent(MainActivity.this,LorryReport.class));
                 drawer.closeDrawer(GravityCompat.START);
 
