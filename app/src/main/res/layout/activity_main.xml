@@ -39,10 +39,12 @@
                     android:layout_height="100dp" />
                 <ashish.myapplication.Bold_TextView
                     android:gravity="center"
+
+                    android:id="@+id/userName"
                     android:layout_gravity="center"
                     android:textSize="14dp"
                     android:textColor="@color/white"
-                    android:text="demo@gmail.com"
+                    android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -111,7 +113,7 @@
                         android:layout_gravity="center"
                         android:textSize="14dp"
                         android:textColor="@color/purple"
-                        android:text="Add Pickup Details"
+                        android:text="Book Lorry"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ashish.myapplication.Bold_TextView
@@ -123,7 +125,7 @@
                         android:layout_gravity="center"
                         android:textSize="14dp"
                         android:textColor="@color/purple"
-                        android:text="Add Delivery Details"
+                        android:text="Report"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 

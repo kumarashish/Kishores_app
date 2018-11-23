@@ -129,7 +129,7 @@
                       android:layout_height="50dp" />
                   <ashish.myapplication.Bold_TextView
                       android:layout_gravity="center"
-                      android:text="Delivery Details(Add)"
+                      android:text="Book Lorry"
                       android:textSize="14dp"
                       android:textColor="@color/white"
                       android:gravity="center"
@@ -161,7 +161,7 @@
                       android:layout_height="50dp" />
                   <ashish.myapplication.Bold_TextView
                       android:layout_gravity="center"
-                      android:text="PickUp Details(Add)"
+                      android:text="Report"
                       android:textSize="14dp"
                       android:textColor="@color/white"
                       android:gravity="center"

@@ -34,24 +34,51 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 android:textSize="18dp"
                 android:textColor="@color/white"
-                android:text="Under development"
+                android:text="Report"
                 />
         </RelativeLayout>
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ashish.myapplication.Bold_TextView
-        android:id="@+id/textView3"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search by Booking Id"
 
-        android:textSize="24dp"
-        android:textColor="@color/blue"
-        android:text="Under development"
-        />
+            android:textColor="@color/purple"
+            android:textSize="14dp" />
+
+        <EditText
+            android:maxLength="8"
+
+            android:id="@+id/serachId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:inputType="number|textNoSuggestions"
+            android:imeOptions="actionDone"
+            android:textColor="@color/purple"
+
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/purple" />
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/progress"
+                android:indeterminateTint="@color/purple"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
     </LinearLayout>
-
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

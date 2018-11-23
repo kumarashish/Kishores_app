@@ -9,7 +9,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Delivery_Details extends Activity implements View.OnClickListener {
+public class Lorry_Booking extends Activity implements View.OnClickListener {
     public static String headingValue="";
     @BindView(R.id.back)
     Button back;
@@ -19,7 +19,7 @@ public class Delivery_Details extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_pickup_details);
+        setContentView(R.layout.book_lorry);
         ButterKnife.bind(this);
         back.setOnClickListener(this);
         heading.setText(headingValue);

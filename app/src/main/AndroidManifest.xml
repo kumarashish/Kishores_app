@@ -15,21 +15,25 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Splash"
+            android:name=".Login"
+            android:theme="@style/Theme3"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".Splash"
             android:theme="@style/Theme3"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Delivery_Details"
-
+        android:name=".Lorry_Booking"
+            android:theme="@style/Theme4"
+        android:screenOrientation="portrait" />
+        <activity
+            android:theme="@style/Theme5"
+            android:name=".LorryReport"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AddEmployee"

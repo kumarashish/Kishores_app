@@ -3,6 +3,7 @@ package ashish.myapplication;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import org.json.JSONObject;
 
 
 /**
@@ -22,6 +23,8 @@ public class PrefManager {
     private static final String UserToken = "MyAppUSerToken";
     private static final String rememberId = "MyAppUSerRemId";
     private static final String rememberpassword = "MyAppUSerRemPass";
+     private static final String userId="userId";
+    private static final String name="name";
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
@@ -47,7 +50,21 @@ public class PrefManager {
         return pref.getBoolean(LoggedIn,false);
     }
 
-
-
+    public void setUserProfile(JSONObject jsonObject) {
+        try {
+            editor.putString(userId, jsonObject.isNull("Code") ? "" : jsonObject.getString("Code"));
+            editor.putString(name, jsonObject.isNull("Name") ? "" : jsonObject.getString("Name"));
+        } catch (Exception ex) {
+            ex.fillInStackTrace();
+        }
+    }
+ public String getUserId()
+ {
+     return pref.getString(userId,"");
+ }
+    public String getName()
+    {
+        return pref.getString(name,"");
+    }
 
 }

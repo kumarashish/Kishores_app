@@ -2,8 +2,6 @@ package ashish.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -57,6 +54,8 @@ public class MainActivity extends AppCompatActivity
     View main;
 View view1,view2,view3,view4;
 AppController controller;
+@BindView(R.id.userName)
+TextView userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +90,7 @@ AppController controller;
         view2.setOnClickListener(this);
         view3.setOnClickListener(this);
         view4.setOnClickListener(this);
+        userName.setText(controller.getManager().getName()+"( "+controller.getManager().getUserId()+" )");
 
 
     }
@@ -176,13 +176,13 @@ AppController controller;
 
                 break;
             case R.id.heading121:
-                Delivery_Details.headingValue="Add Pickup Details";
-                startActivity(new Intent(MainActivity.this,Delivery_Details.class));
+                Lorry_Booking.headingValue="Book Lorry";
+                startActivity(new Intent(MainActivity.this,Lorry_Booking.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.heading122:
-                Delivery_Details.headingValue="Add Delivery Details";
-                startActivity(new Intent(MainActivity.this,Delivery_Details.class));
+                LorryReport.headingValue="Report";
+                startActivity(new Intent(MainActivity.this,LorryReport.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.heading2:
@@ -223,14 +223,14 @@ AppController controller;
                 startActivity(new Intent(MainActivity.this, EmployeeDetails.class));
                 break;
             case R.id.view3:
-                Delivery_Details.headingValue="Add Delivery Details";
-                startActivity(new Intent(MainActivity.this,Delivery_Details.class));
+                Lorry_Booking.headingValue="Book Lorry";
+                startActivity(new Intent(MainActivity.this,Lorry_Booking.class));
                 drawer.closeDrawer(GravityCompat.START);
 
                 break;
             case R.id.view4:
-                Delivery_Details.headingValue="Add Pickup Details";
-                startActivity(new Intent(MainActivity.this,Delivery_Details.class));
+                LorryReport.headingValue="Report";
+                startActivity(new Intent(MainActivity.this,LorryReport.class));
                 drawer.closeDrawer(GravityCompat.START);
 
                 break;
