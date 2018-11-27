@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <LinearLayout
 
-        android:background="@drawable/login"
+        android:background="@color/blue"
         android:orientation="vertical"
 
         android:layout_width="match_parent"
@@ -43,8 +43,12 @@
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <LinearLayout
                 android:visibility="gone"
+
                 android:id="@+id/form"
                 android:layout_marginTop="60dp"
                 android:layout_marginRight="20dp"
@@ -55,8 +59,59 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lorry Type"
+                    android:text="Consiner"
 
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/consiner"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textPersonName|textNoSuggestions"
+
+                    android:textColor="@color/white"
+
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Consinee"
+                    android:layout_marginTop="10dp"
+
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/consine"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textPersonName|textNoSuggestions"
+
+                    android:textColor="@color/white"
+
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lorry Type"
+                    android:layout_marginTop="15dp"
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
@@ -65,7 +120,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="20dp"
                     android:background="@android:color/transparent"
                     android:inputType="textPersonName|textNoSuggestions"
 
@@ -82,7 +137,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item"
-
+                    android:layout_marginTop="15dp"
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
@@ -228,8 +283,14 @@
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     />
+                <View
+                    android:layout_marginTop="10dp"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"/>
 
             </LinearLayout>
+        </ScrollView>
         </LinearLayout>
 
 
