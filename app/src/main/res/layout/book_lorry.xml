@@ -93,7 +93,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Consiner"
+                    android:text="Consinor"
                     android:layout_marginTop="10dp"
 
                     android:textColor="@color/white"
