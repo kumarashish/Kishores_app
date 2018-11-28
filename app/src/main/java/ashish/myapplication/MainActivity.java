@@ -21,33 +21,27 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
     @BindView(R.id.heading1)
     TextView entryForm;
-    @BindView(R.id.heading11)
-    TextView employee;
-    @BindView(R.id.heading111)
-    TextView addemployee;
     @BindView(R.id.heading12)
     TextView lorry;
     @BindView(R.id.heading121)
     TextView addPickupDetails;
     @BindView(R.id.heading221)
     TextView lorryInformation;
+    @BindView(R.id.heading222)
+    TextView lorryPass;
     @BindView(R.id.heading2)
     TextView reports;
     @BindView(R.id.heading3)
     TextView logout;
-    @BindView(R.id.heading21)
-    TextView employeereports;
+
     @BindView(R.id.heading22)
     TextView lorryreports;
-    @BindView(R.id.heading211)
-    TextView employeeInformation;
 
     @BindView(R.id.entry_llout)
     LinearLayout entryLayout;
     @BindView(R.id.report_llout)
     LinearLayout reportLayout;
     boolean isentryFormClicked=false;
-    boolean isemployeeClicked=false;
     boolean islorryClicked=false;
     boolean isreportsClicked=false;
     boolean isemployeereports=false;
@@ -56,7 +50,7 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.contentdata)
       View content;
     View main;
-View view1,view2,view3,view4;
+View view3,view4;
 AppController controller;
 @BindView(R.id.userName)
 TextView userName;
@@ -67,8 +61,7 @@ TextView userName;
         ButterKnife.bind(this);
         controller=(AppController)getApplicationContext();
         main=(View) content.findViewById(R.id.contentmain);
-        view1=(View)main.findViewById(R.id.view1);
-        view2=(View)main.findViewById(R.id.view2);
+
         view3=(View)main.findViewById(R.id.view3);
         view4=(View)main.findViewById(R.id.view4);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -81,21 +74,17 @@ TextView userName;
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         entryForm.setOnClickListener(this);
-        employee.setOnClickListener(this);
         lorry.setOnClickListener(this);
-        addemployee.setOnClickListener(this);
         addPickupDetails.setOnClickListener(this);
         lorryInformation.setOnClickListener(this);
         reports.setOnClickListener(this);
-        employeereports.setOnClickListener(this);
-        employeeInformation.setOnClickListener(this);
         lorryreports.setOnClickListener(this);
         lorryInformation.setOnClickListener(this);
         logout.setOnClickListener(this);
-        view1.setOnClickListener(this);
-        view2.setOnClickListener(this);
+
         view3.setOnClickListener(this);
         view4.setOnClickListener(this);
+        lorryPass.setOnClickListener(this);
         userName.setText(controller.getManager().getName()+"( "+controller.getManager().getUserId()+" )");
 
 
@@ -153,21 +142,7 @@ TextView userName;
                    entryLayout.setVisibility(View.VISIBLE);
                 }
                 break;
-            case R.id.heading11:
-                if(isemployeeClicked)
-                {
-                    isemployeeClicked=false;
-                    addemployee.setVisibility(View.GONE);
-                }else{
-                    isemployeeClicked=true;
-                    addemployee.setVisibility(View.VISIBLE);
-                }
 
-                break;
-            case R.id.heading111:
-                startActivity(new Intent(MainActivity.this,AddEmployee.class));
-                drawer.closeDrawer(GravityCompat.START);
-                break;
             case R.id.heading12:
                 if(islorryClicked)
                 {
@@ -196,28 +171,17 @@ TextView userName;
                     reportLayout.setVisibility(View.VISIBLE);
                 }
                 break;
-            case R.id.heading21:
-
-                if (isemployeereports) {
-                    isemployeereports = false;
-                    employeeInformation.setVisibility(View.GONE);
-                } else {
-                    isemployeereports = true;
-                    employeeInformation.setVisibility(View.VISIBLE);
-                }
-                break;
 
             case R.id.heading22:
                 if (isLorryreports) {
                     isLorryreports= false;
                     lorryInformation.setVisibility(View.GONE);
+                    lorryPass.setVisibility(View.GONE);
                 } else {
                     isLorryreports = true;
                     lorryInformation.setVisibility(View.VISIBLE);
+                    lorryPass.setVisibility(View.VISIBLE);
                 }
-                break;
-            case R.id.heading211:
-                startActivity(new Intent(MainActivity.this, EmployeeDetails.class));
                 break;
 
             case R.id.heading221:
@@ -225,18 +189,16 @@ TextView userName;
                 startActivity(new Intent(MainActivity.this,LorryReport.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
+            case R.id.heading222:
+
+                startActivity(new Intent(MainActivity.this,LorryPass.class));
+                drawer.closeDrawer(GravityCompat.START);
+                break;
             case R.id.heading3:
                 controller.getManager().setUserLoggedIn(false);
                 Toast.makeText(this,"Logged out sucessfully",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this,Login.class));
                 finish();
-                break;
-            case R.id.view1:
-                startActivity(new Intent(MainActivity.this,AddEmployee.class));
-
-                break;
-            case R.id.view2:
-                startActivity(new Intent(MainActivity.this, EmployeeDetails.class));
                 break;
             case R.id.view3:
                 Lorry_Booking.headingValue="Lorry Booking";

@@ -70,28 +70,7 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <ashish.myapplication.Bold_TextView
-                        android:id="@+id/heading11"
-                        android:gravity="left"
-                        android:paddingLeft="30dp"
-                        android:layout_gravity="center"
-                        android:paddingTop="10dp"
-                        android:textSize="16dp"
-                        android:textColor="@color/blue"
-                        android:text="Employee"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <ashish.myapplication.Bold_TextView
-                        android:visibility="gone"
-                        android:id="@+id/heading111"
-                        android:paddingTop="5dp"
-                        android:paddingLeft="50dp"
-                        android:gravity="left"
-                        android:textSize="14dp"
-                        android:textColor="@color/purple"
-                        android:text="Add Employee"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+
                     <ashish.myapplication.Bold_TextView
                         android:id="@+id/heading12"
                         android:gravity="left"
@@ -143,30 +122,8 @@ android:id="@+id/report_llout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ashish.myapplication.Bold_TextView
-                    android:gravity="left"
-                    android:id="@+id/heading21"
-                    android:paddingLeft="30dp"
-                    android:paddingTop="10dp"
-                    android:layout_gravity="center"
-                    android:textSize="16dp"
-                    android:textColor="@color/blue"
 
-                    android:text="Employee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <ashish.myapplication.Bold_TextView
-                    android:gravity="left"
-                    android:id="@+id/heading211"
-                    android:paddingLeft="50dp"
-                    android:layout_gravity="center"
-                    android:textSize="14dp"
-                    android:paddingTop="5dp"
-                    android:visibility="gone"
-                    android:textColor="@color/purple"
-                    android:text="Personal Information"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+
                 <ashish.myapplication.Bold_TextView
                     android:id="@+id/heading22"
                     android:gravity="left"
@@ -190,6 +147,18 @@ android:id="@+id/report_llout"
                     android:textSize="14dp"
                     android:textColor="@color/purple"
                     android:text="Lorry Information"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ashish.myapplication.Bold_TextView
+                    android:id="@+id/heading222"
+                    android:visibility="gone"
+                    android:gravity="left"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="50dp"
+                    android:layout_gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/purple"
+                    android:text="Lorry Pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

@@ -40,7 +40,7 @@
             android:theme="@style/Theme3"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".EmployeeDetails"
+            android:name=".LorryPass"
             android:theme="@style/Theme2"
             android:screenOrientation="portrait" />
         <activity

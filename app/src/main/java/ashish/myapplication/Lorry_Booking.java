@@ -1,8 +1,11 @@
 package ashish.myapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,6 +45,10 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
     List<String> items=new ArrayList();
     @BindView(R.id.type)
     Spinner lorry_type_spn;
+    @BindView(R.id.consine)
+    EditText consine;
+    @BindView(R.id.consiner)
+    EditText consiner;
     @BindView(R.id.item)
     EditText item_edt;
     @BindView(R.id.from)
@@ -54,6 +61,8 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
     EditText package_edt;
     @BindView(R.id.submit)
     Button submit;
+    @BindView(R.id.search)
+    Button search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +71,8 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
         ButterKnife.bind(this);
         back.setOnClickListener(this);
         submit.setOnClickListener(this);
+        search.setOnClickListener(this);
+
         heading.setText(headingValue);
         form.setVisibility(View.GONE);
         if(Utils.isNetworkAvailable(Lorry_Booking.this))
@@ -82,15 +93,20 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
         });
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.back:
                 finish();
                 break;
+
+            case R.id.search:
+                startActivity(new Intent(this,LorryReport.class));
+                break;
             case R.id.submit:
 
-                if((item_edt.getText().length()>0)&&(from_edt.getText().length()>0)&&(to_edt.getText().length()>0)&&(weight_edt.getText().length()>0)&&(package_edt.getText().length()>0))
+                if((item_edt.getText().length()>0)&&(from_edt.getText().length()>0)&&(to_edt.getText().length()>0)&&(weight_edt.getText().length()>0)&&(package_edt.getText().length()>0)&&(consine.getText().length()>0)&&(consiner.getText().length()>0))
                 {
                    if(Utils.isNetworkAvailable(Lorry_Booking.this))
                    {
@@ -100,7 +116,14 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
                        progressBar2.setVisibility(View.VISIBLE);
                    }
                 }else{
-                    if(item_edt.getText().length()==0)
+                    if(consine.getText().length()==0)
+                    {
+                        Utils.showToast(Lorry_Booking.this,"Please enter consinee");
+                    }else  if(consiner.getText().length()==0)
+                    {
+                        Utils.showToast(Lorry_Booking.this,"Please enter consiner");
+                    }
+                    else if(item_edt.getText().length()==0)
                     {
                         Utils.showToast(Lorry_Booking.this,"Please enter item name");
                     }
@@ -181,7 +204,8 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
 
     }
 public void clearAll()
-{
+{   consine.setText("");
+consiner.setText("");
     item_edt.setText("");
    from_edt.setText("");;
   to_edt.setText("");;
@@ -215,6 +239,9 @@ public void clearAll()
             jsonObject.put(Common.lorryBookingKeys[3],to_edt.getText().toString());
             jsonObject.put(Common.lorryBookingKeys[4],weight_edt.getText().toString());
             jsonObject.put(Common.lorryBookingKeys[5],package_edt.getText().toString());
+            jsonObject.put(Common.lorryBookingKeys[6],consine.getText().toString());
+            jsonObject.put(Common.lorryBookingKeys[7],consiner.getText().toString());
+            jsonObject.put(Common.lorryBookingKeys[8],controller.manager.getUserId());
         }catch (Exception ex)
         {
             ex.fillInStackTrace();

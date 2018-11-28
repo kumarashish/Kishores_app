@@ -39,19 +39,63 @@
                 android:text="Report"
                 />
         </RelativeLayout>
+
         <LinearLayout
-            android:layout_margin="20dp"
+
+            android:backgroundTint="@color/purple"
+            android:layout_marginTop="20dp"
+            android:weightSum="2"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <Button
+                android:id="@+id/id_search"
+                android:layout_marginLeft="2dp"
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:text="Searchby booking Id"
+                android:textAllCaps="false"
+                android:background="@color/purple"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="40dp" />
+            <Button
+                android:textSize="12dp"
+                android:textAllCaps="false"
+                android:id="@+id/date_search"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:text="Search by Date"
+                android:layout_weight="1"
+                android:layout_marginRight="2dp"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <LinearLayout
+
+                android:id="@+id/idView"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search by Booking Id"
+            android:text="Please enter Booking Id"
 
             android:textColor="@color/purple"
-            android:textSize="14dp" />
+            android:textSize="12dp" />
 
         <EditText
             android:maxLength="8"
@@ -71,6 +115,53 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/purple" />
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/dateView"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <Button
+                    android:textColor="@color/black"
+                    android:text="Select start date"
+                    android:id="@+id/startDate"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:background="@drawable/edittext_bg"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <Button
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:id="@+id/endDate"
+                    android:textColor="@color/black"
+                    android:text="Select end date"
+                    android:background="@drawable/edittext_bg"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+
+
+            </LinearLayout>
+                <Button
+                    android:textColor="@color/white"
+                    android:text="Search"
+                    android:backgroundTint="@color/purple"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/yellow_button"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp" />
+            </LinearLayout>
             <ProgressBar
                 android:visibility="gone"
                 android:id="@+id/progress"
@@ -78,8 +169,9 @@
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
             <LinearLayout
-                android:background="@drawable/edittext_bg"
+
                 android:id="@+id/report"
                 android:visibility="gone"
 
@@ -87,185 +179,516 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                 <LinearLayout
 
-
-                    android:weightSum="7.9"
-                    android:background="@color/purple"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:background="@drawable/edittext_bg"
+                        android:orientation="vertical"
+                        android:id="@+id/report1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <TextView
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
 
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:layout_weight="1.9"
-                        android:textSize="14dp"
-                        android:layout_width="0dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:gravity="left|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+
+                            android:text="Booking id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/bookingId"
+
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+                            android:textSize="12dp"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:gravity="left|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+
+                            android:text="Consignor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/consiner"
+
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:maxLines="3"
+                            android:layout_weight="1"
+                            android:textSize="12dp"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:gravity="left|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+
+                            android:text="Consignee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/consignee"
+
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:maxLines="3"
+                            android:layout_weight="1"
+                            android:textSize="12dp"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="1dp"/>
+
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:gravity="left|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+
                         android:text="Type"
-                        android:layout_height="match_parent" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/type"
+
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:maxLines="3"
+                            android:layout_weight="1"
+                            android:textSize="12dp"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
                     <View
-                        android:background="@color/white"
-                        android:layout_width="0.5dp"
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:gravity="left|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
 
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:layout_weight="1.9"
                         android:textSize="14dp"
-                        android:layout_width="0dp"
+
                         android:text="Item"
-                        android:layout_height="match_parent" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/item"
+
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+                            android:textSize="12dp"
+                            android:layout_width="0dp"
+                            android:maxLines="3"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
                     <View
-                        android:background="@color/white"
-                        android:layout_width="0.5dp"
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_height="match_parent"/>
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:layout_weight="2"
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:gravity="left|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+
                         android:textSize="14dp"
-                        android:layout_width="0dp"
+
                         android:text="From - To"
-                        android:layout_height="match_parent" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/s_d"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+                            android:textSize="12dp"
+                            android:maxLines="3"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
                     <View
-                        android:background="@color/white"
-                        android:layout_width="0.5dp"
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                     <TextView
-                        android:gravity="center"
-                        android:textColor="@color/white"
+                        android:gravity="left|center_vertical"
+                        android:textColor="@color/purple"
                         android:layout_weight="1"
                         android:textSize="14dp"
-                        android:layout_width="0dp"
-                        android:text="Wt"
-                        android:layout_height="match_parent" />
+                        android:text="Weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/weight"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1.0"
+                            android:textSize="12dp"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
                     <View
-                        android:background="@color/white"
-                        android:layout_width="0.5dp"
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_height="match_parent"/>
-                    <TextView
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:layout_weight="1"
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
                         android:textSize="14dp"
-                        android:layout_width="0dp"
-                        android:text="Pkg"
-                        android:layout_height="match_parent" />
+                        android:text="Package"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/pkg"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1.0"
+                            android:textSize="12dp"
+                            android:maxLines="3"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    </LinearLayout>
 
+                    <View
 
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="30dp"
+                        android:layout_height="1dp"/>
+                    <Button
+                        android:id="@+id/add"
+                        android:text="Add"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/purple"
+                        android:layout_gravity="right"
+                        android:background="@drawable/yellow_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp" />
+                    <LinearLayout
+                        android:background="@drawable/edittext_bg"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
 
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+                            android:textSize="14dp"
+                            android:text="Lorry Rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/rate"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1.0"
+                            android:textSize="12dp"
+                            android:maxLines="3"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
 
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+                            android:textSize="14dp"
+                            android:text="Broker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/broaker"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1.0"
+                            android:textSize="12dp"
+                            android:maxLines="3"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+                            android:textSize="14dp"
+                            android:text="Mobile Number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/mobilenumber"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1.0"
+                            android:textSize="12dp"
+                            android:maxLines="3"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    </LinearLayout>
+                    <View
+
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="30dp"/>
+                    <Button
+                        android:id="@+id/addDelivery"
+                        android:text="Add"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/purple"
+                        android:layout_gravity="right"
+                        android:background="@drawable/yellow_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp" />
+                    <LinearLayout
+                        android:background="@drawable/edittext_bg"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+                            android:textSize="14dp"
+                            android:text="Lorry Number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/lorrynumber"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1.0"
+                            android:textSize="12dp"
+                            android:maxLines="3"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+                            android:textSize="14dp"
+                            android:text="Arranged Time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/arranged_time"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1.0"
+                            android:textSize="12dp"
+                            android:maxLines="3"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+
+                            android:textColor="@color/purple"
+                            android:layout_weight="1"
+                            android:textSize="14dp"
+                            android:text="Reporting time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/reporting_time"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/purple"
+                            android:layout_weight="1.0"
+                            android:textSize="12dp"
+                            android:maxLines="3"
+                            android:layout_width="0dp"
+                            android:text=""
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:weightSum="7.9"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    <TextView
-                        android:id="@+id/type"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:gravity="center"
-                        android:textColor="@color/purple"
-                        android:maxLines="3"
-                        android:layout_weight="1.9"
-                        android:textSize="12dp"
-                        android:layout_width="0dp"
-                        android:text=""
-                        android:layout_height="match_parent" />
-                    <View
-                        android:background="@color/purple"
-                        android:layout_width="0.5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_height="match_parent"/>
-
-                    <TextView
-                        android:id="@+id/item"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:gravity="center"
-                        android:textColor="@color/purple"
-                        android:layout_weight="1.9"
-                        android:textSize="12dp"
-                        android:layout_width="0dp"
-                        android:maxLines="3"
-                        android:text=""
-                        android:layout_height="match_parent" />
-                    <View
-                        android:background="@color/purple"
-                        android:layout_width="0.5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_height="match_parent"/>
-                    <TextView
-                        android:id="@+id/s_d"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:gravity="center"
-                        android:textColor="@color/purple"
-                        android:layout_weight="2"
-                        android:textSize="12dp"
-                        android:maxLines="3"
-                        android:layout_width="0dp"
-                        android:text=""
-                        android:layout_height="match_parent" />
-                    <View
-                        android:background="@color/purple"
-                        android:layout_width="0.5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_height="match_parent"/>
-                    <TextView
-                        android:id="@+id/weight"
-                        android:gravity="center"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:textColor="@color/purple"
-                        android:layout_weight="1.0"
-                        android:textSize="12dp"
-                        android:layout_width="0dp"
-                        android:text=""
-                        android:layout_height="match_parent" />
-                    <View
-                        android:background="@color/purple"
-                        android:layout_width="0.5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_height="match_parent"/>
-                    <TextView
-                        android:id="@+id/pkg"
-                        android:gravity="center"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:textColor="@color/purple"
-                        android:layout_weight="1.0"
-                        android:textSize="12dp"
-                        android:maxLines="3"
-                        android:layout_width="0dp"
-                        android:text=""
-                        android:layout_height="match_parent" />
 
 
 
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"/>
+                </ScrollView>
             </LinearLayout>
 
     </LinearLayout>

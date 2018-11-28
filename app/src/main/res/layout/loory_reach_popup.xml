@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittext_bg"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Booking Id"
+                android:layout_marginTop="10dp"
+
+                android:textColor="@color/purple"
+                android:textSize="14dp" />
+
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lorry Number"
+                android:layout_marginTop="10dp"
+
+                android:textColor="@color/purple"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/lorry_number"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:inputType="textPersonName|textNoSuggestions"
+
+                android:textColor="@color/purple"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+
+                android:background="@color/purple" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arrang Date "
+                android:layout_marginTop="10dp"
+
+                android:textColor="@color/purple"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/arrange_date"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:hint="mm-dd-yyyy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:inputType="number|textNoSuggestions"
+
+                android:textColor="@color/purple"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+
+                android:background="@color/purple" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arrang time "
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:hint="hh-mm-ss"
+                android:textColor="@color/purple"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/arrange_time"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:inputType="date|textNoSuggestions"
+
+                android:textColor="@color/purple"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+
+                android:background="@color/purple" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Report Date "
+                android:layout_marginTop="10dp"
+
+                android:textColor="@color/purple"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/report_date"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:inputType="date|textNoSuggestions"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:hint="mm-dd-yyyy"
+                android:textColor="@color/purple"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+
+                android:background="@color/purple" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Report time "
+                android:layout_marginTop="10dp"
+
+                android:textColor="@color/purple"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/report_time"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:hint="hh-mm-ss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:inputType="date|textNoSuggestions"
+
+                android:textColor="@color/purple"
+
+                />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+
+                android:background="@color/purple" />
+
+            <Button
+                android:layout_marginTop="30dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:text="Submit"
+                android:backgroundTint="@color/purple"
+                android:background="@drawable/yellow_button"
+                android:layout_width="100dp"
+                android:layout_height="30dp" />
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/progress"
+                android:indeterminateTint="@color/purple"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
