@@ -2,6 +2,8 @@ package ashish.myapplication;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -9,14 +11,21 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,7 +99,18 @@ public class LorryReport extends Activity implements View.OnClickListener  ,WebA
 AlertDialog dialog;
 int apiCall=0;
 int searchBooking=1,arrangeLorry=2,updateReporting=3;
-
+    private DatePicker datePicker;
+    private Calendar calendar;
+    private int year, month, day;
+    boolean isStartDateClicked=false;
+    boolean isEndDateClicked=false;
+    boolean isDateClicked=false;
+    boolean isStartDateSelected=false;
+    boolean isEndDateSelected=false;
+    @BindView(R.id.search_with_date)
+    Button search_with_date;
+    String bookingIdValue="0";
+    ArrayList <LorryReportModel>reportList=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +125,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         endDate.setOnClickListener(this);
         delivery.setOnClickListener(this);
         add.setOnClickListener(this);
+        search_with_date.setOnClickListener(this);
         heading.setText(headingValue);
             search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
@@ -117,6 +138,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                                 report.setVisibility(View.GONE);
                                 progressBar.setVisibility(View.VISIBLE);
                                 apiCall=searchBooking;
+                                bookingIdValue=search.getText().toString();
                                 controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON().toString(), callback);
                             }
                         }else{
@@ -127,7 +149,46 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                     return handled;
                 }
             });
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
         }
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        // TODO Auto-generated method stub
+        if (id == 999) {
+            return new DatePickerDialog(this,
+                    myDateListener, year, month, day);
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener myDateListener = new
+            DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker arg0,
+                                      int arg1, int arg2, int arg3) {
+                    // TODO Auto-generated method stub
+                    // arg1 = year
+                    // arg2 = month
+                    // arg3 = day
+                    showDate(arg1, arg2+1, arg3);
+                }
+            };
+
+    private void showDate(int year, int month, int day) {
+
+        if (isStartDateClicked) {
+            isStartDateSelected = true;
+            startDate.setText(month + "-" + day + "-" + year);
+        } else {
+            isEndDateSelected = true;
+            endDate.setText(month + "-" + day + "-" + year);
+        }
+
+    }
     public void clearAll()
     {
 
@@ -148,7 +209,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         reporting_time.setText("");
     }
     public void setValue()
-    {
+    {   bookingIdValue=Integer.toString(model.getId());
         bookingId.setText(Integer.toString(model.getId()));
         lorryType.setText(model.getLorrytype());;
         item.setText(model.getItem());;
@@ -181,15 +242,32 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
             add.setVisibility(View.VISIBLE);
             delivery.setVisibility(View.GONE);
         }
+        bookingId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(reportList.size()>0)
+                {bookingIdListPopUp();
+                }
+            }
+        });
+
         //delivery.setVisibility(View.VISIBLE);
     }
     public JSONObject getRequestJSON()
     {JSONObject jsonObject=new JSONObject();
         try{
-         jsonObject.put(Common.getBookingKeys[0],search.getText().toString());
-         // jsonObject.put(Common.getBookingKeys[0],0);
-            jsonObject.put(Common.getBookingKeys[1],"");
-            jsonObject.put(Common.getBookingKeys[2],"");
+            if(isDateClicked)
+            {
+                jsonObject.put(Common.getBookingKeys[0], 0);
+                // jsonObject.put(Common.getBookingKeys[0],0);
+                jsonObject.put(Common.getBookingKeys[1], startDate.getText().toString());
+                jsonObject.put(Common.getBookingKeys[2], endDate.getText().toString());
+            }else {
+                jsonObject.put(Common.getBookingKeys[0], bookingIdValue);
+                // jsonObject.put(Common.getBookingKeys[0],0);
+                jsonObject.put(Common.getBookingKeys[1], "");
+                jsonObject.put(Common.getBookingKeys[2], "");
+            }
         }catch (Exception ex)
         {
             ex.fillInStackTrace();
@@ -199,7 +277,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
     public JSONObject getReportRequestJSON(String lorryNumber,String arrangeDate,String arrangeTime,String reportDate,String reportTime)
     {JSONObject jsonObject=new JSONObject();
         try{
-            jsonObject.put(Common.getLorryReachKeys[0],search.getText().toString());
+            jsonObject.put(Common.getLorryReachKeys[0], bookingIdValue);
 
             jsonObject.put(Common.getLorryReachKeys[1],lorryNumber);
             jsonObject.put(Common.getLorryReachKeys[2],arrangeDate+" "+arrangeTime);
@@ -213,7 +291,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
     public JSONObject getLorrryArrangeRequestJSON(String rate,String broker,String mobilenumber)
     {JSONObject jsonObject=new JSONObject();
         try{
-            jsonObject.put(Common.getLorryArrangeKeys[0],search.getText().toString());
+            jsonObject.put(Common.getLorryArrangeKeys[0], bookingIdValue);
             jsonObject.put(Common.getLorryArrangeKeys[1],rate);
             jsonObject.put(Common.getLorryArrangeKeys[2],broker);
             jsonObject.put(Common.getLorryArrangeKeys[3],mobilenumber);
@@ -231,6 +309,14 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                 finish();
                 break;
             case R.id.id_search:
+                report.setVisibility(View.GONE);
+                reportList.clear();
+                clearAll();
+                isDateClicked=false;
+                isStartDateSelected=false;
+                isEndDateSelected=false;
+                startDate.setText("Select start date");
+                endDate.setText("Select end date");
                 id_search.setBackgroundColor(getResources().getColor(R.color.purple));
                 id_search.setTextColor(getResources().getColor(R.color.white));
                 date_search.setBackgroundColor(getResources().getColor(R.color.white));
@@ -239,6 +325,8 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                 dateView.setVisibility(View.GONE);
                 break;
             case R.id.date_search:
+                report.setVisibility(View.GONE);
+                isDateClicked=true;
                 search.setText("");
                 clearAll();
                 idView.setVisibility(View.GONE);
@@ -248,9 +336,30 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                 date_search.setBackgroundColor(getResources().getColor(R.color.purple));
                 date_search.setTextColor(getResources().getColor(R.color.white));
                 break;
+            case R.id.search_with_date:
+
+                if ((isStartDateSelected == true) && (isEndDateSelected == true)) {
+                    bookingIdValue="0";
+                    progressBar.setVisibility(View.VISIBLE);
+                    apiCall = searchBooking;
+                    controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON().toString(), callback);
+                } else {
+                    if (isStartDateSelected = false) {
+                        Utils.showToast(LorryReport.this, "Please choose start date");
+                    } else {
+                        Utils.showToast(LorryReport.this, "Please choose end date");
+                    }
+                }
+                break;
             case R.id.startDate:
+                isStartDateClicked=true;
+                isEndDateClicked=false;
+                showDialog(999);
                 break;
             case R.id.endDate:
+                isStartDateClicked=false;
+                isEndDateClicked=true;
+                showDialog(999);
                 break;
             case R.id.add:
                 lorryArrangePopUp();
@@ -271,14 +380,32 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                 if (Utils.getStatus(value)) {
                     switch (apiCall) {
                         case 1:
-                        if (Utils.jsonObject(value) != null) {
-                            model = new LorryReportModel(Utils.jsonObject(value));
-                            clearAll();
-                            setValue();
-                        } else {
-                            clearAll();
-                            Utils.showToast(LorryReport.this, Utils.getMessage(value));
-                        }
+                            if(isDateClicked)
+                            { reportList.clear();
+                                JSONArray bookingArray= Utils.jsonArrayy(value);
+                                for(int i=0;i<bookingArray.length();i++)
+                                {try {
+                                    reportList.add(new LorryReportModel(bookingArray.getJSONObject(i)));
+                                }catch (Exception ex)
+                                {
+                                    ex.fillInStackTrace();
+                                }
+
+                                }
+                                if(reportList.size()>0)
+                                {
+                                    bookingIdListPopUp();
+                                }
+                            }else {
+                                if (Utils.jsonObject(value) != null) {
+                                    model = new LorryReportModel(Utils.jsonObject(value));
+                                    clearAll();
+                                    setValue();
+                                } else {
+                                    clearAll();
+                                    Utils.showToast(LorryReport.this, Utils.getMessage(value));
+                                }
+                            }
 
                     break;
                         case 2:
@@ -334,7 +461,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         final EditText report_time=(EditText)dialogLayout.findViewById(R.id.report_time);
         final Button submit=(Button)dialogLayout.findViewById(R.id.submit);
         final ProgressBar progress=(ProgressBar)dialogLayout.findViewById(R.id.progress);
-        bookingId.setText("Booking Id : "+search.getText().toString());
+        bookingId.setText("Booking Id : "+ bookingIdValue);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -377,6 +504,27 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
             }
         });
         builder.setView(dialogLayout);
+        dialog = builder.create();
+        dialog.show();
+    }
+
+    public void bookingIdListPopUp() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.list_layout, null);
+        ListView list=(ListView)dialogLayout.findViewById(R.id.listView);
+       list.setAdapter(new ListAdapter(reportList,LorryReport.this));
+        builder.setView(dialogLayout);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                model=reportList.get(position);
+                setValue();
+                dialog.cancel();
+            }
+        });
         dialog = builder.create();
         dialog.show();
     }

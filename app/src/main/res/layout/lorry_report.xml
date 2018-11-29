@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-
+android:background="@color/white"
        android:orientation="vertical"
         android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
@@ -155,12 +155,15 @@
                 <Button
                     android:textColor="@color/white"
                     android:text="Search"
+                    android:id="@+id/search_with_date"
                     android:backgroundTint="@color/purple"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:layout_gravity="center"
                     android:background="@drawable/yellow_button"
                     android:layout_width="120dp"
                     android:layout_height="40dp" />
+
+
             </LinearLayout>
             <ProgressBar
                 android:visibility="gone"
@@ -170,12 +173,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+
             <LinearLayout
 
                 android:id="@+id/report"
                 android:visibility="gone"
 
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
