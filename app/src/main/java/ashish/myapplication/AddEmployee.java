@@ -32,7 +32,7 @@ public class AddEmployee extends Activity implements View.OnClickListener,WebApi
     AppController controller;
     WebApiResponseCallback callback;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_employee);
         ButterKnife.bind(this);
@@ -75,7 +75,8 @@ public class AddEmployee extends Activity implements View.OnClickListener,WebApi
 
     }
     public JSONObject getRequestJSON()
-    {JSONObject jsonObject=new JSONObject();
+    {
+        JSONObject jsonObject=new JSONObject();
         try{
             jsonObject.put(Common.setEmpKeys[0],fname.getText().toString());
             jsonObject.put(Common.setEmpKeys[1],lname.getText().toString());
@@ -107,9 +108,6 @@ public class AddEmployee extends Activity implements View.OnClickListener,WebApi
                 submit.setVisibility(View.VISIBLE);
             }
         });
-
-
-
     }
 
     @Override
@@ -122,6 +120,5 @@ public class AddEmployee extends Activity implements View.OnClickListener,WebApi
             }
         });
         Utils.showToast(AddEmployee.this,Utils.getMessage(value));
-
     }
 }

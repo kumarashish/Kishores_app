@@ -42,8 +42,8 @@
 
     <LinearLayout
         android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -88,6 +88,115 @@
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_marginTop="30dp"
+            android:id="@+id/table"
+            android:background="@drawable/edittext_bg"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/bookingId"
+                android:text="Booking Id : "
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_weight="1"
+
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:orientation="horizontal"
+            android:background="@color/pink"
+            android:weightSum="6.7"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:text="S.no"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_weight="0.8"
+                android:layout_width="0dp"
+                android:layout_height="40dp" />
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="0.5dp"
+                android:background="@color/white"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:text="Rate"
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="40dp" />
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="0.5dp"
+                android:background="@color/white"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:text="Broker"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:layout_weight="1.2"
+                android:layout_width="0dp"
+                android:layout_height="40dp" />
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="0.5dp"
+                android:background="@color/white"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:text="Mobile "
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_weight="1.2"
+                android:layout_width="0dp"
+                android:layout_height="40dp" />
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="0.5dp"
+                android:background="@color/white"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:text="Assgn.by"
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_weight="1.2"
+                android:layout_width="0dp"
+                android:layout_height="40dp" />
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="0.5dp"
+                android:background="@color/white"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:text="Status"
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_weight="1.2"
+                android:layout_width="0dp"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/content"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+        </LinearLayout>
     </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

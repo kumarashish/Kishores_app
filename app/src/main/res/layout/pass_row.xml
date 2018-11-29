@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:weightSum="6.7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:textSize="12dp"
+            android:id="@+id/sno"
+            android:text=""
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_weight="0.8"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+        <View
+            android:layout_margin="5dp"
+            android:layout_width="0.5dp"
+            android:background="@color/pink"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textSize="12dp"
+            android:id="@+id/rate"
+            android:text=""
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+        <View
+            android:layout_margin="5dp"
+            android:layout_width="0.5dp"
+            android:background="@color/pink"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textSize="12dp"
+            android:id="@+id/name"
+            android:text=""
+         android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_weight="1.2"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+        <View
+            android:layout_margin="5dp"
+            android:layout_width="0.5dp"
+            android:background="@color/pink"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textSize="12dp"
+            android:id="@+id/mobile"
+            android:text=""
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_weight="1.2"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+        <View
+            android:layout_margin="5dp"
+            android:layout_width="0.5dp"
+            android:background="@color/pink"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textSize="12dp"
+            android:id="@+id/passedby"
+            android:text=""
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_weight="1.2"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+        <View
+            android:layout_margin="5dp"
+            android:layout_width="0.5dp"
+            android:background="@color/pink"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textSize="12dp"
+            android:id="@+id/status"
+            android:text="@string/approve"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_weight="1.2"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

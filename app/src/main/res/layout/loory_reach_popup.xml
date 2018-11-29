@@ -21,6 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Booking Id"
+                android:id="@+id/bookingId"
                 android:layout_marginTop="10dp"
 
                 android:textColor="@color/purple"
@@ -76,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@android:color/transparent"
-                android:inputType="number|textNoSuggestions"
+                android:inputType="date|textNoSuggestions"
 
                 android:textColor="@color/purple"
 
@@ -101,13 +102,13 @@
 
             <EditText
                 android:id="@+id/arrange_time"
-
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@android:color/transparent"
-                android:inputType="date|textNoSuggestions"
-
+                android:inputType="datetime|textNoSuggestions"
+                android:hint="hh:mm:ss"
                 android:textColor="@color/purple"
 
                 />
@@ -134,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@android:color/transparent"
-                android:inputType="date|textNoSuggestions"
+                android:inputType="textPersonName|textNoSuggestions"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:hint="mm-dd-yyyy"
@@ -161,7 +162,7 @@
                 android:id="@+id/report_time"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:hint="hh-mm-ss"
+                android:hint="hh:mm:ss"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -185,6 +186,7 @@
                 android:layout_gravity="center"
                 android:textAllCaps="false"
                 android:text="Submit"
+                android:id="@+id/submit"
                 android:backgroundTint="@color/purple"
                 android:background="@drawable/yellow_button"
                 android:layout_width="100dp"

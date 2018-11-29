@@ -89,7 +89,7 @@ public class LorryReport extends Activity implements View.OnClickListener  ,WebA
     Button delivery;
 AlertDialog dialog;
 int apiCall=0;
-int searchBooking=1,arrangeLorry=2;
+int searchBooking=1,arrangeLorry=2,updateReporting=3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +106,6 @@ int searchBooking=1,arrangeLorry=2;
         delivery.setOnClickListener(this);
         add.setOnClickListener(this);
         heading.setText(headingValue);
-
             search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -165,12 +164,9 @@ int searchBooking=1,arrangeLorry=2;
 
     rate.setText(model.getLorryrate());
     broaker.setText(model.getBroker());
-    mobilenumber.setText(model.getMobileno());
-
-
-                lorryNumber.setText(model.getLorryno());
+        mobilenumber.setText(model.getMobileno());
+        lorryNumber.setText(model.getLorryno());
         arranged_time.setText(model.getArrangtime());
-
         reporting_time.setText(model.getReporttime());
 
 
@@ -178,7 +174,6 @@ int searchBooking=1,arrangeLorry=2;
         {
             add.setVisibility(View.GONE);
             delivery.setVisibility(View.VISIBLE);
-
         }else if((model.getPassedby().length()>0)&&(model.getReporttime().length()>0)){
             add.setVisibility(View.GONE);
             delivery.setVisibility(View.GONE);
@@ -186,14 +181,29 @@ int searchBooking=1,arrangeLorry=2;
             add.setVisibility(View.VISIBLE);
             delivery.setVisibility(View.GONE);
         }
+        //delivery.setVisibility(View.VISIBLE);
     }
     public JSONObject getRequestJSON()
     {JSONObject jsonObject=new JSONObject();
         try{
          jsonObject.put(Common.getBookingKeys[0],search.getText().toString());
-          //  jsonObject.put(Common.getBookingKeys[0],);
+         // jsonObject.put(Common.getBookingKeys[0],0);
             jsonObject.put(Common.getBookingKeys[1],"");
             jsonObject.put(Common.getBookingKeys[2],"");
+        }catch (Exception ex)
+        {
+            ex.fillInStackTrace();
+        }
+        return jsonObject;
+    }
+    public JSONObject getReportRequestJSON(String lorryNumber,String arrangeDate,String arrangeTime,String reportDate,String reportTime)
+    {JSONObject jsonObject=new JSONObject();
+        try{
+            jsonObject.put(Common.getLorryReachKeys[0],search.getText().toString());
+
+            jsonObject.put(Common.getLorryReachKeys[1],lorryNumber);
+            jsonObject.put(Common.getLorryReachKeys[2],arrangeDate+" "+arrangeTime);
+            jsonObject.put(Common.getLorryReachKeys[3],reportDate+" "+reportTime);
         }catch (Exception ex)
         {
             ex.fillInStackTrace();
@@ -229,6 +239,8 @@ int searchBooking=1,arrangeLorry=2;
                 dateView.setVisibility(View.GONE);
                 break;
             case R.id.date_search:
+                search.setText("");
+                clearAll();
                 idView.setVisibility(View.GONE);
                 dateView.setVisibility(View.VISIBLE);
                 id_search.setBackgroundColor(getResources().getColor(R.color.white));
@@ -275,6 +287,12 @@ int searchBooking=1,arrangeLorry=2;
                             }
                             Utils.showToast(LorryReport.this, "Successfully submited");
                             break;
+                        case 3:
+                            if(dialog!=null) {
+                                dialog.cancel();
+                            }
+                            Utils.showToast(LorryReport.this, "Successfully Updated the report");
+                            break;
 
                 } }else{
                     if(apiCall==searchBooking) {
@@ -308,6 +326,56 @@ int searchBooking=1,arrangeLorry=2;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.loory_reach_popup, null);
+        TextView bookingId=(TextView)dialogLayout.findViewById(R.id.bookingId);
+        final EditText lorry_number=(EditText)dialogLayout.findViewById(R.id.lorry_number);
+        final EditText arrange_date=(EditText)dialogLayout.findViewById(R.id.arrange_date);
+        final EditText arrange_time=(EditText)dialogLayout.findViewById(R.id.arrange_time);
+        final EditText report_date=(EditText)dialogLayout.findViewById(R.id.report_date);
+        final EditText report_time=(EditText)dialogLayout.findViewById(R.id.report_time);
+        final Button submit=(Button)dialogLayout.findViewById(R.id.submit);
+        final ProgressBar progress=(ProgressBar)dialogLayout.findViewById(R.id.progress);
+        bookingId.setText("Booking Id : "+search.getText().toString());
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if((lorry_number.getText().length()>0)&&(arrange_date.getText().length()>0)&&(arrange_date.getText().toString().contains("-"))&&(arrange_time.getText().length()>0)&&(arrange_time.getText().toString().contains(":"))&&(report_date.getText().length()>0)&&(report_date.getText().toString().contains("-"))&&(report_time.getText().length()>0)&&(report_time.getText().toString().contains(":")))
+                {
+                    progress.setVisibility(View.VISIBLE);
+                    submit.setVisibility(View.GONE);
+                    apiCall=updateReporting;
+                    controller.getWebApiCall().postData(Common.getLorryReachUrl, getReportRequestJSON(lorry_number.getText().toString(),arrange_date.getText().toString(),arrange_time.getText().toString(),report_date.getText().toString(),report_time.getText().toString()).toString(), callback);
+                }else{
+                    if(lorry_number.getText().length()==0)
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter lorry number",Toast.LENGTH_SHORT).show();
+                    }else if(arrange_date.getText().length()==0)
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter arrange date",Toast.LENGTH_SHORT).show();
+                    }else if(!arrange_date.getText().toString().contains("-"))
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter arrange date in mm-dd-yyyy format",Toast.LENGTH_SHORT).show();
+                    }else if(arrange_time.getText().length()==0)
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter arrange time ",Toast.LENGTH_SHORT).show();
+                    }else if(!arrange_time.getText().toString().contains(":"))
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter arrange time in hh:mm:ss format",Toast.LENGTH_SHORT).show();
+                    }else if(report_date.getText().length()==0)
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter report date",Toast.LENGTH_SHORT).show();
+                    }else if(!report_date.getText().toString().contains("-"))
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter report date in mm-dd-yyyy format",Toast.LENGTH_SHORT).show();
+                    }else if(report_time.getText().length()==0)
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter report time ",Toast.LENGTH_SHORT).show();
+                    }else if(!report_time.getText().toString().contains(":"))
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter report time in hh:mm:ss format",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
         builder.setView(dialogLayout);
         dialog = builder.create();
         dialog.show();
