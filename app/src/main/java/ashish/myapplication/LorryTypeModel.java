@@ -9,7 +9,7 @@ public class LorryTypeModel {
     {
         try{
             code=jsonObject.isNull("Code")?"":jsonObject.getString("Code");
-            lorryType=jsonObject.isNull("Lorrytype")?"":jsonObject.getString("Lorrytype");
+            lorryType=jsonObject.isNull("Lorrytype")?"":jsonObject.getString("Lorrytype").toUpperCase();
         }catch (Exception ex)
         {
             ex.fillInStackTrace();
