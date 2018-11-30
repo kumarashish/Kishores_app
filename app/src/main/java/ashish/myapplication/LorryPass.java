@@ -97,7 +97,6 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                             for (int i = 0; i < passesArray.length(); i++) {
                                 try {
                                     passesList.add(new Lorry_PassModel(passesArray.getJSONObject(i)));
-
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -107,10 +106,8 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                             }
                         } else {
                             Utils.showToast(LorryPass.this, Utils.getMessage(value));
-
                         }
                         break;
-
                         case 2:
                             Utils.showToast(LorryPass.this, "You have sucessfully approved pass");
                             finish();
@@ -121,6 +118,7 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                 }
             });
         }else{
+            progressBar.setVisibility(View.GONE);
             Utils.showToast(LorryPass.this, Utils.getMessage(value));
         }
     }

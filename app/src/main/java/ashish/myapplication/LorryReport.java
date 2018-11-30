@@ -214,17 +214,16 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         lorryType.setText(model.getLorrytype());;
         item.setText(model.getItem());;
         source_dest.setText(model.Bookfrom+" - "+model.getBookto());;
-        weight.setText(model.getWeight());;
+        weight.setText(model.getWeight() +" kgs");;
         pckg.setText(model.getPackage());
         report.setVisibility(View.VISIBLE);
         SpannableString content = new SpannableString( bookingId.getText().toString());
         content.setSpan(new UnderlineSpan(), 0,bookingId.getText().length(), 0);
         bookingId.setText(content);
         consiner.setText(model.getConsignor());
-                consine.setText(model.getConsignee());
-
-    rate.setText(model.getLorryrate());
-    broaker.setText(model.getBroker());
+        consine.setText(model.getConsignee());
+        rate.setText(model.getLorryrate());
+        broaker.setText(model.getBroker());
         mobilenumber.setText(model.getMobileno());
         lorryNumber.setText(model.getLorryno());
         arranged_time.setText(model.getArrangtime());
@@ -465,7 +464,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((lorry_number.getText().length()>0)&&(arrange_date.getText().length()>0)&&(arrange_date.getText().toString().contains("-"))&&(arrange_time.getText().length()>0)&&(arrange_time.getText().toString().contains(":"))&&(report_date.getText().length()>0)&&(report_date.getText().toString().contains("-"))&&(report_time.getText().length()>0)&&(report_time.getText().toString().contains(":")))
+                if((lorry_number.getText().length()>0)&&(lorry_number.getText().toString().contains("-"))&&(arrange_date.getText().length()>0)&&(arrange_date.getText().toString().contains("-"))&&(arrange_time.getText().length()>0)&&(arrange_time.getText().toString().contains(":"))&&(report_date.getText().length()>0)&&(report_date.getText().toString().contains("-"))&&(report_time.getText().length()>0)&&(report_time.getText().toString().contains(":")))
                 {
                     progress.setVisibility(View.VISIBLE);
                     submit.setVisibility(View.GONE);
@@ -475,6 +474,10 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                     if(lorry_number.getText().length()==0)
                     {
                         Toast.makeText(LorryReport.this,"Please enter lorry number",Toast.LENGTH_SHORT).show();
+                    }
+                    if(!lorry_number.getText().toString().contains("-"))
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter lorry number in XX-XX-XX-XXXX format",Toast.LENGTH_SHORT).show();
                     }else if(arrange_date.getText().length()==0)
                     {
                         Toast.makeText(LorryReport.this,"Please enter arrange date",Toast.LENGTH_SHORT).show();
