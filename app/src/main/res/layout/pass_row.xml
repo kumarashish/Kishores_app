@@ -22,7 +22,7 @@
         <View
             android:layout_margin="5dp"
             android:layout_width="0.5dp"
-            android:background="@color/pink"
+            android:background="@color/aqua"
             android:layout_height="match_parent"/>
         <TextView
             android:textSize="12dp"
@@ -36,7 +36,7 @@
         <View
             android:layout_margin="5dp"
             android:layout_width="0.5dp"
-            android:background="@color/pink"
+            android:background="@color/aqua"
             android:layout_height="match_parent"/>
         <TextView
             android:textSize="12dp"
@@ -50,7 +50,7 @@
         <View
             android:layout_margin="5dp"
             android:layout_width="0.5dp"
-            android:background="@color/pink"
+            android:background="@color/aqua"
             android:layout_height="match_parent"/>
         <TextView
             android:textSize="12dp"
@@ -64,7 +64,7 @@
         <View
             android:layout_margin="5dp"
             android:layout_width="0.5dp"
-            android:background="@color/pink"
+            android:background="@color/aqua"
             android:layout_height="match_parent"/>
         <TextView
             android:textSize="12dp"
@@ -78,7 +78,7 @@
         <View
             android:layout_margin="5dp"
             android:layout_width="0.5dp"
-            android:background="@color/pink"
+            android:background="@color/aqua"
             android:layout_height="match_parent"/>
         <TextView
             android:textSize="12dp"

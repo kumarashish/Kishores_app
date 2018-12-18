@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
     <RelativeLayout
 
-        android:background="@color/pink"
+        android:background="@color/aqua"
         android:layout_width="match_parent"
         android:layout_height="40dp">
         <Button
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:text="Please enter Booking Id"
 
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="12dp" />
 
             <EditText
@@ -72,19 +72,19 @@
                 android:background="@android:color/transparent"
                 android:inputType="number|textNoSuggestions"
                 android:imeOptions="actionDone"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
 
                 />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/blue" />
+                android:textColor="@color/black" />
         </LinearLayout>
         <ProgressBar
             android:visibility="gone"
             android:id="@+id/progress"
-            android:indeterminateTint="@color/pink"
+            android:indeterminateTint="@color/aqua"
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -110,7 +110,7 @@
             android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:orientation="horizontal"
-            android:background="@color/pink"
+            android:background="@color/aqua"
             android:weightSum="6.7"
             android:layout_width="match_parent"
             android:layout_height="50dp">

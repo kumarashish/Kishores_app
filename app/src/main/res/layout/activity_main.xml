@@ -28,7 +28,7 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:orientation="vertical"
-                android:background="@color/green"
+                android:background="@color/aqua"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
                 <ImageView
@@ -78,7 +78,7 @@
                         android:paddingTop="10dp"
                         android:layout_gravity="center"
                         android:textSize="16dp"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/black"
                         android:text="Lorry"
 
                         android:layout_width="match_parent"
@@ -101,7 +101,7 @@
 
             </LinearLayout>
             <View
-                android:background="@color/blue"
+                android:textColor="@color/black"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
@@ -131,7 +131,7 @@ android:id="@+id/report_llout"
                     android:paddingTop="10dp"
                     android:layout_gravity="center"
                     android:textSize="16dp"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/black"
                     android:text="Lorry"
 
                     android:layout_width="match_parent"
@@ -164,7 +164,7 @@ android:id="@+id/report_llout"
 
             </LinearLayout>
             <View
-                android:background="@color/blue"
+                android:textColor="@color/black"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>

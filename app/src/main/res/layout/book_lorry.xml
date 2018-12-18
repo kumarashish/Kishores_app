@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <LinearLayout
 
-        android:background="@color/blue"
+        android:background="@color/aqua"
         android:orientation="vertical"
 
         android:layout_width="match_parent"
@@ -38,6 +38,7 @@
                 />
             <Button
                android:id="@+id/search"
+                android:backgroundTint="@color/white"
                 android:layout_marginRight="10dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
@@ -289,7 +290,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="50dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/rectangle"
+                    android:background="@drawable/yellow_button"
                     android:text="SUBMIT"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
