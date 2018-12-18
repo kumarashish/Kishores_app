@@ -18,13 +18,13 @@
 
 
           <LinearLayout
-           android:weightSum="3"
+           android:weightSum="4"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
               <RelativeLayout
                   android:orientation="vertical"
-                  android:layout_weight="2"
+                  android:layout_weight="1"
                   android:layout_width="match_parent"
                   android:layout_height="0dp">
                   <RelativeLayout
@@ -42,7 +42,7 @@
                      android:background="@drawable/logo_n"
                       android:id="@+id/headingid"
                       android:gravity="center"
-                      android:padding="5dp"
+                      android:padding="10dp"
                       android:layout_margin="5dp"
                         android:scaleType="fitXY"
                       android:layout_width="120dp"
@@ -60,25 +60,28 @@
               android:layout_width="match_parent"
              >
               <RelativeLayout
+                  android:layout_margin="5dp"
                   android:layout_weight="1"
                   android:layout_width="0dp"
                   android:layout_height="match_parent">
               <LinearLayout
                   android:background="@color/aqua"
+                  android:layout_margin="3dp"
                   android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
                   <ImageView
                       android:scaleType="fitXY"
-                      android:layout_marginTop="60dp"
+                      android:layout_marginTop="40dp"
                       android:layout_gravity="center"
                       android:tint="@color/white"
                       android:src="@drawable/booking"
-                      android:layout_width="50dp"
-                      android:layout_height="50dp" />
+                      android:layout_width="30dp"
+                      android:layout_height="30dp" />
                   <ashish.myapplication.Bold_TextView
                       android:layout_gravity="center"
                       android:text="Booking Request"
+                      android:layout_marginTop="10dp"
                       android:textSize="14dp"
                       android:textColor="@color/white"
                       android:gravity="center"
@@ -86,14 +89,14 @@
                       android:layout_height="wrap_content" />
               </LinearLayout>
                   <View
-                      android:id="@+id/view3"
+                      android:id="@+id/view1"
+                      android:background="@drawable/clickable_view"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"/>
               </RelativeLayout>
-              <View
-                  android:layout_width="0.5dp"
-                  android:layout_height="match_parent"/>
+
               <RelativeLayout
+                  android:layout_margin="5dp"
                   android:layout_weight="1"
                   android:layout_width="0dp"
                   android:layout_height="match_parent">
@@ -101,20 +104,21 @@
 
                   android:background="@color/purple"
                   android:orientation="vertical"
-
+                  android:layout_margin="3dp"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
                   <ImageView
-                      android:layout_marginTop="60dp"
+                      android:layout_marginTop="40dp"
                       android:layout_gravity="center"
                       android:tint="@color/white"
-                      android:src="@drawable/report"
+                      android:src="@android:drawable/ic_delete"
                       android:scaleType="fitXY"
-                      android:layout_width="50dp"
-                      android:layout_height="50dp" />
+                      android:layout_width="30dp"
+                      android:layout_height="30dp" />
                   <ashish.myapplication.Bold_TextView
                       android:layout_gravity="center"
-                      android:text="Report"
+                      android:text="Booking Delete"
+                      android:layout_marginTop="10dp"
                       android:textSize="14dp"
                       android:textColor="@color/white"
                       android:gravity="center"
@@ -122,13 +126,175 @@
                       android:layout_height="wrap_content" />
               </LinearLayout>
                   <View
-                      android:id="@+id/view4"
+                      android:id="@+id/view2"
+                      android:background="@drawable/clickable_view"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"/>
               </RelativeLayout>
 
           </LinearLayout>
+              <LinearLayout
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:orientation="horizontal"
+                  android:weightSum="2"
+                  android:layout_width="match_parent"
+                  >
+                  <RelativeLayout
+                      android:layout_margin="5dp"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent">
+                      <LinearLayout
+                          android:background="@color/aqua"
+                          android:layout_margin="3dp"
+                          android:orientation="vertical"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent">
+                          <ImageView
+                              android:scaleType="fitXY"
+                              android:layout_marginTop="40dp"
+                              android:layout_gravity="center"
+                              android:tint="@color/white"
+                              android:src="@android:drawable/ic_menu_today"
+                              android:layout_width="30dp"
+                              android:layout_height="30dp" />
+                          <ashish.myapplication.Bold_TextView
+                              android:layout_gravity="center"
+                              android:text="Booking Approval"
+                              android:layout_marginTop="10dp"
+                              android:textSize="14dp"
+                              android:textColor="@color/white"
+                              android:gravity="center"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content" />
+                      </LinearLayout>
+                      <View
+                          android:id="@+id/view3"
+                          android:background="@drawable/clickable_view"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"/>
+                  </RelativeLayout>
 
+                  <RelativeLayout
+                      android:layout_margin="5dp"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent">
+                      <LinearLayout
+
+                          android:background="@color/purple"
+                          android:orientation="vertical"
+                          android:layout_margin="3dp"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent">
+                          <ImageView
+                              android:layout_marginTop="40dp"
+                              android:layout_gravity="center"
+                              android:tint="@color/white"
+                              android:src="@drawable/scan"
+                              android:scaleType="fitXY"
+                              android:layout_width="30dp"
+                              android:layout_height="30dp" />
+                          <ashish.myapplication.Bold_TextView
+                              android:layout_gravity="center"
+                              android:text="Scan Document"
+                              android:layout_marginTop="10dp"
+                              android:textSize="14dp"
+                              android:textColor="@color/white"
+                              android:gravity="center"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content" />
+                      </LinearLayout>
+                      <View
+                          android:id="@+id/view4"
+                          android:background="@drawable/clickable_view"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"/>
+                  </RelativeLayout>
+
+              </LinearLayout>
+              <LinearLayout
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:orientation="horizontal"
+                  android:weightSum="2"
+                  android:layout_width="match_parent"
+                  >
+                  <RelativeLayout
+                      android:layout_margin="5dp"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent">
+                      <LinearLayout
+                          android:background="@color/aqua"
+                          android:layout_margin="3dp"
+                          android:orientation="vertical"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent">
+                          <ImageView
+                              android:scaleType="fitXY"
+                              android:layout_marginTop="40dp"
+                              android:layout_gravity="center"
+                              android:tint="@color/white"
+                              android:src="@drawable/report"
+                              android:layout_width="30dp"
+                              android:layout_height="30dp" />
+                          <ashish.myapplication.Bold_TextView
+                              android:layout_gravity="center"
+                              android:text="Booking Report"
+                              android:layout_marginTop="10dp"
+                              android:textSize="14dp"
+                              android:textColor="@color/white"
+                              android:gravity="center"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content" />
+                      </LinearLayout>
+                      <View
+                          android:id="@+id/view5"
+                          android:background="@drawable/clickable_view"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"/>
+                  </RelativeLayout>
+
+                  <RelativeLayout
+                      android:layout_margin="5dp"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent">
+                      <LinearLayout
+
+                          android:background="@color/purple"
+                          android:orientation="vertical"
+                          android:layout_margin="3dp"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent">
+                          <ImageView
+                              android:layout_marginTop="40dp"
+                              android:layout_gravity="center"
+                              android:tint="@color/white"
+                              android:src="@drawable/pending"
+                              android:scaleType="fitXY"
+                              android:layout_width="30dp"
+                              android:layout_height="30dp" />
+                          <ashish.myapplication.Bold_TextView
+                              android:layout_gravity="center"
+                              android:text="Rate Pending Report"
+                              android:layout_marginTop="10dp"
+                              android:textSize="14dp"
+                              android:textColor="@color/white"
+                              android:gravity="center"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content" />
+                      </LinearLayout>
+                      <View
+                          android:id="@+id/view6"
+                          android:background="@drawable/clickable_view"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"/>
+                  </RelativeLayout>
+
+              </LinearLayout>
           </LinearLayout>
 
     </LinearLayout>

@@ -24,19 +24,21 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.heading12)
     TextView lorry;
     @BindView(R.id.heading121)
-    TextView addPickupDetails;
+    TextView booking_request;
+    @BindView(R.id.heading122)
+    TextView booking_delete;
+    @BindView(R.id.heading123)
+    TextView booking_approval;
+    @BindView(R.id.heading124)
+    TextView scan_document;
     @BindView(R.id.heading221)
-    TextView lorryInformation;
+    TextView booking_report;
     @BindView(R.id.heading222)
-    TextView lorryPass;
+    TextView rate_pending_report;
     @BindView(R.id.heading2)
     TextView reports;
     @BindView(R.id.heading3)
     TextView logout;
-
-    @BindView(R.id.heading22)
-    TextView lorryreports;
-
     @BindView(R.id.entry_llout)
     LinearLayout entryLayout;
     @BindView(R.id.report_llout)
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.contentdata)
       View content;
     View main;
-View view3,view4;
+View view1,view2,view3,view4,view5,view6;
 AppController controller;
 @BindView(R.id.userName)
 TextView userName;
@@ -75,16 +77,18 @@ TextView userName;
         navigationView.setNavigationItemSelectedListener(this);
         entryForm.setOnClickListener(this);
         lorry.setOnClickListener(this);
-        addPickupDetails.setOnClickListener(this);
-        lorryInformation.setOnClickListener(this);
+        booking_request.setOnClickListener(this);
+        booking_report.setOnClickListener(this);
         reports.setOnClickListener(this);
-        lorryreports.setOnClickListener(this);
-        lorryInformation.setOnClickListener(this);
+        booking_approval.setOnClickListener(this);
         logout.setOnClickListener(this);
-
+        view1.setOnClickListener(this);
+        view2.setOnClickListener(this);
         view3.setOnClickListener(this);
         view4.setOnClickListener(this);
-        lorryPass.setOnClickListener(this);
+        view5.setOnClickListener(this);
+        view6.setOnClickListener(this);
+
         userName.setText(controller.getManager().getName()+"( "+controller.getManager().getUserId()+" )");
 
 
@@ -148,10 +152,16 @@ TextView userName;
                 {
                     islorryClicked=false;
 
-                    addPickupDetails.setVisibility(View.GONE);
+                 booking_approval.setVisibility(View.GONE);
+                    booking_delete.setVisibility(View.GONE);
+                   booking_request.setVisibility(View.GONE);
+                   scan_document.setVisibility(View.GONE);
                 }else{
                     islorryClicked=true;
-                    addPickupDetails.setVisibility(View.VISIBLE);
+                    booking_approval.setVisibility(View.VISIBLE);
+                    booking_delete.setVisibility(View.VISIBLE);
+                    booking_request.setVisibility(View.VISIBLE);
+                    scan_document.setVisibility(View.VISIBLE);
                 }
 
                 break;
@@ -175,12 +185,12 @@ TextView userName;
             case R.id.heading22:
                 if (isLorryreports) {
                     isLorryreports= false;
-                    lorryInformation.setVisibility(View.GONE);
-                    lorryPass.setVisibility(View.GONE);
+                    booking_report.setVisibility(View.GONE);
+                    rate_pending_report.setVisibility(View.GONE);
                 } else {
                     isLorryreports = true;
-                    lorryInformation.setVisibility(View.VISIBLE);
-                    lorryPass.setVisibility(View.VISIBLE);
+                    booking_report.setVisibility(View.VISIBLE);
+                    rate_pending_report.setVisibility(View.VISIBLE);
                 }
                 break;
 
@@ -200,8 +210,8 @@ TextView userName;
                 startActivity(new Intent(MainActivity.this,Login.class));
                 finish();
                 break;
-            case R.id.view3:
-                Lorry_Booking.headingValue="Lorry Booking";
+            case R.id.view1:
+                Lorry_Booking.headingValue="Report Booking";
                 startActivity(new Intent(MainActivity.this,Lorry_Booking.class));
                 drawer.closeDrawer(GravityCompat.START);
 

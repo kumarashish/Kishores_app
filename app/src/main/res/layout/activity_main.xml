@@ -92,7 +92,43 @@
                         android:layout_gravity="center"
                         android:textSize="14dp"
                         android:textColor="@color/purple"
-                        android:text="Book Lorry"
+                        android:text="Booking Request"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ashish.myapplication.Bold_TextView
+                        android:id="@+id/heading122"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:paddingLeft="50dp"
+                        android:paddingTop="5dp"
+                        android:layout_gravity="center"
+                        android:textSize="14dp"
+                        android:textColor="@color/purple"
+                        android:text="Booking Delete"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ashish.myapplication.Bold_TextView
+                        android:id="@+id/heading123"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:paddingLeft="50dp"
+                        android:paddingTop="5dp"
+                        android:layout_gravity="center"
+                        android:textSize="14dp"
+                        android:textColor="@color/purple"
+                        android:text="Rate Approval"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ashish.myapplication.Bold_TextView
+                        android:id="@+id/heading124"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:paddingLeft="50dp"
+                        android:paddingTop="5dp"
+                        android:layout_gravity="center"
+                        android:textSize="14dp"
+                        android:textColor="@color/purple"
+                        android:text="Scan Document"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -105,6 +141,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+
+
             <ashish.myapplication.Bold_TextView
                 android:gravity="left"
                 android:id="@+id/heading2"
@@ -146,7 +184,7 @@ android:id="@+id/report_llout"
                     android:layout_gravity="center"
                     android:textSize="14dp"
                     android:textColor="@color/purple"
-                    android:text="Lorry Information"
+                    android:text="Booking Report"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <ashish.myapplication.Bold_TextView
@@ -158,9 +196,10 @@ android:id="@+id/report_llout"
                     android:layout_gravity="center"
                     android:textSize="14dp"
                     android:textColor="@color/purple"
-                    android:text="Lorry Pass"
+                    android:text="Rate Pending Report"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
 
             </LinearLayout>
             <View
