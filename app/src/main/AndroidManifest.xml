@@ -41,7 +41,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LorryPass"
-            android:theme="@style/AppTheme"
+            android:theme="@style/Theme5"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"

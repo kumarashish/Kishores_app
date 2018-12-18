@@ -80,6 +80,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:textColor="@color/black" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
         </LinearLayout>
         <ProgressBar
             android:visibility="gone"
