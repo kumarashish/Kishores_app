@@ -198,7 +198,7 @@
                               android:layout_height="30dp" />
                           <ashish.myapplication.Bold_TextView
                               android:layout_gravity="center"
-                              android:text="Scan Document"
+                              android:text="@string/scan_upload"
                               android:layout_marginTop="10dp"
                               android:textSize="14dp"
                               android:textColor="@color/white"

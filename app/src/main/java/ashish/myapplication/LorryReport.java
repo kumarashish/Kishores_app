@@ -189,8 +189,10 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         if (isStartDateClicked) {
             isStartDateSelected = true;
             startDate.setText(month + "-" + day + "-" + year);
-            endDate.setText("");
+            endDate.setText("Select end date");
+            isStartDateSelected=true;
         } else {
+            isEndDateSelected=true;
             isEndDateSelected = true;
             endDate.setText(month + "-" + day + "-" + year);
         }
@@ -556,9 +558,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         dialog.show();
     }
     public void lorryArrangePopUp() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         LayoutInflater inflater = getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.lorry_arrange_popup, null);
         final EditText rate=(EditText)dialogLayout.findViewById(R.id.rate);

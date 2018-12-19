@@ -70,7 +70,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Consinor"
+                    android:text="Consignor"
                     android:layout_marginTop="10dp"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -96,7 +96,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Consinee"
+                    android:text="Consignee"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="14dp" />
@@ -197,7 +197,6 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-
                     android:background="@color/white" />
 
                 <TextView

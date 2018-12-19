@@ -128,7 +128,7 @@
                         android:layout_gravity="center"
                         android:textSize="14dp"
                         android:textColor="@color/purple"
-                        android:text="Scan Document"
+                        android:text="@string/scan_upload"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
