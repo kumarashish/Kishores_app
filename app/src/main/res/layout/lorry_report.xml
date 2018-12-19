@@ -50,18 +50,6 @@ android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <Button
-                android:id="@+id/id_search"
-                android:layout_marginLeft="2dp"
-                android:textSize="12dp"
-                android:textColor="@color/white"
-                android:text="Searchby booking Id"
-                android:textAllCaps="false"
-                android:background="@color/purple"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="40dp" />
-            <Button
                 android:textSize="12dp"
                 android:textAllCaps="false"
                 android:id="@+id/date_search"
@@ -70,6 +58,18 @@ android:background="@color/white"
                 android:text="Search by Date"
                 android:layout_weight="1"
                 android:layout_marginRight="2dp"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="40dp" />
+            <Button
+                android:id="@+id/id_search"
+                android:layout_marginLeft="2dp"
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:text="Searchby booking Id"
+                android:textAllCaps="false"
+                android:background="@color/purple"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="40dp" />
@@ -83,7 +83,7 @@ android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-
+android:visibility="gone"
                 android:id="@+id/idView"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -117,7 +117,7 @@ android:background="@color/white"
             android:background="@color/purple" />
             </LinearLayout>
             <LinearLayout
-                android:visibility="gone"
+
                 android:id="@+id/dateView"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -469,7 +469,7 @@ android:background="@color/white"
                         android:layout_height="1dp"/>
                     <Button
                         android:id="@+id/add"
-                        android:text="Add"
+                        android:text="ADD RATES"
                         android:textColor="@color/white"
                         android:backgroundTint="@color/purple"
                         android:layout_gravity="right"
@@ -580,7 +580,7 @@ android:background="@color/white"
                         android:layout_height="30dp"/>
                     <Button
                         android:id="@+id/addDelivery"
-                        android:text="Add"
+                        android:text="ADD LORRY"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:backgroundTint="@color/purple"

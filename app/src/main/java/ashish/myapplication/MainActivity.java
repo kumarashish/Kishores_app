@@ -158,11 +158,10 @@ TextView userName;
                 if(islorryClicked)
                 {
                     islorryClicked=false;
-
-                   booking_approval.setVisibility(View.GONE);
+                    booking_approval.setVisibility(View.GONE);
                     booking_delete.setVisibility(View.GONE);
-                   booking_request.setVisibility(View.GONE);
-                   scan_document.setVisibility(View.GONE);
+                    booking_request.setVisibility(View.GONE);
+                    scan_document.setVisibility(View.GONE);
                 }else{
                     islorryClicked=true;
                     booking_approval.setVisibility(View.VISIBLE);
@@ -170,7 +169,6 @@ TextView userName;
                     booking_request.setVisibility(View.VISIBLE);
                     scan_document.setVisibility(View.VISIBLE);
                 }
-
                 break;
             case R.id.heading121:
             case R.id.view1:
@@ -221,10 +219,6 @@ TextView userName;
                 startActivity(new Intent(MainActivity.this,Login.class));
                 finish();
                 break;
-
-
-
-
         }
 
     }

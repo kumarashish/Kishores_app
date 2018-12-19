@@ -66,16 +66,18 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Consinee"
+                    android:text="Consinor"
+                    android:layout_marginTop="10dp"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <EditText
-                    android:id="@+id/consine"
+                    android:id="@+id/consiner"
                     android:textAllCaps="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,14 +96,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Consinor"
-                    android:layout_marginTop="10dp"
+                    android:text="Consinee"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <EditText
-                    android:id="@+id/consiner"
+                    android:id="@+id/consine"
                     android:textAllCaps="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,7 +220,31 @@
                     android:textColor="@color/white"
                     android:textAllCaps="true"
                     />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
 
+                    android:background="@color/white" />
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Package"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/package_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/white"
+                    android:textAllCaps="true"
+                    />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
@@ -246,23 +271,25 @@
                     android:textAllCaps="true"
                     />
 
+
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
 
                     android:background="@color/white" />
                 <TextView
-                    android:id="@+id/textView4"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="Package"
+                    android:text="Freight"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
                 <EditText
-                    android:id="@+id/package_edt"
+                    android:id="@+id/freight_edt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -271,12 +298,112 @@
                     android:textColor="@color/white"
                     android:textAllCaps="true"
                     />
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
 
                     android:background="@color/white" />
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="CFT"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+              <LinearLayout
+                  android:weightSum="5"
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="40dp">
+                  <EditText
+                      android:textColorHint="@color/white"
+                      android:inputType="number"
+                      android:hint="L"
+                      android:textSize="14dp"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:background="@drawable/edittext_rect"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent" />
+                  <View
+                      android:layout_width="5dp"
+                      android:layout_height="match_parent"/>
+                  <EditText
+                      android:hint="W"
+                      android:textColorHint="@color/white"
+                      android:inputType="number"
+                      android:textSize="14dp"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:background="@drawable/edittext_rect"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent" />
+                  <View
+                      android:layout_width="5dp"
+                      android:layout_height="match_parent"/>
+                  <EditText
+                      android:hint="H"
+                      android:textColorHint="@color/white"
+                      android:inputType="number"
+                      android:textSize="14dp"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:background="@drawable/edittext_rect"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent" />
+                  <View
+                      android:layout_width="5dp"
+                      android:layout_height="match_parent"/>
+                  <EditText
+                      android:focusable="false"
+                      android:hint="Total"
+                      android:textColorHint="@color/white"
+                      android:inputType="number"
+                      android:textSize="14dp"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:background="@drawable/edittext_rect"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent" />
+                  <View
+                      android:layout_width="5dp"
+                      android:layout_height="match_parent"/>
+              </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Load Type"
+                    android:layout_marginTop="15dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <Spinner
+                    android:id="@+id/load_type"
+                    android:entries="@array/loadtype"
+                    android:textAllCaps="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textCapCharacters|textPersonName|textNoSuggestions"
+
+                    android:textColor="@color/white"
+
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+
+                    android:background="@color/white"/>
                 <ProgressBar
                     android:visibility="gone"
                     android:id="@+id/progress"

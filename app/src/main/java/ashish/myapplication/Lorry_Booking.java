@@ -45,6 +45,8 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
     List<String> items=new ArrayList();
     @BindView(R.id.type)
     Spinner lorry_type_spn;
+    @BindView(R.id.load_type)
+    Spinner load_type_spn;
     @BindView(R.id.consine)
     EditText consine;
     @BindView(R.id.consiner)
@@ -81,6 +83,17 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
             progressBar.setVisibility(View.VISIBLE);
         }
         lorry_type_spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        load_type_spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);

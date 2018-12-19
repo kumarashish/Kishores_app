@@ -25,7 +25,7 @@
             android:text="Lorry Rate"
             android:layout_marginTop="10dp"
 
-            android:textColor="@color/purple"
+            android:textColor="@color/black"
             android:textSize="14dp" />
 
         <EditText
@@ -38,7 +38,7 @@
             android:background="@android:color/transparent"
             android:inputType="numberDecimal|textNoSuggestions"
 
-            android:textColor="@color/purple"
+            android:textColor="@color/black"
 
             />
         <View
@@ -53,7 +53,7 @@
             android:text="Broker"
             android:layout_marginTop="10dp"
 
-            android:textColor="@color/purple"
+            android:textColor="@color/black"
             android:textSize="14dp" />
 
         <EditText
@@ -67,7 +67,7 @@
             android:background="@android:color/transparent"
             android:inputType="textPersonName|textNoSuggestions"
 
-            android:textColor="@color/purple"
+            android:textColor="@color/black"
 
             />
         <View
@@ -83,7 +83,7 @@
             android:text="Mobile Number"
             android:layout_marginTop="10dp"
 
-            android:textColor="@color/purple"
+            android:textColor="@color/black"
             android:textSize="14dp" />
 
         <EditText
@@ -97,7 +97,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
 
-            android:textColor="@color/purple"
+            android:textColor="@color/black"
 
             />
 

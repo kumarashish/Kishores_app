@@ -154,6 +154,12 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
 
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+        int dayy=day-1;
+        int monthh=month+1;
+        startDate.setText(monthh + "-" + dayy + "-" + year);
+        endDate.setText(monthh + "-" + day + "-" + year);
+        initializeIdView();
+
         }
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -183,6 +189,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         if (isStartDateClicked) {
             isStartDateSelected = true;
             startDate.setText(month + "-" + day + "-" + year);
+            endDate.setText("");
         } else {
             isEndDateSelected = true;
             endDate.setText(month + "-" + day + "-" + year);
@@ -300,6 +307,23 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
             ex.fillInStackTrace();
         }
         return jsonObject;
+    }
+    public void initializeIdView()
+    {
+        isDateClicked=true;
+        search.setText("");
+        idView.setVisibility(View.GONE);
+        dateView.setVisibility(View.VISIBLE);
+        id_search.setBackgroundColor(getResources().getColor(R.color.white));
+        id_search.setTextColor(getResources().getColor(R.color.black));
+        date_search.setBackgroundColor(getResources().getColor(R.color.purple));
+        date_search.setTextColor(getResources().getColor(R.color.white));
+        boolean isStartDateSelected=true;
+        boolean isEndDateSelected=true;
+        bookingIdValue="0";
+        progressBar.setVisibility(View.VISIBLE);
+        apiCall = searchBooking;
+        controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON().toString(), callback);
     }
     @Override
     public void onClick(View v) {
@@ -546,7 +570,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((rate.getText().length()>0)&&(mobile.getText().length()>0)&&(broker.getText().length()>0))
+                if((rate.getText().length()>0)&&(mobile.getText().length()>0)&&(mobile.getText().length()==10)&&(broker.getText().length()>0))
                 {apiCall=arrangeLorry;
 
                     controller.getWebApiCall().postData(Common.getLorryArrangeUrl,getLorrryArrangeRequestJSON(rate.getText().toString(),broker.getText().toString(),mobile.getText().toString()).toString(), callback);
@@ -556,14 +580,16 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                     if(rate.getText().length()==0)
                     {
                         Toast.makeText(LorryReport.this,"Please enter rate",Toast.LENGTH_SHORT).show();
-                    }else if(broker.getText().length()>0)
+                    }else if(broker.getText().length()==0)
                     {
                         Toast.makeText(LorryReport.this,"Please enter broker details",Toast.LENGTH_SHORT).show();
-                    }else {
+                    }
+                    else if (mobile.getText().length()==0){
                         Toast.makeText(LorryReport.this,"Please enter mobile number",Toast.LENGTH_SHORT).show();
                     }
-
-
+                    else if (mobile.getText().length()!=10){
+                        Toast.makeText(LorryReport.this,"Please enter valid mobile number",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
