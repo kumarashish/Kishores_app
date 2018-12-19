@@ -116,7 +116,7 @@
                         android:layout_gravity="center"
                         android:textSize="14dp"
                         android:textColor="@color/purple"
-                        android:text="Rate Approval"
+                        android:text="Booking Approval"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ashish.myapplication.Bold_TextView

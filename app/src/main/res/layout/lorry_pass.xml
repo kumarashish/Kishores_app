@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:textSize="18dp"
             android:textColor="@color/white"
-            android:text="Lorry Passes"
+            android:text="Booking Approval"
             />
     </RelativeLayout>
 

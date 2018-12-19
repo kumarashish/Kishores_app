@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     TextView rate_pending_report;
     @BindView(R.id.heading2)
     TextView reports;
+    @BindView(R.id.heading22)
+    TextView reportsLorry;
     @BindView(R.id.heading3)
     TextView logout;
     @BindView(R.id.entry_llout)
@@ -63,9 +65,12 @@ TextView userName;
         ButterKnife.bind(this);
         controller=(AppController)getApplicationContext();
         main=(View) content.findViewById(R.id.contentmain);
-
+        view1=(View)main.findViewById(R.id.view1);
+        view2=(View)main.findViewById(R.id.view2);
         view3=(View)main.findViewById(R.id.view3);
         view4=(View)main.findViewById(R.id.view4);
+        view5=(View)main.findViewById(R.id.view5);
+        view6=(View)main.findViewById(R.id.view6);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -80,6 +85,8 @@ TextView userName;
         booking_request.setOnClickListener(this);
         booking_report.setOnClickListener(this);
         reports.setOnClickListener(this);
+        booking_approval.setOnClickListener(this);
+        reportsLorry.setOnClickListener(this);
         booking_approval.setOnClickListener(this);
         logout.setOnClickListener(this);
         view1.setOnClickListener(this);
@@ -152,7 +159,7 @@ TextView userName;
                 {
                     islorryClicked=false;
 
-                 booking_approval.setVisibility(View.GONE);
+                   booking_approval.setVisibility(View.GONE);
                     booking_delete.setVisibility(View.GONE);
                    booking_request.setVisibility(View.GONE);
                    scan_document.setVisibility(View.GONE);
@@ -166,8 +173,15 @@ TextView userName;
 
                 break;
             case R.id.heading121:
-                Lorry_Booking.headingValue="Lorry Booking";
+            case R.id.view1:
+                Lorry_Booking.headingValue="Booking Request";
                 startActivity(new Intent(MainActivity.this,Lorry_Booking.class));
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+
+            case R.id.heading123:
+            case R.id.view3:
+                startActivity(new Intent(MainActivity.this,LorryPass.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
 
@@ -195,33 +209,21 @@ TextView userName;
                 break;
 
             case R.id.heading221:
-                LorryReport.headingValue="Lorry Information";
+            case R.id.view5:
+                LorryReport.headingValue="Booking Report";
                 startActivity(new Intent(MainActivity.this,LorryReport.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.heading222:
-
-                startActivity(new Intent(MainActivity.this,LorryPass.class));
-                drawer.closeDrawer(GravityCompat.START);
-                break;
             case R.id.heading3:
                 controller.getManager().setUserLoggedIn(false);
                 Toast.makeText(this,"Logged out sucessfully",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this,Login.class));
                 finish();
                 break;
-            case R.id.view1:
-                Lorry_Booking.headingValue="Report Booking";
-                startActivity(new Intent(MainActivity.this,Lorry_Booking.class));
-                drawer.closeDrawer(GravityCompat.START);
 
-                break;
-            case R.id.view4:
-                LorryReport.headingValue="Lorry Information";
-                startActivity(new Intent(MainActivity.this,LorryReport.class));
-                drawer.closeDrawer(GravityCompat.START);
 
-                break;
+
 
         }
 
