@@ -111,6 +111,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
     Button search_with_date;
     String bookingIdValue="0";
     ArrayList <LorryReportModel>reportList=new ArrayList<>();
+    ProgressBar progress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,8 +157,8 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         day = calendar.get(Calendar.DAY_OF_MONTH);
         int dayy=day-1;
         int monthh=month+1;
-        startDate.setText(monthh + "-" + dayy + "-" + year);
-        endDate.setText(monthh + "-" + day + "-" + year);
+        startDate.setText(dayy + "/" +  monthh+ "/" + year);
+        endDate.setText(day + "/" + monthh + "/" + year);
         initializeIdView();
 
         }
@@ -188,13 +189,12 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
 
         if (isStartDateClicked) {
             isStartDateSelected = true;
-            startDate.setText(month + "-" + day + "-" + year);
+            startDate.setText(day+ "/" +  month+ "/" + year);
             endDate.setText("Select end date");
-            isStartDateSelected=true;
+            isEndDateSelected=false;
         } else {
             isEndDateSelected=true;
-            isEndDateSelected = true;
-            endDate.setText(month + "-" + day + "-" + year);
+            endDate.setText( day+ "/" +  month+ "/" + year);
         }
 
     }
@@ -202,19 +202,18 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
     {
 
         bookingId.setText("");
-       lorryType.setText("");
+        lorryType.setText("");
         item.setText("");
         source_dest.setText("");
-         weight.setText("");
+        weight.setText("");
         pckg.setText("");
         consiner.setText("");
         consine.setText("");
-
-                rate.setText("");
+        rate.setText("");
         broaker.setText("");
-                mobilenumber.setText("");
+        mobilenumber.setText("");
         lorryNumber.setText("");
-                arranged_time.setText("");
+        arranged_time.setText("");
         reporting_time.setText("");
     }
     public void setValue()
@@ -250,6 +249,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
             add.setVisibility(View.VISIBLE);
             delivery.setVisibility(View.GONE);
         }
+       // delivery.setVisibility(View.VISIBLE);
         bookingId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -282,14 +282,17 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         }
         return jsonObject;
     }
-    public JSONObject getReportRequestJSON(String lorryNumber,String arrangeDate,String arrangeTime,String reportDate,String reportTime)
+    public JSONObject getReportRequestJSON(String lorryNumber,String pickedFrom,String goodRemark,String arrangeDate,String reportDate,String reportTime)
     {JSONObject jsonObject=new JSONObject();
         try{
             jsonObject.put(Common.getLorryReachKeys[0], bookingIdValue);
-
             jsonObject.put(Common.getLorryReachKeys[1],lorryNumber);
-            jsonObject.put(Common.getLorryReachKeys[2],arrangeDate+" "+arrangeTime);
-            jsonObject.put(Common.getLorryReachKeys[3],reportDate+" "+reportTime);
+            jsonObject.put(Common.getLorryReachKeys[2],pickedFrom);
+            jsonObject.put(Common.getLorryReachKeys[3],goodRemark);
+            jsonObject.put(Common.getLorryReachKeys[4],arrangeDate);
+            jsonObject.put(Common.getLorryReachKeys[5],reportDate);
+            jsonObject.put(Common.getLorryReachKeys[6],reportTime);
+            jsonObject.put(Common.getLorryReachKeys[7],controller.getManager().getUserId());
         }catch (Exception ex)
         {
             ex.fillInStackTrace();
@@ -320,8 +323,8 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         id_search.setTextColor(getResources().getColor(R.color.black));
         date_search.setBackgroundColor(getResources().getColor(R.color.purple));
         date_search.setTextColor(getResources().getColor(R.color.white));
-        boolean isStartDateSelected=true;
-        boolean isEndDateSelected=true;
+        isStartDateSelected=true;
+        isEndDateSelected=true;
         bookingIdValue="0";
         progressBar.setVisibility(View.VISIBLE);
         apiCall = searchBooking;
@@ -369,7 +372,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                     apiCall = searchBooking;
                     controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON().toString(), callback);
                 } else {
-                    if (isStartDateSelected = false) {
+                    if (isStartDateSelected == false) {
                         Utils.showToast(LorryReport.this, "Please choose start date");
                     } else {
                         Utils.showToast(LorryReport.this, "Please choose end date");
@@ -452,7 +455,12 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                     }
                     Utils.showToast(LorryReport.this, Utils.getMessage(value));
                 }
-                progressBar.setVisibility(View.GONE);
+                if(progress!=null) {
+                    progress.setVisibility(View.GONE);
+                }
+                else if( progressBar!=null) {
+                    progressBar.setVisibility(View.GONE);
+                }
 
             }
         });
@@ -479,55 +487,78 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         LayoutInflater inflater = getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.loory_reach_popup, null);
         TextView bookingId=(TextView)dialogLayout.findViewById(R.id.bookingId);
-        final EditText lorry_number=(EditText)dialogLayout.findViewById(R.id.lorry_number);
+        final EditText lorry_number1=(EditText)dialogLayout.findViewById(R.id.num1);
+        final EditText lorry_number2=(EditText)dialogLayout.findViewById(R.id.num2);
+        final EditText lorry_number3=(EditText)dialogLayout.findViewById(R.id.num3);
+        final EditText lorry_number4=(EditText)dialogLayout.findViewById(R.id.num4);
         final EditText arrange_date=(EditText)dialogLayout.findViewById(R.id.arrange_date);
-        final EditText arrange_time=(EditText)dialogLayout.findViewById(R.id.arrange_time);
         final EditText report_date=(EditText)dialogLayout.findViewById(R.id.report_date);
-        final EditText report_time=(EditText)dialogLayout.findViewById(R.id.report_time);
+        final EditText pickfrom=(EditText)dialogLayout.findViewById(R.id.picked_from);
+        final EditText remark=(EditText)dialogLayout.findViewById(R.id.remark);
+        final EditText report_time_hh=(EditText)dialogLayout.findViewById(R.id.hour);
+        final EditText report_time_mm=(EditText)dialogLayout.findViewById(R.id.minute);
+        final EditText report_time_ampm=(EditText)dialogLayout.findViewById(R.id.am_pm);
         final Button submit=(Button)dialogLayout.findViewById(R.id.submit);
-        final ProgressBar progress=(ProgressBar)dialogLayout.findViewById(R.id.progress);
+         progress=(ProgressBar)dialogLayout.findViewById(R.id.progress);
         bookingId.setText("Booking Id : "+ bookingIdValue);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((lorry_number.getText().length()>0)&&(lorry_number.getText().toString().contains("-"))&&(arrange_date.getText().length()>0)&&(arrange_date.getText().toString().contains("-"))&&(arrange_time.getText().length()>0)&&(arrange_time.getText().toString().contains(":"))&&(report_date.getText().length()>0)&&(report_date.getText().toString().contains("-"))&&(report_time.getText().length()>0)&&(report_time.getText().toString().contains(":")))
+                if((lorry_number1.getText().length()>0)&&(lorry_number1.getText().length()==2)&&(lorry_number2.getText().length()>0)&&(lorry_number2.getText().length()==2)&&(lorry_number3.getText().length()>0)&&(lorry_number4.getText().length()>0)&&(lorry_number4.getText().length()==4)&&(pickfrom.getText().length()>0)&&(remark.getText().length()>0)&&(arrange_date.getText().length()>0)&&(arrange_date.getText().toString().contains("/"))&&(report_time_hh.getText().length()>0)&&(report_time_mm.length()>0)&&(report_date.getText().length()>0)&&(report_date.getText().toString().contains("/"))&&(report_time_ampm.getText().length()>0)&&(((report_time_ampm.getText().toString().equalsIgnoreCase("am"))||(report_time_ampm.getText().toString().equalsIgnoreCase("pm")))))
                 {
                     progress.setVisibility(View.VISIBLE);
                     submit.setVisibility(View.GONE);
                     apiCall=updateReporting;
-                    controller.getWebApiCall().postData(Common.getLorryReachUrl, getReportRequestJSON(lorry_number.getText().toString(),arrange_date.getText().toString(),arrange_time.getText().toString(),report_date.getText().toString(),report_time.getText().toString()).toString(), callback);
+                    controller.getWebApiCall().postData(Common.getLorryReachUrl, getReportRequestJSON(lorry_number1.getText().toString()+"-"+lorry_number2.getText().toString()+" "+lorry_number3.getText().toString()+""+lorry_number4.getText().toString(),pickfrom.getText().toString(),remark.getText().toString(),arrange_date.getText().toString(),report_date.getText().toString(),report_time_hh.getText().toString()+":"+report_time_mm.getText().toString()+""+report_time_ampm.getText().toString()).toString() ,callback);
                 }else{
-                    if(lorry_number.getText().length()==0)
+                    if((lorry_number1.getText().length()==0)||(lorry_number1.getText().length()!=2))
                     {
-                        Toast.makeText(LorryReport.this,"Please enter lorry number",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LorryReport.this,"Please enter first two characters of lorry number",Toast.LENGTH_SHORT).show();
                     }
-                    if(!lorry_number.getText().toString().contains("-"))
+                    else if((lorry_number2.getText().length()==0)||(lorry_number2.getText().length()!=2))
                     {
-                        Toast.makeText(LorryReport.this,"Please enter lorry number in XX-XX-XX-XXXX format",Toast.LENGTH_SHORT).show();
-                    }else if(arrange_date.getText().length()==0)
+                        Toast.makeText(LorryReport.this,"Please enter next two characters of lorry number",Toast.LENGTH_SHORT).show();
+                    }
+                    else if(lorry_number3.getText().length()==0)
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter next two characters of lorry number",Toast.LENGTH_SHORT).show();
+                    }
+                    else if((lorry_number4.getText().length()==0)||(lorry_number4.getText().length()!=4))
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter last four characters of lorry number",Toast.LENGTH_SHORT).show();
+                    }
+                    else if((pickfrom.getText().length()==0))
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter value for picked from",Toast.LENGTH_SHORT).show();
+                    } else if((remark.getText().length()==0))
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter goods remark",Toast.LENGTH_SHORT).show();
+                    }
+                  else if(arrange_date.getText().length()==0)
                     {
                         Toast.makeText(LorryReport.this,"Please enter arrange date",Toast.LENGTH_SHORT).show();
-                    }else if(!arrange_date.getText().toString().contains("-"))
+                    }else if(!arrange_date.getText().toString().contains("/"))
                     {
-                        Toast.makeText(LorryReport.this,"Please enter arrange date in mm-dd-yyyy format",Toast.LENGTH_SHORT).show();
-                    }else if(arrange_time.getText().length()==0)
-                    {
-                        Toast.makeText(LorryReport.this,"Please enter arrange time ",Toast.LENGTH_SHORT).show();
-                    }else if(!arrange_time.getText().toString().contains(":"))
-                    {
-                        Toast.makeText(LorryReport.this,"Please enter arrange time in hh:mm:ss format",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LorryReport.this,"Please enter arrange date in dd/mm/yyyy format",Toast.LENGTH_SHORT).show();
                     }else if(report_date.getText().length()==0)
                     {
                         Toast.makeText(LorryReport.this,"Please enter report date",Toast.LENGTH_SHORT).show();
-                    }else if(!report_date.getText().toString().contains("-"))
+                    }else if(!report_date.getText().toString().contains("/"))
                     {
-                        Toast.makeText(LorryReport.this,"Please enter report date in mm-dd-yyyy format",Toast.LENGTH_SHORT).show();
-                    }else if(report_time.getText().length()==0)
+                        Toast.makeText(LorryReport.this,"Please enter report date in dd/mm/yyyy format",Toast.LENGTH_SHORT).show();
+                    }else if(report_time_hh.getText().length()==0)
                     {
-                        Toast.makeText(LorryReport.this,"Please enter report time ",Toast.LENGTH_SHORT).show();
-                    }else if(!report_time.getText().toString().contains(":"))
+                        Toast.makeText(LorryReport.this,"Please enter reporting time hour value ",Toast.LENGTH_SHORT).show();
+                    }else if(report_time_mm.getText().length()==0)
                     {
-                        Toast.makeText(LorryReport.this,"Please enter report time in hh:mm:ss format",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LorryReport.this,"Please enter report time minute",Toast.LENGTH_SHORT).show();
+                    }
+                    else if(report_time_ampm.getText().length()==0)
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter report time am_pm",Toast.LENGTH_SHORT).show();
+                    }else if(((!report_time_ampm.getText().toString().equalsIgnoreCase("am"))||(!report_time_ampm.getText().toString().equalsIgnoreCase("pm"))))
+                    {
+                        Toast.makeText(LorryReport.this,"Please enter report time as am or pm",Toast.LENGTH_SHORT).show();
                     }
                 }
             }

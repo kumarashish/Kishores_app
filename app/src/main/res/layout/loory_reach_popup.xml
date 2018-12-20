@@ -2,6 +2,9 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
 
         android:orientation="vertical"
@@ -38,11 +41,112 @@
                 android:textColor="@color/black"
                 android:textSize="14dp" />
 
+
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:weightSum="5"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <EditText
+                   android:id="@+id/num1"
+                    android:inputType="textPersonName"
+                    android:imeOptions="actionNext"
+                    android:hint="XX"
+
+                    android:maxLength="2"
+
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@drawable/blact_rectangle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:text="-"
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"/>
+                <EditText
+                    android:id="@+id/num2"
+                    android:imeOptions="actionNext"
+                    android:hint="XX"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@drawable/blact_rectangle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:text="-"
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"/>
+                <EditText
+                    android:id="@+id/num3"
+
+                    android:imeOptions="actionNext"
+                    android:hint="XX"
+                    android:textAllCaps="true"
+                 android:maxLength="2"
+                    android:inputType="textPersonName"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@drawable/blact_rectangle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:text="-"
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"/>
+                <EditText
+                    android:maxLength="4"
+                    android:id="@+id/num4"
+
+                    android:hint="XXXX"
+                    android:inputType="number"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@drawable/blact_rectangle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+
+                android:background="@color/purple" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pick From "
+                android:layout_marginTop="10dp"
+
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
             <EditText
-                android:id="@+id/lorry_number"
+                android:id="@+id/picked_from"
+                android:imeOptions="actionNext"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                  android:hint="XX-XX-XX-XXXX"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -62,17 +166,18 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Arrang Date "
+                android:text="Goods Remark"
                 android:layout_marginTop="10dp"
 
                 android:textColor="@color/black"
                 android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/arrange_date"
+                android:id="@+id/remark"
+                android:imeOptions="actionNext"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:hint="mm-dd-yyyy"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -86,38 +191,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
 
-                android:textColor="@color/black" />
-
+                android:background="@color/purple" />
             <TextView
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Arrang time "
+                android:text="Arrange Date "
                 android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:hint="hh-mm-ss"
+
                 android:textColor="@color/black"
                 android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/arrange_time"
+                android:id="@+id/arrange_date"
                 android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:hint="dd/mm/yyyy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@android:color/transparent"
-                android:inputType="datetime|textNoSuggestions"
-                android:hint="hh:mm:ss"
+                android:inputType="textPersonName|textNoSuggestions"
+
                 android:textColor="@color/black"
 
                 />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-
-                android:textColor="@color/aqua" />
-
             <TextView
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
@@ -138,7 +236,7 @@
                 android:inputType="textPersonName|textNoSuggestions"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:hint="mm-dd-yyyy"
+                android:hint="dd/mm/yyyy"
                 android:textColor="@color/black"
 
                 />
@@ -147,6 +245,15 @@
                 android:layout_height="0.5dp"
 
                 android:background="@color/purple" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+
+                android:textColor="@color/aqua" />
+
+
+
+
 
             <TextView
                 android:layout_marginLeft="10dp"
@@ -158,21 +265,70 @@
                 android:textColor="@color/black"
                 android:textSize="14dp" />
 
-            <EditText
-                android:id="@+id/report_time"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:hint="hh:mm:ss"
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:weightSum="5"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@android:color/transparent"
-                android:inputType="date|textNoSuggestions"
+                android:layout_height="40dp">
+                <EditText
+                    android:id="@+id/hour"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:hint="HH"
+                    android:maxLength="2"
 
-                android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@drawable/blact_rectangle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:text=":"
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"/>
+                <EditText
+                    android:id="@+id/minute"
+                    android:imeOptions="actionNext"
+                    android:hint="MM"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@drawable/blact_rectangle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:text="-"
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"/>
+                <EditText
+                    android:id="@+id/am_pm"
+                    android:imeOptions="actionNext"
+                    android:hint="PM"
+                    android:textAllCaps="true"
+                    android:maxLength="2"
+                    android:inputType="textPersonName"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@drawable/blact_rectangle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
 
-                />
-
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -207,5 +363,6 @@
 
         </LinearLayout>
     </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

@@ -118,7 +118,13 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                 }
             });
         }else{
-            progressBar.setVisibility(View.GONE);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
+
             Utils.showToast(LorryPass.this, Utils.getMessage(value));
         }
     }

@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -65,6 +67,20 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
     Button submit;
     @BindView(R.id.search)
     Button search;
+    @BindView(R.id.l)
+    EditText l;
+    @BindView(R.id.h)
+    EditText h;
+    @BindView(R.id.w)
+    EditText w;
+    @BindView(R.id.total)
+    EditText total;
+    @BindView(R.id.freight_edt)
+    EditText freight_edt;
+    int length=0;
+    int width=0;
+    int height=0;
+    int totalValue=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,9 +120,98 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
 
             }
         });
+
+        l.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                // TODO Auto-generated method stub
+                if(s.length()>0)
+                {
+                    length=Integer.parseInt(s.toString());
+                }
+                setValue();
+            }
+        });
+        w.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                // TODO Auto-generated method stub
+                if(s.length()>0)
+                {
+                    width=Integer.parseInt(s.toString());
+                }
+                setValue();
+
+            }
+        });
+        h.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                // TODO Auto-generated method stub
+                if(s.length()>0)
+                {
+                    height=Integer.parseInt(s.toString());
+                }
+                setValue();
+            }
+        });
     }
 
-
+public void setValue()
+{totalValue=1;
+    if(length!=0)
+    {
+        totalValue=totalValue*length;
+    }
+    if(width!=0)
+    {
+        totalValue=totalValue*width;
+    }
+    if(height!=0)
+    { totalValue=totalValue*height;
+    }
+    total.setText(""+totalValue);
+}
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -119,7 +224,7 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
                 break;
             case R.id.submit:
 
-                if((item_edt.getText().length()>0)&&(from_edt.getText().length()>0)&&(to_edt.getText().length()>0)&&(weight_edt.getText().length()>0)&&(package_edt.getText().length()>0)&&(consine.getText().length()>0)&&(consiner.getText().length()>0))
+                if((item_edt.getText().length()>0)&&(from_edt.getText().length()>0)&&(to_edt.getText().length()>0)&&(weight_edt.getText().length()>0)&&(package_edt.getText().length()>0)&&(consine.getText().length()>0)&&(consiner.getText().length()>0)&&(freight_edt.getText().length()>0)&&(l.getText().length()>0)&&(w.getText().length()>0)&&(h.getText().length()>0)&&(load_type_spn.getSelectedItemPosition()!=0))
                 {
                    if(Utils.isNetworkAvailable(Lorry_Booking.this))
                    {
@@ -155,6 +260,26 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
                     else if(package_edt.getText().length()==0)
                     {
                         Utils.showToast(Lorry_Booking.this,"Please enter package count");
+                    }
+                    else if(freight_edt.getText().length()==0)
+                    {
+                        Utils.showToast(Lorry_Booking.this,"Please enter freight value");
+                    }
+                    else if(l.getText().length()==0)
+                    {
+                        Utils.showToast(Lorry_Booking.this,"Please enter length");
+                    }
+                    else if(w.getText().length()==0)
+                    {
+                        Utils.showToast(Lorry_Booking.this,"Please enter width");
+                    }
+                    else if(h.getText().length()==0)
+                    {
+                        Utils.showToast(Lorry_Booking.this,"Please enter height");
+                    }
+                    else if(load_type_spn.getSelectedItemPosition()==0)
+                    {
+                        Utils.showToast(Lorry_Booking.this,"Please select load types");
                     }
                 }
                 break;
@@ -224,6 +349,16 @@ consiner.setText("");
   to_edt.setText("");;
     weight_edt.setText("");;
   package_edt.setText("");;
+  freight_edt.setText("");
+  l.setText("");
+  w.setText("");
+  h.setText("");
+ total.setText("");
+ load_type_spn.setSelection(0);
+    length=0;
+    width=0;
+    height=0;
+    totalValue=1;
 }
     @Override
     public void onError(final String value) {
@@ -255,6 +390,9 @@ consiner.setText("");
             jsonObject.put(Common.lorryBookingKeys[6],consine.getText().toString());
             jsonObject.put(Common.lorryBookingKeys[7],consiner.getText().toString());
             jsonObject.put(Common.lorryBookingKeys[8],controller.manager.getUserId());
+            jsonObject.put(Common.lorryBookingKeys[9],freight_edt.getText().toString());
+            jsonObject.put(Common.lorryBookingKeys[10],length+"x"+width+"x"+height+"="+totalValue);
+            jsonObject.put(Common.lorryBookingKeys[11],load_type_spn.getSelectedItem().toString());
         }catch (Exception ex)
         {
             ex.fillInStackTrace();

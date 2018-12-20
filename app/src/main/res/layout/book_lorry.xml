@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:visibility="gone"
+android:visibility="gone"
 
                 android:id="@+id/form"
                 android:layout_marginTop="60dp"
@@ -78,9 +78,10 @@
 
                 <EditText
                     android:id="@+id/consiner"
+
                     android:textAllCaps="true"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"  android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@android:color/transparent"
                     android:inputType="textCapCharacters|textPersonName|textNoSuggestions"
@@ -102,7 +103,9 @@
                     android:textSize="14dp" />
 
                 <EditText
+                    android:imeOptions="actionNext"
                     android:id="@+id/consine"
+
                     android:textAllCaps="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -156,6 +159,7 @@
 
                 <EditText
                     android:id="@+id/item"
+                    android:imeOptions="actionNext"
                     android:textAllCaps="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -183,6 +187,7 @@
 
                 <EditText
                     android:id="@+id/from"
+                    android:imeOptions="actionNext"
                     android:textAllCaps="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -211,6 +216,7 @@
 
                 <EditText
                     android:id="@+id/to"
+                    android:imeOptions="actionNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -236,6 +242,7 @@
 
                 <EditText
                     android:id="@+id/package_edt"
+                    android:imeOptions="actionNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -261,6 +268,7 @@
 
                 <EditText
                     android:id="@+id/weight"
+                    android:imeOptions="actionNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -289,6 +297,7 @@
 
                 <EditText
                     android:id="@+id/freight_edt"
+                    android:imeOptions="actionNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -318,8 +327,10 @@
                   android:layout_width="match_parent"
                   android:layout_height="40dp">
                   <EditText
+                      android:id="@+id/l"
                       android:textColorHint="@color/white"
                       android:inputType="number"
+                      android:imeOptions="actionNext"
                       android:hint="L"
                       android:textSize="14dp"
                       android:textColor="@color/white"
@@ -332,6 +343,8 @@
                       android:layout_width="5dp"
                       android:layout_height="match_parent"/>
                   <EditText
+                      android:id="@+id/w"
+                      android:imeOptions="actionNext"
                       android:hint="W"
                       android:textColorHint="@color/white"
                       android:inputType="number"
@@ -346,6 +359,8 @@
                       android:layout_width="5dp"
                       android:layout_height="match_parent"/>
                   <EditText
+                      android:id="@+id/h"
+                      android:imeOptions="actionNext"
                       android:hint="H"
                       android:textColorHint="@color/white"
                       android:inputType="number"
@@ -360,6 +375,7 @@
                       android:layout_width="5dp"
                       android:layout_height="match_parent"/>
                   <EditText
+                      android:id="@+id/total"
                       android:focusable="false"
                       android:hint="Total"
                       android:textColorHint="@color/white"
