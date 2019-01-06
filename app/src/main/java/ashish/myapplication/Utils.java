@@ -91,4 +91,14 @@ public static void showToast(final Activity activity,final String message)
         }
         return "";
     }
+
+    public static String getBookingId(String value) {
+        try{
+            JSONObject jsonObject=new JSONObject(value);
+            return jsonObject.getString("Data");
+        }catch (Exception ex){
+            ex.fillInStackTrace();
+        }
+        return "";
+    }
 }

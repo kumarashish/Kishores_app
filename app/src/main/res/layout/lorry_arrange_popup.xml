@@ -19,16 +19,18 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:textAllCaps="true"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lorry Rate"
             android:layout_marginTop="10dp"
 
-            android:textColor="@color/black"
+            android:textColor="@color/aqua"
             android:textSize="14dp" />
 
         <EditText
+            android:textAllCaps="true"
             android:id="@+id/rate"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -38,7 +40,7 @@
             android:background="@android:color/transparent"
             android:inputType="numberDecimal|textNoSuggestions"
 
-            android:textColor="@color/black"
+            android:textColor="@color/aqua"
 
             />
         <View
@@ -47,16 +49,18 @@
 
             android:background="@color/purple" />
         <TextView
+            android:textAllCaps="true"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Broker"
             android:layout_marginTop="10dp"
 
-            android:textColor="@color/black"
+            android:textColor="@color/aqua"
             android:textSize="14dp" />
 
         <EditText
+            android:textAllCaps="true"
             android:id="@+id/broker"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -67,7 +71,7 @@
             android:background="@android:color/transparent"
             android:inputType="textPersonName|textNoSuggestions"
 
-            android:textColor="@color/black"
+            android:textColor="@color/aqua"
 
             />
         <View
@@ -77,18 +81,19 @@
             android:background="@color/purple" />
 
         <TextView
+            android:textAllCaps="true"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mobile Number"
             android:layout_marginTop="10dp"
 
-            android:textColor="@color/black"
+            android:textColor="@color/aqua"
             android:textSize="14dp" />
 
         <EditText
             android:id="@+id/mobile"
-
+            android:textAllCaps="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="10"
@@ -98,7 +103,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
 
-            android:textColor="@color/black"
+            android:textColor="@color/aqua"
 
             />
 
@@ -114,7 +119,7 @@
             android:layout_marginTop="30dp"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:textAllCaps="false"
+            android:textAllCaps="true"
             android:text="Submit"
             android:backgroundTint="@color/purple"
             android:background="@drawable/yellow_button"

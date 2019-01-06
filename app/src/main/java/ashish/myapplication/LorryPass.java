@@ -3,6 +3,8 @@ package ashish.myapplication;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -40,6 +42,27 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
     ArrayList<Lorry_PassModel> passesList=new ArrayList<>();
     int apiCall=0;
     int getData=1,approve=2;
+    LorryReportModel model;
+    @BindView(R.id.consiner)
+    TextView consiner;
+    @BindView(R.id.consignee)
+    TextView consine;
+    @BindView(R.id.type)
+    TextView lorryType;
+    @BindView(R.id.item)
+    TextView item;
+    @BindView(R.id.s_d)
+    TextView source_dest;
+    @BindView(R.id.weight)
+    TextView weight;
+    @BindView(R.id.pkg)
+    TextView pckg;
+    @BindView(R.id.freight)
+    TextView freight;
+    @BindView(R.id.cft)
+    TextView cft;
+    @BindView(R.id.load_type)
+    TextView load_type;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +71,6 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
         controller=(AppController)getApplicationContext();
         ButterKnife.bind(this);
         back.setOnClickListener(this);
-
         search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -60,6 +82,22 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                             progressBar.setVisibility(View.VISIBLE);
                             apiCall=getData;
                             controller.getWebApiCall().postData(Common.getLorryPasspending, getRequestJSON().toString(), callback);
+                            Thread T =new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    String value=  controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON().toString());
+                                    if (Utils.jsonObject(value) != null) {
+                                        model = new LorryReportModel(Utils.jsonObject(value));
+                                        clearAll();
+                                        setValue();
+                                    } else {
+                                        clearAll();
+                                    }
+                                }
+                            });
+                            T.start();
+
+
                         }
                     }else{
                         Utils.showToast(LorryPass.this,"Please enter employee id");
@@ -70,6 +108,47 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
             }
         });
     }
+
+    public void clearAll()
+    {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+        bookingId.setText("");
+        lorryType.setText("");
+        item.setText("");
+        source_dest.setText("");
+        weight.setText("");
+        pckg.setText("");
+        consiner.setText("");
+        consine.setText("");
+        load_type.setText("");
+        cft.setText("");
+        freight.setText("");
+            }
+        });
+    }
+    public void setValue()
+    {runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+            bookingId.setText(Integer.toString(model.getId()));
+            lorryType.setText(model.getLorrytype());;
+            item.setText(model.getItem());;
+            source_dest.setText(model.Bookfrom+" - "+model.getBookto());;
+            weight.setText(model.getWeight() +" kgs");;
+            pckg.setText(model.getPackage());
+            consiner.setText(model.getConsignor());
+            consine.setText(model.getConsignee());
+            load_type.setText(model.getLoadtype());
+            freight.setText(model.getFreight());
+            cft.setText(model.getCft());
+        }
+    });
+
+
+    }
+
     public JSONObject getRequestJSON()
     {JSONObject jsonObject=new JSONObject();
         try{
@@ -135,7 +214,6 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
             @Override
             public void run() {
                 int count=1;
-                bookingId.setText("Booking Id : "+search.getText().toString());
                 for(int i=0;i<passesList.size();i++)
                 {Lorry_PassModel model=passesList.get(i);
                     View contentview = getLayoutInflater().inflate(R.layout.pass_row, null, false);
@@ -160,6 +238,7 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                                 apiCall = approve;
                                 table.setVisibility(View.GONE);
                                 controller.getWebApiCall().postData(Common.getLorryPassUrl, getApprovePassJSON(rate.getText().toString(),broker.getText().toString(),mobile.getText().toString(),approvedby.getText().toString()).toString(), callback);
+
                             }
                         }
                     });

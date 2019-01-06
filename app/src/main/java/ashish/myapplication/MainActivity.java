@@ -74,8 +74,7 @@ TextView userName;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -95,10 +94,7 @@ TextView userName;
         view4.setOnClickListener(this);
         view5.setOnClickListener(this);
         view6.setOnClickListener(this);
-
         userName.setText(controller.getManager().getName()+"( "+controller.getManager().getUserId()+" )");
-
-
     }
 
     @Override
@@ -118,7 +114,6 @@ TextView userName;
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
@@ -132,8 +127,6 @@ TextView userName;
         } else if (id == R.id.nav_send) {
 
         }
-
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -153,7 +146,6 @@ TextView userName;
                    entryLayout.setVisibility(View.VISIBLE);
                 }
                 break;
-
             case R.id.heading12:
                 if(islorryClicked)
                 {
@@ -218,6 +210,11 @@ TextView userName;
                 Toast.makeText(this,"Logged out sucessfully",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this,Login.class));
                 finish();
+                break;
+            case R.id.delete:
+            case R.id.view2:
+                startActivity(new Intent(MainActivity.this,BookingDelete.class));
+                drawer.closeDrawer(GravityCompat.START);
                 break;
         }
 

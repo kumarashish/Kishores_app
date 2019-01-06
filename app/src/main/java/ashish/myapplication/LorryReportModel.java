@@ -29,13 +29,16 @@ public class LorryReportModel {
     String Reporttime;
     String Loryby;
     String Lorrydtm;
+    String freight;
+    String loadtype;
+    String cft;
     public LorryReportModel(JSONObject jsonObject) {
         try {
-            this.id=jsonObject.isNull("Srno")?0:jsonObject.getInt("Srno");
+            this.id=jsonObject.isNull("Bookingid")?0:jsonObject.getInt("Bookingid");
             this.Consignor = jsonObject.isNull("Consignor") ? "" : jsonObject.getString("Consignor");
             this.Consignee = jsonObject.isNull("Consignee") ? "" : jsonObject.getString("Consignee");
-            this.Bookby = jsonObject.isNull("Bookby") ? "" : jsonObject.getString("Bookby");
-            this.Bookdtm = jsonObject.isNull("Bookdtm") ? "" : jsonObject.getString("Bookdtm");
+            this.Bookby = jsonObject.isNull("Bookedby") ? "" : jsonObject.getString("Bookedby");
+            this.Bookdtm = jsonObject.isNull("Bookedtm") ? "" : jsonObject.getString("Bookedtm");
             this.Lorryrate = jsonObject.isNull("Lorryrate") ? "" : jsonObject.getString("Lorryrate");
             this.Broker = jsonObject.isNull("Broker") ? "" : jsonObject.getString("Broker");
             this.Mobileno = jsonObject.isNull("Mobileno") ? "" : jsonObject.getString("Mobileno");
@@ -52,9 +55,25 @@ public class LorryReportModel {
             this.Bookto = jsonObject.isNull("Bookto") ? "" : jsonObject.getString("Bookto");
             this.Weight = jsonObject.isNull("Weight") ? "" : jsonObject.getString("Weight");
             this.Package = jsonObject.isNull("Package") ? "" : jsonObject.getString("Package");
+            this.loadtype = jsonObject.isNull("Loadtype") ? "" : jsonObject.getString("Loadtype");
+            this.freight= jsonObject.isNull("Freight") ? "" : jsonObject.getString("Freight");
+            this.cft = jsonObject.isNull("Cft") ? "" : jsonObject.getString("Cft");
+
         } catch (Exception ex) {
             ex.fillInStackTrace();
         }
+    }
+
+    public String getCft() {
+        return cft;
+    }
+
+    public String getFreight() {
+        return freight;
+    }
+
+    public String getLoadtype() {
+        return loadtype;
     }
 
     public String getBookfrom() {

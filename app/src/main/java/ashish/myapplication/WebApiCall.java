@@ -263,5 +263,48 @@ public void login(String url, String json, String userName, String password, fin
             }
         });
     }
+    public void deleteData(String url, String json, final WebApiResponseCallback callback) {
+        client.newBuilder().connectTimeout(60000, TimeUnit.MILLISECONDS).readTimeout(60000, TimeUnit.MILLISECONDS).build();
+        RequestBody reqBody = RequestBody.create(JSON, json);
+        Request request = new Request.Builder().url(url).delete(reqBody).build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+                callback.onError(e.fillInStackTrace().toString());
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                // cancelProgressDialog(pd);
+                if (response.code() == 200 || response.code() == 201) {
+                    if (response != null) {
+                        callback.onSucess(response.body().string());
+                    } else {
+                        callback.onError(response.message());
+                    }
+                } else {
+                    callback.onError(response.message());
+                }
+            }
+        });
+    }
+    public String postData(String url, String json) {
+        client.newBuilder().connectTimeout(60000, TimeUnit.MILLISECONDS).readTimeout(60000, TimeUnit.MILLISECONDS).build();
+        RequestBody reqBody = RequestBody.create(JSON, json);
+        Request request = new Request.Builder().url(url).post(reqBody).build();
+        try {
+            Response response = client.newCall(request).execute();
+            return response.body().string();
+        } catch (Exception ex) {
+            ex.fillInStackTrace();
+        }
+        return  null;
+    }
+
+
+
+
+
+
     }
 

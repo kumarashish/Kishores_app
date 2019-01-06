@@ -10,8 +10,7 @@
     <string name="scan_upload">Scan &amp; Upload</string>
     <string name="approve"><u>Approve</u></string>
     <string-array name="loadtype">
-        <item>Select</item>
-        <item>Part Load</item>
-        <item>Full Truck</item>
+        <item>PART LOAD</item>
+        <item>FULL TRUCK</item>
     </string-array>
 </resources>

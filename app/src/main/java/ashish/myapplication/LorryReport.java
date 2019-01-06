@@ -92,6 +92,12 @@ public class LorryReport extends Activity implements View.OnClickListener  ,WebA
     TextView arranged_time;
     @BindView(R.id.reporting_time)
     TextView reporting_time;
+    @BindView(R.id.freight)
+    TextView freight;
+    @BindView(R.id.cft)
+    TextView cft;
+    @BindView(R.id.load_type)
+    TextView load_type;
     @BindView(R.id.add)
     Button add;
     @BindView(R.id.addDelivery)
@@ -112,6 +118,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
     String bookingIdValue="0";
     ArrayList <LorryReportModel>reportList=new ArrayList<>();
     ProgressBar progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +133,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         endDate.setOnClickListener(this);
         delivery.setOnClickListener(this);
         add.setOnClickListener(this);
+
         search_with_date.setOnClickListener(this);
         heading.setText(headingValue);
             search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -157,7 +165,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         day = calendar.get(Calendar.DAY_OF_MONTH);
         int dayy=day-1;
         int monthh=month+1;
-        startDate.setText(dayy + "/" +  monthh+ "/" + year);
+        startDate.setText(day + "/" +  monthh+ "/" + year);
         endDate.setText(day + "/" + monthh + "/" + year);
         initializeIdView();
 
@@ -212,6 +220,9 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         rate.setText("");
         broaker.setText("");
         mobilenumber.setText("");
+        load_type.setText("");
+        cft.setText("");
+        freight.setText("");
         lorryNumber.setText("");
         arranged_time.setText("");
         reporting_time.setText("");
@@ -236,6 +247,9 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         lorryNumber.setText(model.getLorryno());
         arranged_time.setText(model.getArrangtime());
         reporting_time.setText(model.getReporttime());
+        load_type.setText(model.getLoadtype());
+        freight.setText(model.getFreight());
+        cft.setText(model.getCft());
 
 
         if((model.getPassedby().length()>0)&&(model.getReporttime().length()==0))
@@ -320,7 +334,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         idView.setVisibility(View.GONE);
         dateView.setVisibility(View.VISIBLE);
         id_search.setBackgroundColor(getResources().getColor(R.color.white));
-        id_search.setTextColor(getResources().getColor(R.color.black));
+        id_search.setTextColor(getResources().getColor(R.color.aqua));
         date_search.setBackgroundColor(getResources().getColor(R.color.purple));
         date_search.setTextColor(getResources().getColor(R.color.white));
         isStartDateSelected=true;
@@ -336,6 +350,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
             case R.id.back:
                 finish();
                 break;
+
             case R.id.id_search:
                 report.setVisibility(View.GONE);
                 reportList.clear();
@@ -348,7 +363,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                 id_search.setBackgroundColor(getResources().getColor(R.color.purple));
                 id_search.setTextColor(getResources().getColor(R.color.white));
                 date_search.setBackgroundColor(getResources().getColor(R.color.white));
-                date_search.setTextColor(getResources().getColor(R.color.black));
+                date_search.setTextColor(getResources().getColor(R.color.aqua));
                 idView.setVisibility(View.VISIBLE);
                 dateView.setVisibility(View.GONE);
                 break;
@@ -360,7 +375,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                 idView.setVisibility(View.GONE);
                 dateView.setVisibility(View.VISIBLE);
                 id_search.setBackgroundColor(getResources().getColor(R.color.white));
-                id_search.setTextColor(getResources().getColor(R.color.black));
+                id_search.setTextColor(getResources().getColor(R.color.aqua));
                 date_search.setBackgroundColor(getResources().getColor(R.color.purple));
                 date_search.setTextColor(getResources().getColor(R.color.white));
                 break;
@@ -622,6 +637,34 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                         Toast.makeText(LorryReport.this,"Please enter valid mobile number",Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+        dialog = builder.create();
+        dialog.show();
+    }
+    public void deletePopUp() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogLayout = inflater.inflate(R.layout.alert, null);
+        final Button yes=(Button) dialogLayout.findViewById(R.id.yes);
+        final Button no=(Button) dialogLayout.findViewById(R.id.no);
+
+
+        builder.setView(dialogLayout);
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.cancel();
+                Utils.showToast(LorryReport.this,"Under development");
+
+            }
+        });
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+
             }
         });
         dialog = builder.create();

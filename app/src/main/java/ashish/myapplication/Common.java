@@ -7,12 +7,16 @@ public class Common {
     public static String addEmployee=baseUrl+"setEmp";
     public static String getEmployee=baseUrl+"getEmp";
     public static String getBookLorryUrl=baseUrl+"LorryBooking";
+    public static String getdeleteBookingUrl=baseUrl+"DeleteBooking";
     public static String getBookingReport=baseUrl+"LorryBookingReport";
+    public static String getConsinerListUrl=baseUrl+"Getprcmst";
     public static String getLorryType=baseUrl+"GetLorryTypes";
     public static String getLorryReachUrl=baseUrl+"LorryReach";
     public static String getLorryPassUrl=baseUrl+"LorryPass";
     public static String getLorryPasspending=baseUrl+"LorryPassPending";
     public static String getLorryArrangeUrl=baseUrl+"LorryArrange";
+
+    public static String getConsinerRequestKey="BRANCH_CODE";
 
 
 
@@ -21,7 +25,7 @@ public class Common {
     public static String [] getEmpKeys={"ID"};
     public static String [] getBookingKeys={"BookingId","FromDate","ToDate"};
     public static String [] setEmpKeys={"Firstname","Lastname","Address","Dob","Salary"};
-    public static String [] lorryBookingKeys={"LorryType","Item","From","To","Weight","Package","Consignee","Consignor","BookedBy","Freight","Cft","LoadType"};
+    public static String [] lorryBookingKeys={"LorryType","Item","From","To","Weight","Package","Consignee","Consignor","BookedBy","Freight","Cft","LoadType","BookingId"};
     public static String[] getLorryReachKeys={"BookingId","LorryNo","PickedFrom","GoodRemark","ArrangeDt","Reportdate","Reporttime","Reportby"};
     public static String [] getLorryPassKeys={"BookingId","Lorryrate","Broker","MobileNo","Arrangedby","PassedBy"};
     public static String [] getLorryArrangeKeys={"BookingId", "Lorryrate", "Broker", "MobileNo", "Arrangedby"};

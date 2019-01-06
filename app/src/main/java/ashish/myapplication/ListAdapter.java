@@ -45,9 +45,9 @@ public class ListAdapter extends BaseAdapter {
         TextView bookingId=(TextView )view.findViewById(R.id.bookingId);
         TextView type=(TextView )view.findViewById(R.id.type);
         TextView source_dest=(TextView )view.findViewById(R.id.source_dest);
-        bookingId.setText("Booking Id : "+model.getId());
-        type.setText("Lorry Type : "+model.getLorrytype() +"\n\nItem :" +model.getItem());
-        source_dest.setText(model.getBookfrom() +" - "+model.getBookto());
+        bookingId.setText("BOOKING ID : "+model.getId());
+        type.setText("BOOKING DATE : "+model.getBookdtm().split("T")[0]);
+        source_dest.setText("BOOKING USER :" +model.getBookby());
         return view;
     }
 }

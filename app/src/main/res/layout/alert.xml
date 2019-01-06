@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+
+        android:gravity="center_vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/edittext_bg"
+        android:orientation="vertical"
+        android:id="@+id/report1"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <TextView
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:text="Are you sure you want to delete this booking ?"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <Button
+                android:id="@+id/yes"
+                android:text="Yes"
+                android:textColor="@color/white"
+                android:background="@color/aqua"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <View
+                android:layout_width="5dp"
+                android:layout_height="match_parent"/>
+            <Button
+                android:id="@+id/no"
+                android:text="No"
+                android:textColor="@color/white"
+                android:background="@color/aqua"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -52,7 +53,7 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
     @BindView(R.id.consine)
     EditText consine;
     @BindView(R.id.consiner)
-    EditText consiner;
+    AutoCompleteTextView consiner;
     @BindView(R.id.item)
     EditText item_edt;
     @BindView(R.id.from)
@@ -81,6 +82,14 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
     int width=0;
     int height=0;
     int totalValue=1;
+    @BindView(R.id.bookingId)
+    TextView bookingId;
+    @BindView(R.id.bookingView)
+    LinearLayout bookingView;
+    @BindView(R.id.clear)
+    Button clear;
+    ArrayList<ConsinerModel>autocompleteModelList=new ArrayList<>();
+    ArrayList<String>autocompleteList=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +99,7 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
         back.setOnClickListener(this);
         submit.setOnClickListener(this);
         search.setOnClickListener(this);
+        clear.setOnClickListener(this);
 
         heading.setText(headingValue);
         form.setVisibility(View.GONE);
@@ -97,7 +107,47 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
         { apiCall=apiGetType;
             controller.getWebApiCall().getData(Common.getLorryType,this);
             progressBar.setVisibility(View.VISIBLE);
+
+
+            Thread T=new Thread(new Runnable() {
+                @Override
+                public void run() {
+                   String value= controller.getWebApiCall().postData(Common.getConsinerListUrl,getAutoCompleteRequestJSON("AMD").toString());
+                   if(value!=null)
+                   {
+                       if(Utils.getStatus(value)==true) {
+
+
+                           try {
+                               JSONArray jsonArray = Utils.jsonArrayy(value);
+
+                               for (int i = 0; i < jsonArray.length(); i++) {
+                                   ConsinerModel model=new ConsinerModel(jsonArray.getJSONObject(i));
+                                   autocompleteList.add(model.getName());
+                                   autocompleteModelList.add(model);
+                               }
+                             final  ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                                       (Lorry_Booking.this,android.R.layout.simple_list_item_1,autocompleteList);
+                              runOnUiThread(new Runnable() {
+                                  @Override
+                                  public void run() {
+                                      consiner.setAdapter(adapter);
+                                      consiner.setThreshold(1);
+                                  }
+                              });
+
+
+                           } catch (Exception ex)
+
+                           {
+                               ex.fillInStackTrace();
+                           }
+                       }}
+                }
+            });
+          T.start();
         }
+
         lorry_type_spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -218,13 +268,16 @@ public void setValue()
             case R.id.back:
                 finish();
                 break;
+            case R.id.clear:
+                clearAll();
+                break;
 
             case R.id.search:
                 startActivity(new Intent(this,LorryReport.class));
                 break;
             case R.id.submit:
 
-                if((item_edt.getText().length()>0)&&(from_edt.getText().length()>0)&&(to_edt.getText().length()>0)&&(weight_edt.getText().length()>0)&&(package_edt.getText().length()>0)&&(consine.getText().length()>0)&&(consiner.getText().length()>0)&&(freight_edt.getText().length()>0)&&(l.getText().length()>0)&&(w.getText().length()>0)&&(h.getText().length()>0)&&(load_type_spn.getSelectedItemPosition()!=0))
+                if((item_edt.getText().length()>0)&&(from_edt.getText().length()>0)&&(to_edt.getText().length()>0)&&(weight_edt.getText().length()>0)&&(package_edt.getText().length()>0)&&(consine.getText().length()>0)&&(consiner.getText().length()>0)&&(freight_edt.getText().length()>0)&&(l.getText().length()>0)&&(w.getText().length()>0)&&(h.getText().length()>0))
                 {
                    if(Utils.isNetworkAvailable(Lorry_Booking.this))
                    {
@@ -277,10 +330,7 @@ public void setValue()
                     {
                         Utils.showToast(Lorry_Booking.this,"Please enter height");
                     }
-                    else if(load_type_spn.getSelectedItemPosition()==0)
-                    {
-                        Utils.showToast(Lorry_Booking.this,"Please select load types");
-                    }
+
                 }
                 break;
         }
@@ -321,8 +371,23 @@ public void setValue()
                         case 2:
                             progressBar2.setVisibility(View.GONE);
                             submit.setVisibility(View.VISIBLE);
-                             clearAll();
-                             Utils.showToast(Lorry_Booking.this,"Booked sucessfully.");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(bookingId.getText().toString().trim().equalsIgnoreCase("0"))
+                                    {   bookingId.setText(Utils.getBookingId(value));
+
+                                        Utils.showToast(Lorry_Booking.this,"Booked sucessfully.Booking Id : "+bookingId.getText().toString());
+                                    }else{
+                                        Utils.showToast(Lorry_Booking.this,"Your Booking Id : "+bookingId.getText().toString()+" has been updated sucessfully"+bookingId.getText().toString());
+                                    }
+
+                                    bookingView.setVisibility(View.VISIBLE);
+
+                                }
+                            });
+
+
                          break;
                     }
 
@@ -359,6 +424,8 @@ consiner.setText("");
     width=0;
     height=0;
     totalValue=1;
+    bookingId.setText("0");
+    bookingView.setVisibility(View.GONE);
 }
     @Override
     public void onError(final String value) {
@@ -377,7 +444,18 @@ consiner.setText("");
             }
         });
     }
+     public JSONObject getAutoCompleteRequestJSON(String value)
+     {
+         JSONObject jsonObject=new JSONObject();
+         try{
+             jsonObject.put(Common.getConsinerRequestKey,value);
 
+         }catch (Exception ex)
+         {
+             ex.fillInStackTrace();
+         }
+         return jsonObject;
+     }
     public JSONObject jsonObject()
     {JSONObject jsonObject=new JSONObject();
         try{
@@ -393,6 +471,7 @@ consiner.setText("");
             jsonObject.put(Common.lorryBookingKeys[9],freight_edt.getText().toString());
             jsonObject.put(Common.lorryBookingKeys[10],length+"x"+width+"x"+height+"="+totalValue);
             jsonObject.put(Common.lorryBookingKeys[11],load_type_spn.getSelectedItem().toString());
+            jsonObject.put(Common.lorryBookingKeys[12],bookingId.getText().toString());
         }catch (Exception ex)
         {
             ex.fillInStackTrace();

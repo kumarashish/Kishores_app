@@ -41,7 +41,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LorryPass"
-            android:theme="@style/Theme5"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BookingDelete"
+            android:theme="@style/AppTheme"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"

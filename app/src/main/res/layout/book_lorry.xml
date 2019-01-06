@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-android:visibility="gone"
+
 
                 android:id="@+id/form"
                 android:layout_marginTop="60dp"
@@ -66,6 +66,33 @@ android:visibility="gone"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/bookingView"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textAllCaps="true"
+                        android:text="BOOKING ID : "
+                        android:textSize="14dp"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:id="@+id/bookingId"
+                        android:textColor="@color/white"
+                        android:textAllCaps="true"
+                        android:text="0"
+                        android:textSize="14dp"
+                        android:gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -76,12 +103,12 @@ android:visibility="gone"
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/consiner"
 
                     android:textAllCaps="true"
                     android:layout_width="match_parent"
-                    android:imeOptions="actionNext"  android:layout_height="wrap_content"
+                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@android:color/transparent"
                     android:inputType="textCapCharacters|textPersonName|textNoSuggestions"
@@ -377,7 +404,7 @@ android:visibility="gone"
                   <EditText
                       android:id="@+id/total"
                       android:focusable="false"
-                      android:hint="Total"
+                      android:hint="TOTAL"
                       android:textColorHint="@color/white"
                       android:inputType="number"
                       android:textSize="14dp"
@@ -426,17 +453,40 @@ android:visibility="gone"
                     android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp">
+                    <Button
+                        android:id="@+id/clear"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="35dp"
+
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/yellow_button"
+                        android:text="Clear"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        />
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"/>
                 <Button
                     android:id="@+id/submit"
-                    android:layout_width="130dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="35dp"
-                    android:layout_marginTop="50dp"
+
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/yellow_button"
                     android:text="SUBMIT"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     />
+                </LinearLayout>
                 <View
                     android:layout_marginTop="10dp"
 
