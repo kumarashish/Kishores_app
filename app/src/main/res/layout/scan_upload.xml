@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+
+        android:background="@color/aqua"
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    <RelativeLayout
+
+        android:background="@color/purple"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/back"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/white"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+        <ashish.myapplication.Bold_TextView
+            android:id="@+id/heading"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:text="@string/scan_upload"
+            />
+    </RelativeLayout>
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please enter booking id"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <EditText
+            android:imeOptions="actionNext"
+            android:id="@+id/booking_id"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:inputType="textCapCharacters|textPersonName|textNoSuggestions"
+
+            android:textColor="@color/white"
+
+            />
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+
+            android:background="@color/white" />
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please select document type"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <Spinner
+
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/id_type"
+            android:entries="@array/IDPROOF"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            android:backgroundTint="@color/white"
+            android:inputType="textCapCharacters|textPersonName|textNoSuggestions"
+
+            android:textColor="@color/white"
+
+            />
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+
+            android:background="@color/white" />
+
+        <ImageView
+            android:id="@+id/camera"
+            android:padding="20dp"
+            android:background="@drawable/rectangle"
+            android:tint="@color/white"
+            android:src="@drawable/camera_icon"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_width="120dp"
+            android:layout_height="120dp" />
+        <TextView
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="Click on camera to capture image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progress"
+            android:indeterminateTint="@color/white"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="100dp"
+        android:layout_marginTop="50dp"
+            android:layout_height="35dp"
+
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/yellow_button"
+            android:text="SUBMIT"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

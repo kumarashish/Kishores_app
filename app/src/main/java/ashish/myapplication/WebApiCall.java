@@ -4,7 +4,11 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -302,7 +306,42 @@ public void login(String url, String json, String userName, String password, fin
     }
 
 
+public void uploadData(String url,File file,final WebApiResponseCallback callback)  {
 
+    client.newBuilder().connectTimeout(60000, TimeUnit.MILLISECONDS).readTimeout(60000, TimeUnit.MILLISECONDS).build();
+    try {
+        FileInputStream fileInputStream = new FileInputStream(file);
+
+        RequestBody reqBody = RequestBodyUtil.create(mediaType, fileInputStream);
+
+        Request request = new Request.Builder().url(url).post(reqBody).build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+                callback.onError(e.fillInStackTrace().toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                // cancelProgressDialog(pd);
+                if (response.code() == 200 || response.code() == 201) {
+                    if (response != null) {
+                        callback.onSucess(response.body().string());
+                    } else {
+                        callback.onError(response.message());
+                    }
+                } else {
+                    callback.onError(response.message());
+                }
+            }
+        });
+    }catch (Exception ex)
+    {
+        ex.fillInStackTrace();
+    }
+
+}
 
 
 

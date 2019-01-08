@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@color/aqua"
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+
+            android:background="@color/purple"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <Button
+                android:id="@+id/back"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/white"
+                android:layout_centerVertical="true"
+                android:background="@drawable/back"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+            <ashish.myapplication.Bold_TextView
+                android:id="@+id/heading"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:text="Rate Pending Report"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <Button
+                android:textColor="@color/aqua"
+                android:text="Select start date"
+                android:textAllCaps="true"
+                android:id="@+id/startDate"
+
+                android:textSize="12dp"
+                android:background="@drawable/edittext_bg"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <Button
+                android:textAllCaps="true"
+                android:textSize="12dp"
+                android:id="@+id/endDate"
+
+                android:textColor="@color/aqua"
+                android:text="Select end date"
+                android:background="@drawable/edittext_bg"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+
+
+        </LinearLayout>
+        <Button
+            android:textColor="@color/white"
+            android:text="Search"
+            android:textAllCaps="true"
+            android:id="@+id/search"
+
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rectangle"
+            android:layout_width="120dp"
+            android:layout_height="40dp" />
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progress"
+            android:indeterminateTint="@color/white"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    <ScrollView
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+
+            android:background="@drawable/edittext_bg"
+            android:orientation="vertical"
+            android:id="@+id/report1"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="Booking id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/bookingId"
+                    android:textAllCaps="true"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="Consignor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/consiner"
+                    android:textAllCaps="true"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:maxLines="3"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="Consignee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/consignee"
+                    android:textAllCaps="true"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:maxLines="3"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="Type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/type"
+                    android:textAllCaps="true"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:maxLines="3"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="196dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Item"
+
+                    android:textAllCaps="true"
+                    android:textColor="@color/purple"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/item"
+                    android:textAllCaps="true"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="0dp"
+                    android:maxLines="3"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="0.5"
+                    android:textAllCaps="true"
+                    android:textSize="16dp"
+
+                    android:text="From - To"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textAllCaps="true"
+                    android:id="@+id/s_d"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1.5"
+                    android:textSize="16dp"
+                    android:maxLines="5"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="Weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textAllCaps="true"
+                    android:id="@+id/weight"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1.0"
+                    android:textSize="16dp"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="Package"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textAllCaps="true"
+                    android:id="@+id/pkg"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1.0"
+                    android:textSize="16dp"
+                    android:maxLines="3"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="Freight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textAllCaps="true"
+                    android:id="@+id/freight"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1.0"
+                    android:textSize="16dp"
+                    android:maxLines="3"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="CFT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textAllCaps="true"
+                    android:id="@+id/cft"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1.0"
+                    android:textSize="16dp"
+                    android:maxLines="3"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="@color/aqua"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="Load Type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textAllCaps="true"
+                    android:id="@+id/load_type"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/purple"
+                    android:layout_weight="1.0"
+                    android:textSize="16dp"
+                    android:maxLines="3"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

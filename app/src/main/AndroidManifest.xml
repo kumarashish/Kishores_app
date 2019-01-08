@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".AppController"
@@ -45,6 +48,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".BookingDelete"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pending_Report"
+            android:theme="@style/Theme5"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Scan_Upload"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait" />
         <activity

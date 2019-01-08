@@ -204,7 +204,7 @@ TextView userName;
                 startActivity(new Intent(MainActivity.this,LorryReport.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.heading222:
+
             case R.id.heading3:
                 controller.getManager().setUserLoggedIn(false);
                 Toast.makeText(this,"Logged out sucessfully",Toast.LENGTH_SHORT).show();
@@ -216,6 +216,18 @@ TextView userName;
                 startActivity(new Intent(MainActivity.this,BookingDelete.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
+            case R.id.heading222:
+            case R.id.view6:
+                startActivity(new Intent(MainActivity.this,Pending_Report.class));
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+
+            case R.id.view4:
+            case R.id.heading124:
+                startActivity(new Intent(MainActivity.this,Scan_Upload.class));
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+
         }
 
     }

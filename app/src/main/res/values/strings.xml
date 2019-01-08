@@ -13,4 +13,16 @@
         <item>PART LOAD</item>
         <item>FULL TRUCK</item>
     </string-array>
+    <string-array name="IDPROOF">
+        <item>POD</item>
+        <item>BROKER SLIP</item>
+        <item>PAN NO.</item>
+        <item>DECLARATION</item>
+        <item>RC</item>
+        <item>BILL SUBMISSION LETTER</item>
+        <item>AADHAR CARD NO.</item>
+        <item>LICENCE</item>
+        <item>OTHER.</item>
+
+    </string-array>
 </resources>
