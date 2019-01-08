@@ -117,7 +117,7 @@ public class Scan_Upload  extends Activity implements View.OnClickListener, WebA
                 finish();
                 break;
             case R.id.camera:
-                Common.captureImage(Scan_Upload.this);
+                Common.selectImageDialog(Scan_Upload.this);
                 break;
             case R.id.submit:
 
@@ -243,8 +243,9 @@ public class Scan_Upload  extends Activity implements View.OnClickListener, WebA
     {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 8;
-        Bitmap myBitmap = BitmapFactory.decodeFile(Common.tempPath,options);
-         file =new File(Common.tempPath);
+        file =new File(Common.tempPath);
+        Bitmap myBitmap = BitmapFactory.decodeFile(file.getAbsolutePath(),options);
+
         final String name=file.getName();
 
         image.setImageBitmap(myBitmap);

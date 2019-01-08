@@ -380,6 +380,7 @@ public class Pending_Report extends Activity implements View.OnClickListener  ,W
                 } else if (progressBar != null) {
                     progressBar.setVisibility(View.GONE);
                 }
+                search.setVisibility(View.VISIBLE);
 
             }
         });
@@ -395,6 +396,7 @@ public class Pending_Report extends Activity implements View.OnClickListener  ,W
                 progressBar.setVisibility(View.GONE);
                 clearAll();
                 Utils.showToast(Pending_Report.this, Utils.getMessage(value));
+                search.setVisibility(View.VISIBLE);
             }
         });
 
