@@ -51,15 +51,15 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
     @BindView(R.id.load_type)
     Spinner load_type_spn;
     @BindView(R.id.consine)
-    EditText consine;
+    AutoCompleteTextView  consine;
     @BindView(R.id.consiner)
     AutoCompleteTextView consiner;
     @BindView(R.id.item)
-    EditText item_edt;
+    AutoCompleteTextView  item_edt;
     @BindView(R.id.from)
-    EditText from_edt;
+    AutoCompleteTextView  from_edt;
     @BindView(R.id.to)
-    EditText to_edt;
+    AutoCompleteTextView  to_edt;
     @BindView(R.id.weight)
     EditText weight_edt;
     @BindView(R.id.package_edt)
@@ -90,6 +90,8 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
     Button clear;
     ArrayList<ConsinerModel>autocompleteModelList=new ArrayList<>();
     ArrayList<String>autocompleteList=new ArrayList<>();
+    ArrayList<String>source_dest=new ArrayList<>();
+    ArrayList<String>item=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,50 +105,40 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
 
         heading.setText(headingValue);
         form.setVisibility(View.GONE);
-        if(Utils.isNetworkAvailable(Lorry_Booking.this))
-        { apiCall=apiGetType;
-            controller.getWebApiCall().getData(Common.getLorryType,this);
+        if (Utils.isNetworkAvailable(Lorry_Booking.this)) {
+            apiCall = apiGetType;
+            controller.getWebApiCall().getData(Common.getLorryType, this);
             progressBar.setVisibility(View.VISIBLE);
 
-
-            Thread T=new Thread(new Runnable() {
+            Thread T = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                   String value= controller.getWebApiCall().postData(Common.getConsinerListUrl,getAutoCompleteRequestJSON("AMD").toString());
-                   if(value!=null)
-                   {
-                       if(Utils.getStatus(value)==true) {
 
-
-                           try {
-                               JSONArray jsonArray = Utils.jsonArrayy(value);
-
-                               for (int i = 0; i < jsonArray.length(); i++) {
-                                   ConsinerModel model=new ConsinerModel(jsonArray.getJSONObject(i));
-                                   autocompleteList.add(model.getName());
-                                   autocompleteModelList.add(model);
-                               }
-                             final  ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                                       (Lorry_Booking.this,android.R.layout.simple_list_item_1,autocompleteList);
-                              runOnUiThread(new Runnable() {
-                                  @Override
-                                  public void run() {
-                                      consiner.setAdapter(adapter);
-                                      consiner.setThreshold(1);
-                                  }
-                              });
-
-
-                           } catch (Exception ex)
-
-                           {
-                               ex.fillInStackTrace();
-                           }
-                       }}
+                    String source_dest = controller.getWebApiCall().getData(Common.getSource_destListUrl + "" + controller.getManager().getBranchcode());
+                    setSource_Dest(source_dest);
                 }
             });
-          T.start();
+            T.start();
+            Thread T2 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String value = controller.getWebApiCall().postData(Common.getConsinerListUrl, getAutoCompleteRequestJSON(controller.getManager().getBranchcode()).toString());
+                    setConsine(value);
+                }
+            });
+            T2.start();
+            Thread T3 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    String items = controller.getWebApiCall().getData(Common.getItemListUrl);
+                    setItem(items);
+                }
+            });
+            T3.start();
+
         }
+
 
         lorry_type_spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -189,9 +181,8 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
             public void afterTextChanged(Editable s) {
 
                 // TODO Auto-generated method stub
-                if(s.length()>0)
-                {
-                    length=Integer.parseInt(s.toString());
+                if (s.length() > 0) {
+                    length = Integer.parseInt(s.toString());
                 }
                 setValue();
             }
@@ -213,9 +204,8 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
             public void afterTextChanged(Editable s) {
 
                 // TODO Auto-generated method stub
-                if(s.length()>0)
-                {
-                    width=Integer.parseInt(s.toString());
+                if (s.length() > 0) {
+                    width = Integer.parseInt(s.toString());
                 }
                 setValue();
 
@@ -238,14 +228,120 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
             public void afterTextChanged(Editable s) {
 
                 // TODO Auto-generated method stub
-                if(s.length()>0)
-                {
-                    height=Integer.parseInt(s.toString());
+                if (s.length() > 0) {
+                    height = Integer.parseInt(s.toString());
                 }
                 setValue();
             }
         });
     }
+
+    public void setSource_Dest(String value) {
+        source_dest.clear();
+        if (value != null) {
+            if (Utils.getStatus(value) == true) {
+
+
+                try {
+                    JSONArray jsonArray = Utils.jsonArrayy(value);
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        Source_Dest_Model model = new Source_Dest_Model(jsonArray.getJSONObject(i));
+                        source_dest.add(model.getNAME());
+                        // autocompleteModelList.add(model);
+                    }
+                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                            (Lorry_Booking.this, android.R.layout.simple_list_item_1, source_dest);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            from_edt.setAdapter(adapter);
+                            to_edt.setAdapter(adapter);
+                            from_edt.setThreshold(1);
+                            to_edt.setThreshold(1);
+                        }
+                    });
+
+
+                } catch (Exception ex)
+
+                {
+                    ex.fillInStackTrace();
+                }
+            }
+        }
+    }
+
+    public void setItem(String value) {
+        item.clear();
+        if (value != null) {
+            if (Utils.getStatus(value) == true) {
+
+
+                try {
+                    JSONArray jsonArray = Utils.jsonArrayy(value);
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        Item_Model model = new Item_Model(jsonArray.getJSONObject(i));
+
+                        item.add(model.getNAME());
+                    }
+                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                            (Lorry_Booking.this, android.R.layout.simple_list_item_1, item);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            item_edt.setAdapter(adapter);
+                            item_edt.setAdapter(adapter);
+
+                        }
+                    });
+
+
+                } catch (Exception ex)
+
+                {
+                    ex.fillInStackTrace();
+                }
+            }
+        }
+    }
+
+public void setConsine(String value)
+{autocompleteList.clear();
+    if(value!=null)
+    {
+        if(Utils.getStatus(value)==true) {
+
+
+            try {
+                JSONArray jsonArray = Utils.jsonArrayy(value);
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    ConsinerModel model=new ConsinerModel(jsonArray.getJSONObject(i));
+                    autocompleteList.add(model.getName());
+                    autocompleteModelList.add(model);
+                }
+                final  ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                        (Lorry_Booking.this,android.R.layout.simple_list_item_1,autocompleteList);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        consiner.setAdapter(adapter);
+                        consine.setAdapter(adapter);
+                        consiner.setThreshold(1);
+                        consine.setAdapter(adapter);
+                    }
+                });
+
+
+            } catch (Exception ex)
+
+            {
+                ex.fillInStackTrace();
+            }
+        }}
+}
 
 public void setValue()
 {totalValue=1;

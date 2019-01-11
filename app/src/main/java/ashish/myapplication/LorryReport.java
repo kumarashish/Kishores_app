@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.KeyEvent;
@@ -18,6 +20,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -87,9 +90,14 @@ public class LorryReport extends Activity implements View.OnClickListener  ,WebA
     TextView mobilenumber;
     @BindView(R.id.lorrynumber)
     TextView lorryNumber;
-
-    @BindView(R.id.arranged_time)
-    TextView arranged_time;
+    @BindView(R.id.picked_from)
+    TextView picked_from;
+    @BindView(R.id.goods_remark)
+    TextView goods_remark;
+    @BindView(R.id.arranged_date)
+    TextView arranged_date;
+    @BindView(R.id.report_date)
+    TextView reporting_date;
     @BindView(R.id.reporting_time)
     TextView reporting_time;
     @BindView(R.id.freight)
@@ -118,6 +126,11 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
     String bookingIdValue="0";
     ArrayList <LorryReportModel>reportList=new ArrayList<>();
     ProgressBar progress;
+    boolean isarrageDateClicked=false;
+    boolean isreportdateclicked=false;
+
+     EditText arrange_date;
+    EditText report_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,10 +189,25 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         if (id == 999) {
             return new DatePickerDialog(this,
                     myDateListener, year, month, day);
+        }else{
+            return new DatePickerDialog(this,
+                    myDateListener2, year, month, day);
         }
-        return null;
+
     }
 
+    private DatePickerDialog.OnDateSetListener myDateListener2= new
+            DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker arg0,
+                                      int arg1, int arg2, int arg3) {
+                    // TODO Auto-generated method stub
+                    // arg1 = year
+                    // arg2 = month
+                    // arg3 = day
+                    showDate2(arg1, arg2+1, arg3);
+                }
+            };
     private DatePickerDialog.OnDateSetListener myDateListener = new
             DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -192,7 +220,6 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                     showDate(arg1, arg2+1, arg3);
                 }
             };
-
     private void showDate(int year, int month, int day) {
 
         if (isStartDateClicked) {
@@ -203,6 +230,18 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         } else {
             isEndDateSelected=true;
             endDate.setText( day+ "/" +  month+ "/" + year);
+        }
+
+    }
+
+    private void showDate2(int year, int month, int day) {
+        if (isarrageDateClicked) {
+
+           arrange_date.setText(day + "/" + month + "/" + year);
+
+        } else {
+
+            report_date.setText(day + "/" + month + "/" + year);
         }
 
     }
@@ -224,7 +263,10 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         cft.setText("");
         freight.setText("");
         lorryNumber.setText("");
-        arranged_time.setText("");
+        arranged_date.setText("");
+        goods_remark.setText("");
+        picked_from.setText("");
+        reporting_date.setText("");
         reporting_time.setText("");
     }
     public void setValue()
@@ -245,9 +287,11 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         broaker.setText(model.getBroker());
         mobilenumber.setText(model.getMobileno());
         lorryNumber.setText(model.getLorryno());
-        arranged_time.setText(model.getArrangtime());
+        arranged_date.setText(model.getArrangedt());
         reporting_time.setText(model.getReporttime());
-        load_type.setText(model.getLoadtype());
+        goods_remark.setText(model.getGoodremark());
+        picked_from.setText(model.getPickfrom());
+        reporting_date.setText(model.getReportdate());
         freight.setText(model.getFreight());
         cft.setText(model.getCft());
 
@@ -506,25 +550,80 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         final EditText lorry_number2=(EditText)dialogLayout.findViewById(R.id.num2);
         final EditText lorry_number3=(EditText)dialogLayout.findViewById(R.id.num3);
         final EditText lorry_number4=(EditText)dialogLayout.findViewById(R.id.num4);
-        final EditText arrange_date=(EditText)dialogLayout.findViewById(R.id.arrange_date);
-        final EditText report_date=(EditText)dialogLayout.findViewById(R.id.report_date);
+       arrange_date=(EditText)dialogLayout.findViewById(R.id.arrange_date);
+        report_date=(EditText)dialogLayout.findViewById(R.id.report_date);
         final EditText pickfrom=(EditText)dialogLayout.findViewById(R.id.picked_from);
         final EditText remark=(EditText)dialogLayout.findViewById(R.id.remark);
-        final EditText report_time_hh=(EditText)dialogLayout.findViewById(R.id.hour);
-        final EditText report_time_mm=(EditText)dialogLayout.findViewById(R.id.minute);
-        final EditText report_time_ampm=(EditText)dialogLayout.findViewById(R.id.am_pm);
+        final Spinner report_time_hh=(Spinner)dialogLayout.findViewById(R.id.hour);
+        final Spinner report_time_mm=(Spinner)dialogLayout.findViewById(R.id.minute);
+        final Spinner report_time_ampm=(Spinner)dialogLayout.findViewById(R.id.am_pm);
         final Button submit=(Button)dialogLayout.findViewById(R.id.submit);
          progress=(ProgressBar)dialogLayout.findViewById(R.id.progress);
+        lorry_number1.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        lorry_number3.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        pickfrom.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        remark.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         bookingId.setText("Booking Id : "+ bookingIdValue);
+
+
+        report_time_hh.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.aqua));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        report_time_mm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.aqua));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        report_time_ampm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.aqua));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        arrange_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isarrageDateClicked=true;
+                showDialog(1000);
+            }
+        });
+        report_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isarrageDateClicked=false;
+                isreportdateclicked=true;
+                showDialog(1000);
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((lorry_number1.getText().length()>0)&&(lorry_number1.getText().length()==2)&&(lorry_number2.getText().length()>0)&&(lorry_number2.getText().length()==2)&&(lorry_number3.getText().length()>0)&&(lorry_number4.getText().length()>0)&&(lorry_number4.getText().length()==4)&&(pickfrom.getText().length()>0)&&(remark.getText().length()>0)&&(arrange_date.getText().length()>0)&&(arrange_date.getText().toString().contains("/"))&&(report_time_hh.getText().length()>0)&&(report_time_mm.length()>0)&&(report_date.getText().length()>0)&&(report_date.getText().toString().contains("/"))&&(report_time_ampm.getText().length()>0)&&(((report_time_ampm.getText().toString().equalsIgnoreCase("am"))||(report_time_ampm.getText().toString().equalsIgnoreCase("pm")))))
+                if((lorry_number1.getText().length()>0)&&(lorry_number1.getText().length()==2)&&(lorry_number2.getText().length()>0)&&(lorry_number2.getText().length()==2)&&(lorry_number3.getText().length()>0)&&(lorry_number4.getText().length()>0)&&(lorry_number4.getText().length()==4)&&(pickfrom.getText().length()>0)&&(remark.getText().length()>0)&&(arrange_date.getText().length()>0)&&(arrange_date.getText().toString().contains("/"))&&(report_date.getText().toString().contains("/")))
                 {
                     progress.setVisibility(View.VISIBLE);
                     submit.setVisibility(View.GONE);
                     apiCall=updateReporting;
-                    controller.getWebApiCall().postData(Common.getLorryReachUrl, getReportRequestJSON(lorry_number1.getText().toString()+"-"+lorry_number2.getText().toString()+" "+lorry_number3.getText().toString()+""+lorry_number4.getText().toString(),pickfrom.getText().toString(),remark.getText().toString(),arrange_date.getText().toString(),report_date.getText().toString(),report_time_hh.getText().toString()+":"+report_time_mm.getText().toString()+""+report_time_ampm.getText().toString()).toString() ,callback);
+                    controller.getWebApiCall().postData(Common.getLorryReachUrl, getReportRequestJSON(lorry_number1.getText().toString()+"-"+lorry_number2.getText().toString()+" "+lorry_number3.getText().toString()+""+lorry_number4.getText().toString(),pickfrom.getText().toString(),remark.getText().toString(),arrange_date.getText().toString(),report_date.getText().toString(),report_time_hh.getSelectedItem().toString()+":"+report_time_mm.getSelectedItem().toString()+""+report_time_ampm.getSelectedItem().toString()).toString() ,callback);
                 }else{
                     if((lorry_number1.getText().length()==0)||(lorry_number1.getText().length()!=2))
                     {
@@ -551,29 +650,16 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                     }
                   else if(arrange_date.getText().length()==0)
                     {
-                        Toast.makeText(LorryReport.this,"Please enter arrange date",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LorryReport.this,"Please select arrange date",Toast.LENGTH_SHORT).show();
                     }else if(!arrange_date.getText().toString().contains("/"))
                     {
-                        Toast.makeText(LorryReport.this,"Please enter arrange date in dd/mm/yyyy format",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LorryReport.this,"Please select arrange date in dd/mm/yyyy format",Toast.LENGTH_SHORT).show();
                     }else if(report_date.getText().length()==0)
                     {
-                        Toast.makeText(LorryReport.this,"Please enter report date",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LorryReport.this,"Please select report date",Toast.LENGTH_SHORT).show();
                     }else if(!report_date.getText().toString().contains("/"))
                     {
-                        Toast.makeText(LorryReport.this,"Please enter report date in dd/mm/yyyy format",Toast.LENGTH_SHORT).show();
-                    }else if(report_time_hh.getText().length()==0)
-                    {
-                        Toast.makeText(LorryReport.this,"Please enter reporting time hour value ",Toast.LENGTH_SHORT).show();
-                    }else if(report_time_mm.getText().length()==0)
-                    {
-                        Toast.makeText(LorryReport.this,"Please enter report time minute",Toast.LENGTH_SHORT).show();
-                    }
-                    else if(report_time_ampm.getText().length()==0)
-                    {
-                        Toast.makeText(LorryReport.this,"Please enter report time am_pm",Toast.LENGTH_SHORT).show();
-                    }else if(((!report_time_ampm.getText().toString().equalsIgnoreCase("am"))||(!report_time_ampm.getText().toString().equalsIgnoreCase("pm"))))
-                    {
-                        Toast.makeText(LorryReport.this,"Please enter report time as am or pm",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LorryReport.this,"Please select report date in dd/mm/yyyy format",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -613,6 +699,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         final Button submit=(Button)dialogLayout.findViewById(R.id.submit);
         ProgressBar pb=(ProgressBar)dialogLayout.findViewById(R.id.progress);
         builder.setView(dialogLayout);
+        broker.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -182,6 +182,8 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                             }
                             if (passesList.size() > 0) {
                                 updateTable();
+                            }else{
+                                content.removeAllViews();
                             }
                         } else {
                             Utils.showToast(LorryPass.this, Utils.getMessage(value));
@@ -201,6 +203,7 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                 @Override
                 public void run() {
                     progressBar.setVisibility(View.GONE);
+                    content.removeAllViews();
                 }
             });
 
@@ -208,14 +211,24 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
         }
     }
 
+    public boolean getStatus() {
+        for (int i = 0; i < passesList.size(); i++) {
+            if (passesList.get(i).getApproved() == true) {
+                return true;
+            }
+        }
+        return false;
+    }
     private void updateTable() {
         content.removeAllViews();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 int count=1;
+                final Boolean isAnyRateAPproved=getStatus();
                 for(int i=0;i<passesList.size();i++)
-                {Lorry_PassModel model=passesList.get(i);
+                {
+                    Lorry_PassModel model=passesList.get(i);
                     View contentview = getLayoutInflater().inflate(R.layout.pass_row, null, false);
                     TextView sno=(TextView) contentview.findViewById(R.id.sno);
                     final TextView rate=(TextView) contentview.findViewById(R.id.rate);
@@ -228,20 +241,30 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                     broker.setText(model.getBroker());
                     mobile.setText(model.getMobileno());
                     approvedby.setText(model.getArrangedby());
-                    //status.setText("Approve");
+                    if(model.getApproved()) {
+                       status.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+                        status.setText("Approved");
+                    }
                     status.setId(i);
-                    status.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                             if (Utils.isNetworkAvailable(LorryPass.this)) {
-                                progressBar.setVisibility(View.VISIBLE);
-                                apiCall = approve;
-                                table.setVisibility(View.GONE);
-                                controller.getWebApiCall().postData(Common.getLorryPassUrl, getApprovePassJSON(rate.getText().toString(),broker.getText().toString(),mobile.getText().toString(),approvedby.getText().toString()).toString(), callback);
+
+                        status.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (isAnyRateAPproved == false) {
+                                    if (Utils.isNetworkAvailable(LorryPass.this)) {
+                                        progressBar.setVisibility(View.VISIBLE);
+                                        apiCall = approve;
+                                        table.setVisibility(View.GONE);
+                                        controller.getWebApiCall().postData(Common.getLorryPassUrl, getApprovePassJSON(rate.getText().toString(), broker.getText().toString(), mobile.getText().toString(), approvedby.getText().toString()).toString(), callback);
+
+                                    }
+                                } else {
+                                    Utils.showToast(LorryPass.this, "You have already approved pass");
+                                }
 
                             }
-                        }
-                    });
+                        });
+
                     content.addView(contentview);
                     count++;
 

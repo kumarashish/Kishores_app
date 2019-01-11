@@ -24,12 +24,16 @@ public class Common {
     public static String getdeleteBookingUrl=baseUrl+"DeleteBooking";
     public static String getBookingReport=baseUrl+"LorryBookingReport";
     public static String getConsinerListUrl=baseUrl+"Getprcmst";
+    public static String getSource_destListUrl=baseUrl+"Getprstnmst?BranchCode=";
+    public static String getItemListUrl=baseUrl+"Getpritmst";
     public static String getLorryType=baseUrl+"GetLorryTypes";
     public static String getLorryReachUrl=baseUrl+"LorryReach";
     public static String getLorryPassUrl=baseUrl+"LorryPass";
     public static String getLorryPasspending=baseUrl+"LorryPassPending";
     public static String getLorryArrangeUrl=baseUrl+"LorryArrange";
     public static String getUploadUrl=baseUrl+"UploadFile?Filename=";
+
+
     public static String getConsinerRequestKey="BRANCH_CODE";
 
 

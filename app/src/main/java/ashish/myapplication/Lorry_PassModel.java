@@ -11,6 +11,7 @@ public class Lorry_PassModel {
     String Broker;
     String Mobileno;
     String Arrangedby;
+    Boolean approved=false;
     public Lorry_PassModel(JSONObject jsonObject)
     {
         try{
@@ -18,11 +19,16 @@ public class Lorry_PassModel {
             this.Broker=jsonObject.isNull("Broker")?"":jsonObject.getString("Broker");
             this.Mobileno=jsonObject.isNull("Mobileno")?"":jsonObject.getString("Mobileno");
             this.Arrangedby=jsonObject.isNull("Arrangedby")?"":jsonObject.getString("Arrangedby");
+            this.approved=jsonObject.isNull("Approved")?false:jsonObject.getBoolean("Approved");
         }catch (Exception ex)
         {
 
             ex.fillInStackTrace();
         }
+    }
+
+    public Boolean getApproved() {
+        return approved;
     }
 
     public String getArrangedby() {

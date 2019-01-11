@@ -25,6 +25,8 @@ public class PrefManager {
     private static final String rememberpassword = "MyAppUSerRemPass";
      private static final String userId="userId";
     private static final String name="name";
+    private static final String branchcode="br_code";
+    private static final String roleId="roleId";
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
@@ -54,6 +56,8 @@ public class PrefManager {
         try {
             editor.putString(userId, jsonObject.isNull("Code") ? "" : jsonObject.getString("Code"));
             editor.putString(name, jsonObject.isNull("Name") ? "" : jsonObject.getString("Name"));
+            editor.putString(branchcode, jsonObject.isNull("BCD") ? "" : jsonObject.getString("BCD"));
+            editor.putString(roleId, jsonObject.isNull("Roleid") ? "" : jsonObject.getString("Roleid"));
             editor.commit();
         } catch (Exception ex) {
             ex.fillInStackTrace();
@@ -67,5 +71,13 @@ public class PrefManager {
     {
         return pref.getString(name,"");
     }
+
+    public String getBranchcode() {
+       return pref.getString(branchcode,"");
+    }
+    public  String getRoleId() {
+        return pref.getString(roleId,"");
+    }
+
 
 }

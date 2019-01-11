@@ -129,7 +129,7 @@
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:imeOptions="actionNext"
                     android:id="@+id/consine"
 
@@ -184,7 +184,7 @@
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/item"
                     android:imeOptions="actionNext"
                     android:textAllCaps="true"
@@ -212,7 +212,7 @@
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/from"
                     android:imeOptions="actionNext"
                     android:textAllCaps="true"
@@ -241,7 +241,7 @@
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/to"
                     android:imeOptions="actionNext"
                     android:layout_width="match_parent"

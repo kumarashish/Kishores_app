@@ -26,12 +26,17 @@ public class LorryReportModel {
     String Paseddtm;
     String Lorryno;
     String Arrangtime;
-    String Reporttime;
     String Loryby;
     String Lorrydtm;
     String freight;
     String loadtype;
     String cft;
+    String Pickfrom;
+    String Goodremark;
+    String Reportdate;
+    String Reporttime;
+    String Reporton;
+    String Arrangedt;
     public LorryReportModel(JSONObject jsonObject) {
         try {
             this.id=jsonObject.isNull("Bookingid")?0:jsonObject.getInt("Bookingid");
@@ -58,10 +63,35 @@ public class LorryReportModel {
             this.loadtype = jsonObject.isNull("Loadtype") ? "" : jsonObject.getString("Loadtype");
             this.freight= jsonObject.isNull("Freight") ? "" : jsonObject.getString("Freight");
             this.cft = jsonObject.isNull("Cft") ? "" : jsonObject.getString("Cft");
-
+            this.Pickfrom= jsonObject.isNull("Pickfrom") ? "" : jsonObject.getString("Pickfrom");
+            this.Goodremark= jsonObject.isNull("Goodremark") ? "" : jsonObject.getString("Goodremark");
+            this.Reportdate= jsonObject.isNull("Reportdate") ? "" : jsonObject.getString("Reportdate");
+            this.Reporttime= jsonObject.isNull("Reporttime") ? "" : jsonObject.getString("Reporttime");
+            this.Reporton= jsonObject.isNull("Reporton") ? "" : jsonObject.getString("Reporton");
+            this.Arrangedt= jsonObject.isNull("Arrangedt") ? "" : jsonObject.getString("Arrangedt");
         } catch (Exception ex) {
             ex.fillInStackTrace();
         }
+    }
+
+    public String getGoodremark() {
+        return Goodremark;
+    }
+
+    public String getPickfrom() {
+        return Pickfrom;
+    }
+
+    public String getArrangedt() {
+        return Arrangedt;
+    }
+
+    public String getReportdate() {
+        return Reportdate;
+    }
+
+    public String getReporton() {
+        return Reporton;
     }
 
     public String getCft() {

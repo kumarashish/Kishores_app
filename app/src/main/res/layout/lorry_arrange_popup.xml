@@ -9,7 +9,19 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <LinearLayout
+        <TextView
+            android:textAllCaps="true"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ADD RATES"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+
+            android:textColor="@color/aqua"
+            android:textSize="14dp" />
+
+        <LinearLayout
       android:layout_marginTop="30dp"
         android:background="@drawable/edittext_bg"
         android:layout_marginLeft="10dp"
@@ -39,7 +51,6 @@
             android:layout_marginTop="5dp"
             android:background="@android:color/transparent"
             android:inputType="numberDecimal|textNoSuggestions"
-
             android:textColor="@color/aqua"
 
             />
@@ -69,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@android:color/transparent"
-            android:inputType="textPersonName|textNoSuggestions"
+            android:inputType="textCapSentences|textNoSuggestions"
 
             android:textColor="@color/aqua"
 

@@ -81,12 +81,17 @@ TextView userName;
         navigationView.setNavigationItemSelectedListener(this);
         entryForm.setOnClickListener(this);
         lorry.setOnClickListener(this);
+        reportsLorry.setOnClickListener(this);
         booking_request.setOnClickListener(this);
         booking_report.setOnClickListener(this);
         reports.setOnClickListener(this);
         booking_approval.setOnClickListener(this);
-        reportsLorry.setOnClickListener(this);
-        booking_approval.setOnClickListener(this);
+        booking_delete.setOnClickListener(this);
+        scan_document.setOnClickListener(this);
+        rate_pending_report.setOnClickListener(this);
+
+
+        TextView reportsLorry;
         logout.setOnClickListener(this);
         view1.setOnClickListener(this);
         view2.setOnClickListener(this);
@@ -94,7 +99,7 @@ TextView userName;
         view4.setOnClickListener(this);
         view5.setOnClickListener(this);
         view6.setOnClickListener(this);
-        userName.setText(controller.getManager().getName()+"( "+controller.getManager().getUserId()+" )");
+        userName.setText(controller.getManager().getName()+"( "+controller.getManager().getBranchcode()+" )");
     }
 
     @Override
@@ -168,13 +173,26 @@ TextView userName;
                 startActivity(new Intent(MainActivity.this,Lorry_Booking.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
-
-            case R.id.heading123:
-            case R.id.view3:
-                startActivity(new Intent(MainActivity.this,LorryPass.class));
+            case R.id.heading122:
+            case R.id.view2:
+                startActivity(new Intent(MainActivity.this,BookingDelete.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
+            case R.id.heading123:
+            case R.id.view3:
+                if(Integer.parseInt(controller.getManager().getRoleId())==1) {
+                    startActivity(new Intent(MainActivity.this, LorryPass.class));
+                }else{
+                    Toast.makeText(MainActivity.this,"You are not authorized to use this feature",Toast.LENGTH_SHORT).show();
+                }
+                drawer.closeDrawer(GravityCompat.START);
 
+                break;
+            case R.id.view4:
+            case R.id.heading124:
+                startActivity(new Intent(MainActivity.this,Scan_Upload.class));
+                drawer.closeDrawer(GravityCompat.START);
+                break;
             case R.id.heading2:
                 if(isreportsClicked)
                 {
@@ -204,29 +222,21 @@ TextView userName;
                 startActivity(new Intent(MainActivity.this,LorryReport.class));
                 drawer.closeDrawer(GravityCompat.START);
                 break;
-
+            case R.id.heading222:
+            case R.id.view6:
+                startActivity(new Intent(MainActivity.this,Pending_Report.class));
+                drawer.closeDrawer(GravityCompat.START);
+                break;
             case R.id.heading3:
                 controller.getManager().setUserLoggedIn(false);
                 Toast.makeText(this,"Logged out sucessfully",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this,Login.class));
                 finish();
                 break;
-            case R.id.delete:
-            case R.id.view2:
-                startActivity(new Intent(MainActivity.this,BookingDelete.class));
-                drawer.closeDrawer(GravityCompat.START);
-                break;
-            case R.id.heading222:
-            case R.id.view6:
-                startActivity(new Intent(MainActivity.this,Pending_Report.class));
-                drawer.closeDrawer(GravityCompat.START);
-                break;
 
-            case R.id.view4:
-            case R.id.heading124:
-                startActivity(new Intent(MainActivity.this,Scan_Upload.class));
-                drawer.closeDrawer(GravityCompat.START);
-                break;
+
+
+
 
         }
 
