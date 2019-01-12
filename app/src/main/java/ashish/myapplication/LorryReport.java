@@ -146,7 +146,6 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         endDate.setOnClickListener(this);
         delivery.setOnClickListener(this);
         add.setOnClickListener(this);
-
         search_with_date.setOnClickListener(this);
         heading.setText(headingValue);
             search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -294,6 +293,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         reporting_date.setText(model.getReportdate());
         freight.setText(model.getFreight());
         cft.setText(model.getCft());
+        load_type.setText(model.getLoadtype());
 
 
         if((model.getPassedby().length()>0)&&(model.getReporttime().length()==0))
@@ -317,7 +317,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
             }
         });
 
-        //delivery.setVisibility(View.VISIBLE);
+      //  delivery.setVisibility(View.VISIBLE);
     }
     public JSONObject getRequestJSON()
     {JSONObject jsonObject=new JSONObject();
@@ -623,7 +623,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                     progress.setVisibility(View.VISIBLE);
                     submit.setVisibility(View.GONE);
                     apiCall=updateReporting;
-                    controller.getWebApiCall().postData(Common.getLorryReachUrl, getReportRequestJSON(lorry_number1.getText().toString()+"-"+lorry_number2.getText().toString()+" "+lorry_number3.getText().toString()+""+lorry_number4.getText().toString(),pickfrom.getText().toString(),remark.getText().toString(),arrange_date.getText().toString(),report_date.getText().toString(),report_time_hh.getSelectedItem().toString()+":"+report_time_mm.getSelectedItem().toString()+""+report_time_ampm.getSelectedItem().toString()).toString() ,callback);
+                    controller.getWebApiCall().postData(Common.getLorryReachUrl, getReportRequestJSON(lorry_number1.getText().toString()+"-"+lorry_number2.getText().toString()+"-"+lorry_number3.getText().toString()+"-"+lorry_number4.getText().toString(),pickfrom.getText().toString(),remark.getText().toString(),arrange_date.getText().toString(),report_date.getText().toString(),report_time_hh.getSelectedItem().toString()+":"+report_time_mm.getSelectedItem().toString()+""+report_time_ampm.getSelectedItem().toString()).toString() ,callback);
                 }else{
                     if((lorry_number1.getText().length()==0)||(lorry_number1.getText().length()!=2))
                     {

@@ -50,7 +50,7 @@ public class Common {
     public static String [] getBookingKeys={"BookingId","FromDate","ToDate"};
     public static String [] setEmpKeys={"Firstname","Lastname","Address","Dob","Salary"};
     public static String [] lorryBookingKeys={"LorryType","Item","From","To","Weight","Package","Consignee","Consignor","BookedBy","Freight","Cft","LoadType","BookingId"};
-    public static String[] getLorryReachKeys={"BookingId","LorryNo","PickedFrom","GoodRemark","ArrangeDt","Reportdate","Reporttime","Reportby"};
+    public static String[] getLorryReachKeys={"BookingId","LorryNo","PickFrom","GoodRemark","ArrangeDt","Reportdate","Reporttime","Reportby"};
     public static String [] getLorryPassKeys={"BookingId","Lorryrate","Broker","MobileNo","Arrangedby","PassedBy"};
     public static String [] getLorryArrangeKeys={"BookingId", "Lorryrate", "Broker", "MobileNo", "Arrangedby"};
 
