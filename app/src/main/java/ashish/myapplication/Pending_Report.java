@@ -279,7 +279,7 @@ public class Pending_Report extends Activity implements View.OnClickListener  ,W
                     search.setVisibility(View.GONE);
                     report.setVisibility(View.GONE);
                     apiCall = searchBooking;
-                    controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON().toString(), callback);
+                    controller.getWebApiCall().postData(Common.getPendigReport, getRequestJSON().toString(), callback);
                 } else {
                     if (isStartDateSelected == false) {
                         Utils.showToast(Pending_Report.this, "Please choose start date");
