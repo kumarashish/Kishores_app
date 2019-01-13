@@ -34,8 +34,8 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         controller = (AppController) getApplicationContext();
-        emailId.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
         if (controller.getManager().isUserLoggedIn() == true) {
             Intent i = new Intent(this, MainActivity.class);
@@ -47,7 +47,9 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
             ButterKnife.bind(this);
 
             submit.setOnClickListener(this);
+            emailId.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         }
+
     }
 
     @Override
