@@ -59,16 +59,33 @@
             android:layout_height="0.5dp"
 
             android:background="@color/purple" />
-        <TextView
-            android:textAllCaps="true"
-            android:layout_marginLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Broker"
-            android:layout_marginTop="10dp"
+            <RadioGroup
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:id="@+id/radiogp"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:layout_weight="1"
+                    android:buttonTint="@color/aqua"
 
-            android:textColor="@color/aqua"
-            android:textSize="14dp" />
+                    android:id="@+id/broaker"
+                    android:textColor="@color/aqua"
+                    android:text="BROKER"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+
+                    android:buttonTint="@color/aqua"
+                    android:layout_weight="1"
+                    android:id="@+id/owner"
+                    android:textColor="@color/aqua"
+                    android:text="OWNER"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
 
         <EditText
             android:textAllCaps="true"

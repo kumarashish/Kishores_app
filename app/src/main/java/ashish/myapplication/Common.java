@@ -23,6 +23,8 @@ public class Common {
     public static String getBookLorryUrl=baseUrl+"LorryBooking";
     public static String getdeleteBookingUrl=baseUrl+"DeleteBooking";
     public static String getBookingReport=baseUrl+"LorryBookingReport";
+    public static String getPendigReport=baseUrl+"RatePendingReport";
+
     public static String getConsinerListUrl=baseUrl+"Getprcmst";
     public static String getSource_destListUrl=baseUrl+"Getprstnmst?BranchCode=";
     public static String getItemListUrl=baseUrl+"Getpritmst";
@@ -47,7 +49,7 @@ public class Common {
 
     public static String [] loginKeys={"User","Password"};
     public static String [] getEmpKeys={"ID"};
-    public static String [] getBookingKeys={"BookingId","FromDate","ToDate"};
+    public static String [] getBookingKeys={"BookingId","FromDate","ToDate","RatePending"};
     public static String [] setEmpKeys={"Firstname","Lastname","Address","Dob","Salary"};
     public static String [] lorryBookingKeys={"LorryType","Item","From","To","Weight","Package","Consignee","Consignor","BookedBy","Freight","Cft","LoadType","BookingId"};
     public static String[] getLorryReachKeys={"BookingId","LorryNo","PickFrom","GoodRemark","ArrangeDt","Reportdate","Reporttime","Reportby"};

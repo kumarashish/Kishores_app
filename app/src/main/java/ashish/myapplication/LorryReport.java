@@ -20,6 +20,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -317,7 +319,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
             }
         });
 
-      //  delivery.setVisibility(View.VISIBLE);
+   ///delivery.setVisibility(View.VISIBLE);
     }
     public JSONObject getRequestJSON()
     {JSONObject jsonObject=new JSONObject();
@@ -695,27 +697,45 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         View dialogLayout = inflater.inflate(R.layout.lorry_arrange_popup, null);
         final EditText rate=(EditText)dialogLayout.findViewById(R.id.rate);
         final EditText mobile=(EditText)dialogLayout.findViewById(R.id.mobile);
-        final EditText broker=(EditText)dialogLayout.findViewById(R.id.broker);
+        final EditText name_edt=(EditText)dialogLayout.findViewById(R.id.broker);
+        final RadioButton broker=(RadioButton) dialogLayout.findViewById(R.id.broaker);
+        final RadioButton owner=(RadioButton) dialogLayout.findViewById(R.id.owner);
+        final RadioGroup gp=(RadioGroup)dialogLayout.findViewById(R.id.radiogp);
         final Button submit=(Button)dialogLayout.findViewById(R.id.submit);
-        ProgressBar pb=(ProgressBar)dialogLayout.findViewById(R.id.progress);
+       final ProgressBar pb=(ProgressBar)dialogLayout.findViewById(R.id.progress);
         builder.setView(dialogLayout);
         broker.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        gp.check(broaker.getId());
+        gp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((rate.getText().length()>0)&&(mobile.getText().length()>0)&&(mobile.getText().length()==10)&&(broker.getText().length()>0))
+                String name;
+                if((rate.getText().length()>0)&&(mobile.getText().length()>0)&&(mobile.getText().length()==10)&&(name_edt.getText().length()>0))
                 {apiCall=arrangeLorry;
+                    if(gp.getCheckedRadioButtonId()==R.id.broaker)
+                    {
+                        name=name_edt.getText().toString()+"(BROKER)";
+                    }else{
+                        name=name_edt.getText().toString()+"(OWNER)";
+                    }
 
-                    controller.getWebApiCall().postData(Common.getLorryArrangeUrl,getLorrryArrangeRequestJSON(rate.getText().toString(),broker.getText().toString(),mobile.getText().toString()).toString(), callback);
+
+                    controller.getWebApiCall().postData(Common.getLorryArrangeUrl,getLorrryArrangeRequestJSON(rate.getText().toString(),name,mobile.getText().toString()).toString(), callback);
                     submit.setVisibility(View.GONE);
-                    progressBar.setVisibility(View.VISIBLE);
+                    pb.setVisibility(View.VISIBLE);
                 }else{
                     if(rate.getText().length()==0)
                     {
                         Toast.makeText(LorryReport.this,"Please enter rate",Toast.LENGTH_SHORT).show();
-                    }else if(broker.getText().length()==0)
+                    }else if(name_edt.getText().length()==0)
                     {
-                        Toast.makeText(LorryReport.this,"Please enter broker details",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LorryReport.this,"Please enter name",Toast.LENGTH_SHORT).show();
                     }
                     else if (mobile.getText().length()==0){
                         Toast.makeText(LorryReport.this,"Please enter mobile number",Toast.LENGTH_SHORT).show();
@@ -729,32 +749,5 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         dialog = builder.create();
         dialog.show();
     }
-    public void deletePopUp() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogLayout = inflater.inflate(R.layout.alert, null);
-        final Button yes=(Button) dialogLayout.findViewById(R.id.yes);
-        final Button no=(Button) dialogLayout.findViewById(R.id.no);
 
-
-        builder.setView(dialogLayout);
-        yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                dialog.cancel();
-                Utils.showToast(LorryReport.this,"Under development");
-
-            }
-        });
-        no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-
-            }
-        });
-        dialog = builder.create();
-        dialog.show();
-    }
 }

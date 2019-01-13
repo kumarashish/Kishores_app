@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         controller = (AppController) getApplicationContext();
+        emailId.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
         if (controller.getManager().isUserLoggedIn() == true) {
             Intent i = new Intent(this, MainActivity.class);
