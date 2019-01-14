@@ -704,7 +704,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         final Button submit=(Button)dialogLayout.findViewById(R.id.submit);
        final ProgressBar pb=(ProgressBar)dialogLayout.findViewById(R.id.progress);
         builder.setView(dialogLayout);
-        broker.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        name_edt.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         gp.check(broaker.getId());
         gp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

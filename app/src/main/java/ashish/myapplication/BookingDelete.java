@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +35,6 @@ public class BookingDelete extends Activity implements WebApiResponseCallback,Vi
     ProgressBar progressBar;
     @BindView(R.id.bookingId)
     TextView bookingId;
-    ArrayList<Lorry_PassModel> passesList = new ArrayList<>();
     int apiCall = 0;
     int getData = 1, delete = 2;
     LorryReportModel model;
@@ -175,6 +175,7 @@ public class BookingDelete extends Activity implements WebApiResponseCallback,Vi
                                 setValue();
                             } else {
                                 clearAll();
+                                table.setVisibility(View.GONE);
                                 Utils.showToast(BookingDelete.this, Utils.getMessage(value));
                             }
 
@@ -196,9 +197,11 @@ public class BookingDelete extends Activity implements WebApiResponseCallback,Vi
                 @Override
                 public void run() {
                     progressBar.setVisibility(View.GONE);
+                    model=null;
+                    clearAll();
+                    table.setVisibility(View.GONE);
                 }
             });
-
             Utils.showToast(BookingDelete.this, Utils.getMessage(value));
         }
     }
@@ -207,8 +210,10 @@ public class BookingDelete extends Activity implements WebApiResponseCallback,Vi
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
+                table.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
+                model=null;
+                clearAll();
 
             }
         });
@@ -256,7 +261,11 @@ public class BookingDelete extends Activity implements WebApiResponseCallback,Vi
                 finish();
                 break;
             case R.id.delete:
-                deletePopUp();
+                if( model!=null) {
+                    deletePopUp();
+                }else{
+                    Toast.makeText(BookingDelete.this,"Please search booking id",Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

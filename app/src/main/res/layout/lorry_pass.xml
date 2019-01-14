@@ -128,7 +128,7 @@
                     android:layout_weight="1"
                     android:textSize="16dp"
                     android:text="Booking id"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/bookingId"
@@ -158,10 +158,10 @@
                     android:textAllCaps="true"
                     android:gravity="left|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:textSize="16dp"
                     android:text="Consignor"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/consiner"
@@ -169,7 +169,7 @@
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
                     android:maxLines="3"
-                    android:layout_weight="1"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:layout_width="0dp"
                     android:text=""
@@ -193,10 +193,10 @@
                     android:textAllCaps="true"
                     android:gravity="left|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:textSize="16dp"
                     android:text="Consignee"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/consignee"
@@ -204,7 +204,7 @@
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
                     android:maxLines="3"
-                    android:layout_weight="1"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:layout_width="0dp"
                     android:text=""
@@ -228,10 +228,10 @@
                     android:textAllCaps="true"
                     android:gravity="left|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:textSize="16dp"
                     android:text="Type"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/type"
@@ -239,7 +239,7 @@
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
                     android:maxLines="3"
-                    android:layout_weight="1"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:layout_width="0dp"
                     android:text=""
@@ -261,19 +261,19 @@
                 <TextView
                     android:gravity="left|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:textAllCaps="true"
                     android:textSize="16dp"
 
                     android:text="Item"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/item"
                     android:textAllCaps="true"
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:layout_width="0dp"
                     android:maxLines="3"
@@ -296,19 +296,19 @@
                 <TextView
                     android:gravity="left|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.4"
                     android:textAllCaps="true"
                     android:textSize="16dp"
 
                     android:text="From - To"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:textAllCaps="true"
                     android:id="@+id/s_d"
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:maxLines="5"
                     android:layout_width="0dp"
@@ -332,10 +332,10 @@
                     android:textAllCaps="true"
                     android:gravity="left|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:textSize="16dp"
                     android:text="Weight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
 
                 <TextView
@@ -343,7 +343,7 @@
                     android:id="@+id/weight"
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1.0"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:layout_width="0dp"
                     android:text=""
@@ -365,17 +365,17 @@
                 <TextView
                     android:textAllCaps="true"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:textSize="16dp"
                     android:text="Package"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:textAllCaps="true"
                     android:id="@+id/pkg"
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1.0"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:maxLines="3"
                     android:layout_width="0dp"
@@ -398,17 +398,17 @@
                 <TextView
                     android:textAllCaps="true"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:textSize="16dp"
                     android:text="Freight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:textAllCaps="true"
                     android:id="@+id/freight"
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1.0"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:maxLines="3"
                     android:layout_width="0dp"
@@ -431,17 +431,17 @@
                 <TextView
                     android:textAllCaps="true"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:textSize="16dp"
                     android:text="CFT"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:textAllCaps="true"
                     android:id="@+id/cft"
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1.0"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:maxLines="3"
                     android:layout_width="0dp"
@@ -464,17 +464,17 @@
                 <TextView
                     android:textAllCaps="true"
                     android:textColor="@color/purple"
-                    android:layout_weight="1"
+                    android:layout_weight="0.4"
                     android:textSize="16dp"
                     android:text="Load Type"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:textAllCaps="true"
                     android:id="@+id/load_type"
                     android:gravity="right|center_vertical"
                     android:textColor="@color/purple"
-                    android:layout_weight="1.0"
+                    android:layout_weight="1.6"
                     android:textSize="16dp"
                     android:maxLines="3"
                     android:layout_width="0dp"

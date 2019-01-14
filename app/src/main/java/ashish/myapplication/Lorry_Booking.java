@@ -276,8 +276,6 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
         item.clear();
         if (value != null) {
             if (Utils.getStatus(value) == true) {
-
-
                 try {
                     JSONArray jsonArray = Utils.jsonArrayy(value);
 
