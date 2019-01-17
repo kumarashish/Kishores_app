@@ -39,7 +39,7 @@
                       android:layout_centerHorizontal="true"
                       android:textColor="@color/blue"
                       android:textSize="32dp"
-                     android:background="@drawable/logo_n"
+                     android:background="@drawable/logo_neww"
                       android:id="@+id/headingid"
                       android:gravity="center"
                       android:padding="10dp"

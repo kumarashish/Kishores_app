@@ -1,9 +1,11 @@
 package ashish.myapplication;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -306,43 +308,92 @@ public void login(String url, String json, String userName, String password, fin
     }
 
 
-public void uploadData(String url,File file,final WebApiResponseCallback callback)  {
+//public void uploadData(String url,File file,final WebApiResponseCallback callback)  {
+//
+//    client.newBuilder().connectTimeout(60000, TimeUnit.MILLISECONDS).readTimeout(60000, TimeUnit.MILLISECONDS).build();
+//    try {
+//        FileInputStream fileInputStream = new FileInputStream(file);
+//
+//        RequestBody reqBody = RequestBodyUtil.create(mediaType, fileInputStream);
+//
+//        Request request = new Request.Builder().url(url).post(reqBody).build();
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//                callback.onError(e.fillInStackTrace().toString());
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                // cancelProgressDialog(pd);
+//                if (response.code() == 200 || response.code() == 201) {
+//                    if (response != null) {
+//                        callback.onSucess(response.body().string());
+//                    } else {
+//                        callback.onError(response.message());
+//                    }
+//                } else {
+//                    callback.onError(response.message());
+//                }
+//            }
+//        });
+//    }catch (Exception ex)
+//    {
+//        ex.fillInStackTrace();
+//    }
+//
+//}
 
-    client.newBuilder().connectTimeout(60000, TimeUnit.MILLISECONDS).readTimeout(60000, TimeUnit.MILLISECONDS).build();
-    try {
-        FileInputStream fileInputStream = new FileInputStream(file);
+    public void uploadData(String url,File filee,final WebApiResponseCallback callback) {
+        final File file = filee;
+        if (file.exists())
+            Log.d(MainActivity.class.getName(), "uploadFileToServer:fileName " + file.getName());
+        if (file.exists()) {
+            OkHttpClient httpClient = new OkHttpClient();
+            final MediaType mediaType = MediaType.parse("binary/octet-stream");
 
-        RequestBody reqBody = RequestBodyUtil.create(mediaType, fileInputStream);
+            try {
+                FileInputStream inputStream = new FileInputStream(file);
+                BufferedInputStream bis = new BufferedInputStream(inputStream);
+                byte[] fileStream = new byte[(int) file.length()];
 
-        Request request = new Request.Builder().url(url).post(reqBody).build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
+                bis.read(fileStream);
 
-                callback.onError(e.fillInStackTrace().toString());
-            }
+                RequestBody body = RequestBody.create(mediaType, fileStream);
+                Request request = new Request.Builder().url(url)
+                        .post(body)
+                        .build();
+                httpClient.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                // cancelProgressDialog(pd);
-                if (response.code() == 200 || response.code() == 201) {
-                    if (response != null) {
-                        callback.onSucess(response.body().string());
-                    } else {
-                        callback.onError(response.message());
                     }
-                } else {
-                    callback.onError(response.message());
-                }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        if (response.code() == 200 || response.code() == 201) {
+                            if (response != null) {
+                                callback.onSucess(response.body().string());
+                            } else {
+                                callback.onError(response.message());
+                            }
+                        } else {
+                            callback.onError(response.message());
+                        }}}
+
+
+                );
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
-    }catch (Exception ex)
-    {
-        ex.fillInStackTrace();
+
+
+        }
     }
-
-}
-
 
 
     }

@@ -92,6 +92,12 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
 //                        }else {
 //                            Toast.makeText(Login.this, "Please enter valid  id and password", Toast.LENGTH_SHORT).show();
 //                        }
+                        if(controller.getManager().getIpAddress().length()>0)
+                        {
+                            Common.ip=controller.getManager().getIpAddress();
+                        }else{
+                            Common.ip=Common.ip1;
+                        }
                         controller.getWebApiCall().postData(Common.login, getRequestString().toString(), Login.this);
                         progressbar.setVisibility(View.VISIBLE);
                         isProgressbarVisible = true;
@@ -169,7 +175,8 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
             @Override
             public void onClick(View view) {
                 if( edt.getText().length()>0)
-                {Toast.makeText(Login.this,"Ip address updated sucessfully.",Toast.LENGTH_SHORT).show();
+                {   controller.getManager().setIp(edt.getText().toString());
+                    Toast.makeText(Login.this,"Ip address updated sucessfully.",Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                 }else{
                     Toast.makeText(Login.this,"Please enter ip address",Toast.LENGTH_SHORT).show();

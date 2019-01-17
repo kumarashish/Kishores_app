@@ -27,6 +27,7 @@ public class PrefManager {
     private static final String name="name";
     private static final String branchcode="br_code";
     private static final String roleId="roleId";
+    private static final String saveIpAddress="Ip_Address";
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
@@ -34,6 +35,17 @@ public class PrefManager {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
+    }
+
+    public void setIp(String ip)
+    {
+        editor.putString(saveIpAddress , ip);
+        editor.commit();
+    }
+
+
+    public  String getIpAddress() {
+        return pref.getString(saveIpAddress,"");
     }
 
     public SharedPreferences getPref() {
