@@ -278,10 +278,8 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
             if (Utils.getStatus(value) == true) {
                 try {
                     JSONArray jsonArray = Utils.jsonArrayy(value);
-
                     for (int i = 0; i < jsonArray.length(); i++) {
                         Item_Model model = new Item_Model(jsonArray.getJSONObject(i));
-
                         item.add(model.getNAME());
                     }
                     final ArrayAdapter<String> adapter = new ArrayAdapter<String>
@@ -291,13 +289,9 @@ public class Lorry_Booking extends Activity implements View.OnClickListener ,Web
                         public void run() {
                             item_edt.setAdapter(adapter);
                             item_edt.setAdapter(adapter);
-
                         }
                     });
-
-
                 } catch (Exception ex)
-
                 {
                     ex.fillInStackTrace();
                 }

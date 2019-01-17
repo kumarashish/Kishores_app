@@ -1,15 +1,21 @@
 package ashish.myapplication;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -28,7 +34,10 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
     @BindView(R.id.submit)
     Button submit;
     @BindView(R.id.progress)
+
     ProgressBar progressbar;
+    @BindView(R.id.edit)
+    ImageView edit;
     boolean isProgressbarVisible = false;
 
     @Override
@@ -47,6 +56,7 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
             ButterKnife.bind(this);
 
             submit.setOnClickListener(this);
+            edit.setOnClickListener(this);
             emailId.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         }
 
@@ -93,6 +103,9 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
                     Toast.makeText(Login.this, "Please enter userid", Toast.LENGTH_SHORT).show();
                 }
                 break;
+            case R.id.edit:
+                showAlert();
+                break;
         }
     }
 
@@ -133,6 +146,37 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
         });
 
 
+    }
+    public void showAlert() {
+        final Dialog dialog = new Dialog(this);
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.ip_popup);
+        final Window window = dialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+       final EditText edt=(EditText) dialog.findViewById(R.id.ipAddres);
+        Button no = (Button) dialog.findViewById(R.id.no);
+        Button yes = (Button) dialog.findViewById(R.id.yes);
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if( edt.getText().length()>0)
+                {Toast.makeText(Login.this,"Ip address updated sucessfully.",Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
+                }else{
+                    Toast.makeText(Login.this,"Please enter ip address",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        dialog.show();
     }
 
     @Override

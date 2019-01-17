@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">DHTC</string>
+    <string name="app_name1">DEMO</string>
     <string name="title_activity_main">DashBoard</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

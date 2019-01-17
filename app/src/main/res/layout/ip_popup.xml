@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+     android:background="@drawable/blact_rectangle"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="@color/white"
+        android:gravity="center"
+
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:textColor="@color/aqua"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:textAllCaps="true"
+            android:text="Please enter ip address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+
+            android:id="@+id/ipAddres"
+            android:textColor="@color/aqua"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+        </LinearLayout>
+        <Button
+            android:layout_marginBottom="10dp"
+            android:id="@+id/no"
+            android:layout_marginLeft="45dp"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/white"
+            android:text="CANCEL"
+            android:background="@color/aqua"
+            android:layout_width="80dp"
+            android:layout_height="30dp" />
+        <Button
+            android:id="@+id/yes"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/white"
+            android:text="SUBMIT"
+            android:background="@color/aqua"
+            android:layout_width="80dp"
+            android:layout_height="30dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

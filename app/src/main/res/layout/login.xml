@@ -132,6 +132,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/edit"
+                android:visibility="gone"
+                android:background="@color/white"
+                android:tint="@color/aqua"
+                android:src="@android:drawable/ic_menu_edit"
+                android:layout_margin="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <ImageView
 
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"

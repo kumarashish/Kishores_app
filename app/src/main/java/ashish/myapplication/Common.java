@@ -33,7 +33,7 @@ public class Common {
     public static String getLorryPassUrl=baseUrl+"LorryPass";
     public static String getLorryPasspending=baseUrl+"LorryPassPending";
     public static String getLorryArrangeUrl=baseUrl+"LorryArrange";
-    public static String getUploadUrl=baseUrl+"UploadFile?Filename=";
+    public static String getUploadUrl="http://3.16.29.242/dhtcsky/UploadFile?Filename=";
 
 
     public static String getConsinerRequestKey="BRANCH_CODE";
