@@ -18,7 +18,7 @@ public class Common {
     //public static String baseUrl="http://182.74.216.107/ds/api/employee/";
     public static String ip1="http://115.112.226.30/";
     public static String ip="";
-    public static String baseUrl=ip+"dhtcsky/";
+    public static String baseUrl="http://115.112.226.30/dhtcsky/";
     public static String login=baseUrl+"Login";
     public static String addEmployee=baseUrl+"setEmp";
     public static String getEmployee=baseUrl+"getEmp";
@@ -35,7 +35,7 @@ public class Common {
     public static String getLorryPassUrl=baseUrl+"LorryPass";
     public static String getLorryPasspending=baseUrl+"LorryPassPending";
     public static String getLorryArrangeUrl=baseUrl+"LorryArrange";
-    public static String getUploadUrl="http://3.16.29.242/dhtcsky/UploadFile?Filename=";
+    public static String getUploadUrl="http://3.16.29.242/dhtcdss/DSService.svc/UploadFile?Filename=";
 
 
     public static String getConsinerRequestKey="BRANCH_CODE";

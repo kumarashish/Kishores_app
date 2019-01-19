@@ -54,7 +54,6 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
         } else {
             setContentView(R.layout.login);
             ButterKnife.bind(this);
-
             submit.setOnClickListener(this);
             edit.setOnClickListener(this);
             emailId.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
@@ -92,12 +91,12 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
 //                        }else {
 //                            Toast.makeText(Login.this, "Please enter valid  id and password", Toast.LENGTH_SHORT).show();
 //                        }
-                        if(controller.getManager().getIpAddress().length()>0)
-                        {
-                            Common.ip=controller.getManager().getIpAddress();
-                        }else{
-                            Common.ip=Common.ip1;
-                        }
+//                        if(controller.getManager().getIpAddress().length()>0)
+//                        {
+//                            Common.ip=controller.getManager().getIpAddress();
+//                        }else{
+//                            Common.ip=Common.ip1;
+//                        }
                         controller.getWebApiCall().postData(Common.login, getRequestString().toString(), Login.this);
                         progressbar.setVisibility(View.VISIBLE);
                         isProgressbarVisible = true;
