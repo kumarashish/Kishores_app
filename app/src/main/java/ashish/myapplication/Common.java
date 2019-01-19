@@ -36,8 +36,6 @@ public class Common {
     public static String getLorryPasspending=baseUrl+"LorryPassPending";
     public static String getLorryArrangeUrl=baseUrl+"LorryArrange";
     public static String getUploadUrl="http://3.16.29.242/dhtcdss/DSService.svc/UploadFile?Filename=";
-
-
     public static String getConsinerRequestKey="BRANCH_CODE";
 
 
@@ -57,8 +55,6 @@ public class Common {
     public static String[] getLorryReachKeys={"BookingId","LorryNo","PickFrom","GoodRemark","ArrangeDt","Reportdate","Reporttime","Reportby"};
     public static String [] getLorryPassKeys={"BookingId","Lorryrate","Broker","MobileNo","Arrangedby","PassedBy"};
     public static String [] getLorryArrangeKeys={"BookingId", "Lorryrate", "Broker", "MobileNo", "Arrangedby"};
-
-
 
     /* * camera module popup
      *************************************/
@@ -105,13 +101,11 @@ public class Common {
         }
     }
 
+
     public static void captureImage(Activity act) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
         Common.imageUri = getOutputMediaFileUri(Common.MEDIA_TYPE_IMAGE);
-
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Common.imageUri);
-
         // start the image capture Intent
         try {
             act.startActivityForResult(intent,CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
@@ -119,6 +113,7 @@ public class Common {
             ex.fillInStackTrace();
         }
     }
+
 
     public static Uri getOutputMediaFileUri(int type) {
         File tempFile = getOutputMediaFile(type);
@@ -129,34 +124,29 @@ public class Common {
     private static File getOutputMediaFile(int type) {
         // External sdcard location
         File mediaStorageDir = new File(Common.sdCardPath);
-
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {
-
                 return null;
             }
         }
-
         // Create a media file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
-                Locale.getDefault()).format(new Date());
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         File mediaFile;
         if (type == Common.MEDIA_TYPE_IMAGE) {
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator
-                    + "IMG_" + timeStamp + ".jpg");
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator + "IMG_" + timeStamp + ".jpg");
         } else {
             return null;
         }
         File files = mediaFile;
         return mediaFile;
     }
+
+
     public static void makeFolder(String path, String folder) {
         File directory = new File(path, folder);
         if (directory.exists() == false) {
             directory.mkdirs();
         }
     }
-
-
 }
