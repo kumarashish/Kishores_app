@@ -470,7 +470,7 @@ public JSONObject getApprovePassJSON(String rate,String broker,String mobile,Str
     JSONObject jsonObject=new JSONObject();
     try{
 
-        jsonObject.put(Common.getLorryPassKeys[0],search.getText().toString());
+        jsonObject.put(Common.getLorryPassKeys[0],bookingIdValue);
         jsonObject.put(Common.getLorryPassKeys[1],rate);
         jsonObject.put(Common.getLorryPassKeys[2],broker);
         jsonObject.put(Common.getLorryPassKeys[3],mobile);
