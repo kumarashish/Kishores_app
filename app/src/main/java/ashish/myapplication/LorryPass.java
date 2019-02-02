@@ -97,6 +97,7 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
     @BindView(R.id.search_with_date)
     Button search_with_date;
 
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,11 +124,11 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                             apiCall=getData;
                             isDateClicked=false;
                             bookingIdValue=search.getText().toString();
-                            controller.getWebApiCall().postData(Common.getLorryPasspending, getRequestJSON().toString(), callback);
+                            controller.getWebApiCall().postData(Common.getLorryPasspending, getRequestJSON(2).toString(), callback);
                             Thread T =new Thread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    String value=  controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON().toString());
+                                    String value=  controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON(2).toString());
                                     if (Utils.jsonObject(value) != null) {
                                         model = new LorryReportModel(Utils.jsonObject(value));
                                         clearAll();
@@ -175,20 +176,20 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
         bookingIdValue="0";
         progressBar.setVisibility(View.VISIBLE);
         apiCall = searchBooking;
-        controller.getWebApiCall().postData(Common.getPendigReport, getRequestJSON().toString(), callback);
+        controller.getWebApiCall().postData(Common.getPendigReport, getRequestJSON(1).toString(), callback);
     }
 
     public void getData()
     {
         progressBar.setVisibility(View.VISIBLE);
         apiCall=getData;
-        isDateClicked=false;
         if(search.getText().length()!=0)
         {
             bookingIdValue=search.getText().toString();
         }
 
-        controller.getWebApiCall().postData(Common.getLorryPasspending, getRequestJSON().toString(), callback);
+
+        controller.getWebApiCall().postData(Common.getLorryPasspending, getRequestJSON(2).toString(), callback);
     }
 
     public void clearAll()
@@ -236,10 +237,10 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
 
     }
 
-    public JSONObject getRequestJSON()
+    public JSONObject getRequestJSON(int type)
     {JSONObject jsonObject=new JSONObject();
         try{
-            if(isDateClicked)
+            if(type==1)
             {
                 jsonObject.put(Common.getBookingKeys[0], 0);
                 // jsonObject.put(Common.getBookingKeys[0],0);
@@ -492,10 +493,6 @@ public JSONObject getApprovePassJSON(String rate,String broker,String mobile,Str
                 reportList.clear();
                 clearAll();
                 isDateClicked=false;
-                isStartDateSelected=false;
-                isEndDateSelected=false;
-                startDate.setText("Select start date");
-                endDate.setText("Select end date");
                 id_search.setBackgroundColor(getResources().getColor(R.color.white));
                 id_search.setTextColor(getResources().getColor(R.color.purple));
                 date_search.setBackgroundColor(getResources().getColor(R.color.purple));
@@ -522,7 +519,7 @@ public JSONObject getApprovePassJSON(String rate,String broker,String mobile,Str
                     progressBar.setVisibility(View.VISIBLE);
                     table.setVisibility(View.GONE);
                     apiCall = searchBooking;
-                    controller.getWebApiCall().postData(Common.getPendigReport, getRequestJSON().toString(), callback);
+                    controller.getWebApiCall().postData(Common.getPendigReport, getRequestJSON(1).toString(), callback);
                 } else {
                     if (isStartDateSelected == false) {
                         Utils.showToast(LorryPass.this, "Please choose start date");
