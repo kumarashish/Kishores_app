@@ -67,40 +67,23 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
             case R.id.submit:
                 if (emailId.getText().length() > 0) {
                     if (password.getText().length() > 0) {
-//                        if ((emailId.getText().toString().equalsIgnoreCase("demo")) && (password.getText().toString().equalsIgnoreCase("demo"))) {
-////                                new Handler().postDelayed(new Runnable() {
-////                                    /*
-////                                     * Showing splash screen with a timer. This will be useful when you
-////                                     * want to show case your app logo / company
-////                                     */
-////                                    @Override
-////                                    public void run() {
-////                                        // This method will be executed once the timer is over
-////                                        // Start your app main activity
-////                                        Toast.makeText(Login.this, "Logged in sucessfully.", Toast.LENGTH_SHORT).show();
-////
-////                                        startActivity(new Intent(Login.this,MainActivity.class));
-////                                        controller.getManager().setUserLoggedIn(true);
-////                                        finish();
-////                                    }
-////                                }, 3000);
-//
-//                            controller
-//                           progressbar.setVisibility(View.VISIBLE);
-//                           submit.setVisibility(View.GONE);
-//                        }else {
-//                            Toast.makeText(Login.this, "Please enter valid  id and password", Toast.LENGTH_SHORT).show();
-//                        }
-//                        if(controller.getManager().getIpAddress().length()>0)
-//                        {
-//                            Common.ip=controller.getManager().getIpAddress();
-//                        }else{
-//                            Common.ip=Common.ip1;
-//                        }
-                        controller.getWebApiCall().postData(Common.login, getRequestString().toString(), Login.this);
-                        progressbar.setVisibility(View.VISIBLE);
-                        isProgressbarVisible = true;
-                        submit.setVisibility(View.GONE);
+
+                        if(controller.getManager().getIpAddress().length()>0)
+                        {
+                            controller.getWebApiCall().postData(Common.getLogin(), getRequestString().toString(), Login.this);
+                            progressbar.setVisibility(View.VISIBLE);
+                            isProgressbarVisible = true;
+                            submit.setVisibility(View.GONE);
+                        }else{
+                           // Toast.makeText(Login.this, "Please enter IP address", Toast.LENGTH_SHORT).show();
+                            controller.getManager().setIp(Common.ip1);
+                            Common.setIpUrl(controller.getManager().getIpAddress());
+                            controller.getWebApiCall().postData(Common.getLogin(), getRequestString().toString(), Login.this);
+                            progressbar.setVisibility(View.VISIBLE);
+                            isProgressbarVisible = true;
+                            submit.setVisibility(View.GONE);
+                        }
+
                     } else {
                         Toast.makeText(Login.this, "Please enter password", Toast.LENGTH_SHORT).show();
                     }
@@ -162,6 +145,7 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
         window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
        final EditText edt=(EditText) dialog.findViewById(R.id.ipAddres);
+       edt.setText(Common.ip);
         Button no = (Button) dialog.findViewById(R.id.no);
         Button yes = (Button) dialog.findViewById(R.id.yes);
         no.setOnClickListener(new View.OnClickListener() {
@@ -175,6 +159,7 @@ public class Login extends Activity implements View.OnClickListener,WebApiRespon
             public void onClick(View view) {
                 if( edt.getText().length()>0)
                 {   controller.getManager().setIp(edt.getText().toString());
+                    Common.setIpUrl(controller.getManager().getIpAddress());
                     Toast.makeText(Login.this,"Ip address updated sucessfully.",Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                 }else{

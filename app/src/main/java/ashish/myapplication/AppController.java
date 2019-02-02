@@ -9,12 +9,14 @@ public class AppController extends Application {
     Validation validation;
     WebApiCall webApiCall;
     PrefManager manager;
+
     @Override
     public void onCreate() {
         super.onCreate();
         validation=new Validation(getApplicationContext());
         webApiCall=new WebApiCall(getApplicationContext());
         manager=new PrefManager(getApplicationContext());
+        Common.setIpUrl(manager.getIpAddress());
         Common.makeFolder(String.valueOf(Environment.getExternalStorageDirectory()), "/DHTC");
         Common.sdCardPath = Environment.getExternalStorageDirectory() + "/DHTC";
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();

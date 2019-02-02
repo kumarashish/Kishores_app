@@ -226,8 +226,6 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
         if (isStartDateClicked) {
             isStartDateSelected = true;
             startDate.setText(day+ "/" +  month+ "/" + year);
-            endDate.setText("Select end date");
-            isEndDateSelected=false;
         } else {
             isEndDateSelected=true;
             endDate.setText( day+ "/" +  month+ "/" + year);
@@ -430,6 +428,7 @@ int searchBooking=1,arrangeLorry=2,updateReporting=3;
                 if ((isStartDateSelected == true) && (isEndDateSelected == true)) {
                     bookingIdValue="0";
                     progressBar.setVisibility(View.VISIBLE);
+                    report.setVisibility(View.GONE);
                     apiCall = searchBooking;
                     controller.getWebApiCall().postData(Common.getBookingReport, getRequestJSON().toString(), callback);
                 } else {

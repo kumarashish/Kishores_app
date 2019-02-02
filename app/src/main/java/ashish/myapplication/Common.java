@@ -15,10 +15,9 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Common {
-    //public static String baseUrl="http://182.74.216.107/ds/api/employee/";
     public static String ip1="http://115.112.226.30/";
     public static String ip="";
-    public static String baseUrl="http://115.112.226.30/dhtcsky/";
+    public static String baseUrl=ip+"/dhtcsky/";
     public static String login=baseUrl+"Login";
     public static String addEmployee=baseUrl+"setEmp";
     public static String getEmployee=baseUrl+"getEmp";
@@ -148,5 +147,34 @@ public class Common {
         if (directory.exists() == false) {
             directory.mkdirs();
         }
+    }
+
+    public static String getIp() {
+        return ip;
+    }
+
+    public static String getLogin()
+    {
+        return login;
+    }
+
+    public static void setIpUrl(String url) {
+        ip = url;
+        baseUrl = ip + "/dhtcsky/";
+        login = baseUrl + "Login";
+        addEmployee = baseUrl + "setEmp";
+        getEmployee = baseUrl + "getEmp";
+        getBookLorryUrl = baseUrl + "LorryBooking";
+        getdeleteBookingUrl = baseUrl + "DeleteBooking";
+        getBookingReport = baseUrl + "LorryBookingReport";
+        getPendigReport = baseUrl + "RatePendingReport";
+        getConsinerListUrl = baseUrl + "Getprcmst";
+        getSource_destListUrl = baseUrl + "Getprstnmst?BranchCode=";
+        getItemListUrl = baseUrl + "Getpritmst";
+        getLorryType = baseUrl + "GetLorryTypes";
+        getLorryReachUrl = baseUrl + "LorryReach";
+        getLorryPassUrl = baseUrl + "LorryPass";
+        getLorryPasspending = baseUrl + "LorryPassPending";
+        getLorryArrangeUrl = baseUrl + "LorryArrange";
     }
 }

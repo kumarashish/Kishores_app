@@ -39,7 +39,96 @@
             android:text="Booking Approval"
             />
     </RelativeLayout>
+    <LinearLayout
 
+        android:backgroundTint="@color/purple"
+        android:layout_marginTop="20dp"
+        android:weightSum="2"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:textSize="12dp"
+            android:textAllCaps="true"
+            android:id="@+id/date_search"
+            android:background="@color/white"
+            android:textColor="@color/aqua"
+            android:text="Search by Date"
+            android:layout_weight="1"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+        <Button
+            android:id="@+id/id_search"
+            android:layout_marginLeft="2dp"
+            android:textSize="12dp"
+            android:textColor="@color/white"
+            android:text="Search by booking Id"
+            android:textAllCaps="true"
+            android:background="@color/purple"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+
+
+        <LinearLayout
+
+android:layout_marginTop="20dp"
+            android:id="@+id/dateView"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <Button
+                    android:textColor="@color/aqua"
+                    android:text="Select start date"
+                    android:textAllCaps="true"
+                    android:id="@+id/startDate"
+
+                    android:textSize="12dp"
+                    android:background="@drawable/edittext_bg"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <Button
+                    android:textAllCaps="true"
+                    android:textSize="12dp"
+                    android:id="@+id/endDate"
+
+                    android:textColor="@color/aqua"
+                    android:text="Select end date"
+                    android:background="@drawable/edittext_bg"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+
+
+            </LinearLayout>
+            <Button
+                android:textColor="@color/white"
+                android:text="Search"
+                android:textAllCaps="true"
+                android:id="@+id/search_with_date"
+
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rectangle"
+                android:layout_width="120dp"
+                android:layout_height="40dp" />
+
+
+        </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -49,7 +138,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-
+            android:visibility="gone"
             android:id="@+id/idView"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -64,6 +153,7 @@
                 android:textSize="12dp" />
 
             <EditText
+                android:textCursorDrawable="@null"
                 android:maxLength="8"
                 android:textAllCaps="true"
                 android:id="@+id/search"

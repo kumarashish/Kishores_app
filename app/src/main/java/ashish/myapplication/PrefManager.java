@@ -40,7 +40,7 @@ public class PrefManager {
     public void setIp(String ip)
     {
         editor.putString(saveIpAddress , ip);
-        editor.commit();
+        editor.apply();
     }
 
 

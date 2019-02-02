@@ -116,7 +116,7 @@ public class Pending_Report extends Activity implements View.OnClickListener  ,W
 
         startDate.setOnClickListener(this);
         endDate.setOnClickListener(this);
-
+        bookingId.setOnClickListener(this);
 
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -171,8 +171,6 @@ public class Pending_Report extends Activity implements View.OnClickListener  ,W
         if (isStartDateClicked) {
             isStartDateSelected = true;
             startDate.setText(day + "/" + month + "/" + year);
-            endDate.setText("Select end date");
-            isEndDateSelected = false;
         } else {
             isEndDateSelected = true;
             endDate.setText(day + "/" + month + "/" + year);

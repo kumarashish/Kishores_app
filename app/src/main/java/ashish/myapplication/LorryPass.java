@@ -1,16 +1,23 @@
 package ashish.myapplication;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +49,7 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
             TextView bookingId;
     ArrayList<Lorry_PassModel> passesList=new ArrayList<>();
     int apiCall=0;
-    int getData=1,approve=2;
+    int getData=1,approve=2,searchBooking=3;
     LorryReportModel model;
     @BindView(R.id.consiner)
     TextView consiner;
@@ -63,6 +71,32 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
     TextView cft;
     @BindView(R.id.load_type)
     TextView load_type;
+    @BindView(R.id.dateView)
+    LinearLayout dateView;
+    @BindView(R.id.startDate)
+    Button startDate;
+    @BindView(R.id.endDate)
+    Button endDate;
+    @BindView(R.id.id_search)
+    Button id_search;
+    @BindView(R.id.date_search)
+
+    Button date_search;
+    @BindView(R.id.idView)
+    LinearLayout idView;
+    boolean isStartDateClicked=false;
+    boolean isEndDateClicked=false;
+    boolean isDateClicked=false;
+    boolean isStartDateSelected=false;
+    boolean isEndDateSelected=false;
+    private Calendar calendar;
+    private int year, month, day;
+    ArrayList <LorryReportModel>reportList=new ArrayList<>();
+    String bookingIdValue="0";
+    AlertDialog dialog;
+    @BindView(R.id.search_with_date)
+    Button search_with_date;
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +105,12 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
         controller=(AppController)getApplicationContext();
         ButterKnife.bind(this);
         back.setOnClickListener(this);
+        bookingId.setOnClickListener(this);
+        id_search.setOnClickListener(this);
+        date_search.setOnClickListener(this);
+        startDate.setOnClickListener(this);
+        endDate.setOnClickListener(this);
+        search_with_date.setOnClickListener(this);
         search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -81,6 +121,8 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                         if (Utils.isNetworkAvailable(LorryPass.this)) {
                             progressBar.setVisibility(View.VISIBLE);
                             apiCall=getData;
+                            isDateClicked=false;
+                            bookingIdValue=search.getText().toString();
                             controller.getWebApiCall().postData(Common.getLorryPasspending, getRequestJSON().toString(), callback);
                             Thread T =new Thread(new Runnable() {
                                 @Override
@@ -107,6 +149,46 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                 return handled;
             }
         });
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        int dayy=day-1;
+        int monthh=month+1;
+        startDate.setText(day + "/" +  monthh+ "/" + year);
+        endDate.setText(day + "/" + monthh + "/" + year);
+        initializeIdView();
+    }
+    public void initializeIdView()
+    {
+        isDateClicked=true;
+        search.setText("");
+        idView.setVisibility(View.GONE);
+        dateView.setVisibility(View.VISIBLE);
+        id_search.setBackgroundColor(getResources().getColor(R.color.purple));
+        id_search.setTextColor(getResources().getColor(R.color.white));
+        date_search.setBackgroundColor(getResources().getColor(R.color.white));
+        date_search.setTextColor(getResources().getColor(R.color.purple));
+        isStartDateSelected=true;
+        isEndDateSelected=true;
+        bookingIdValue="0";
+        progressBar.setVisibility(View.VISIBLE);
+        apiCall = searchBooking;
+        controller.getWebApiCall().postData(Common.getPendigReport, getRequestJSON().toString(), callback);
+    }
+
+    public void getData()
+    {
+        progressBar.setVisibility(View.VISIBLE);
+        apiCall=getData;
+        isDateClicked=false;
+        if(search.getText().length()!=0)
+        {
+            bookingIdValue=search.getText().toString();
+        }
+
+        controller.getWebApiCall().postData(Common.getLorryPasspending, getRequestJSON().toString(), callback);
     }
 
     public void clearAll()
@@ -132,7 +214,11 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
     {runOnUiThread(new Runnable() {
         @Override
         public void run() {
+
             bookingId.setText(Integer.toString(model.getId()));
+            SpannableString content = new SpannableString( bookingId.getText().toString());
+            content.setSpan(new UnderlineSpan(), 0,bookingId.getText().length(), 0);
+            bookingId.setText(content);
             lorryType.setText(model.getLorrytype());;
             item.setText(model.getItem());;
             source_dest.setText(model.Bookfrom+" - "+model.getBookto());;
@@ -143,6 +229,7 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
             load_type.setText(model.getLoadtype());
             freight.setText(model.getFreight());
             cft.setText(model.getCft());
+            table.setVisibility(View.VISIBLE);
         }
     });
 
@@ -152,15 +239,59 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
     public JSONObject getRequestJSON()
     {JSONObject jsonObject=new JSONObject();
         try{
-            jsonObject.put(Common.getBookingKeys[0],search.getText().toString());
-            jsonObject.put(Common.getBookingKeys[1],"");
-            jsonObject.put(Common.getBookingKeys[2],"");
+            if(isDateClicked)
+            {
+                jsonObject.put(Common.getBookingKeys[0], 0);
+                // jsonObject.put(Common.getBookingKeys[0],0);
+                jsonObject.put(Common.getBookingKeys[1], startDate.getText().toString());
+                jsonObject.put(Common.getBookingKeys[2], endDate.getText().toString());
+                jsonObject.put(Common.getBookingKeys[3], false);
+            }else {
+                jsonObject.put(Common.getBookingKeys[0], bookingIdValue);
+                // jsonObject.put(Common.getBookingKeys[0],0);
+                jsonObject.put(Common.getBookingKeys[1], "");
+                jsonObject.put(Common.getBookingKeys[2], "");
+            }
         }catch (Exception ex)
         {
             ex.fillInStackTrace();
         }
         return jsonObject;
     }
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        // TODO Auto-generated method stub
+
+            return new DatePickerDialog(this,
+                    myDateListener, year, month, day);
+
+
+    }
+
+    private DatePickerDialog.OnDateSetListener myDateListener = new
+            DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker arg0,
+                                      int arg1, int arg2, int arg3) {
+                    // TODO Auto-generated method stub
+                    // arg1 = year
+                    // arg2 = month
+                    // arg3 = day
+                    showDate(arg1, arg2+1, arg3);
+                }
+            };
+    private void showDate(int year, int month, int day) {
+
+        if (isStartDateClicked) {
+            isStartDateSelected = true;
+            startDate.setText(day+ "/" +  month+ "/" + year);
+        } else {
+            isEndDateSelected=true;
+            endDate.setText( day+ "/" +  month+ "/" + year);
+        }
+
+    }
+
 
     @Override
     public void onSucess(final String value) {
@@ -181,6 +312,7 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                                 }
                             }
                             if (passesList.size() > 0) {
+
                                 updateTable();
                             }else{
                                 content.removeAllViews();
@@ -192,6 +324,26 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                         case 2:
                             Utils.showToast(LorryPass.this, "You have sucessfully approved pass");
                             finish();
+                            break;
+
+                        case 3:
+                            if(isDateClicked)
+                            { reportList.clear();
+                                JSONArray bookingArray= Utils.jsonArrayy(value);
+                                for(int i=0;i<bookingArray.length();i++)
+                                {try {
+                                    reportList.add(new LorryReportModel(bookingArray.getJSONObject(i)));
+                                }catch (Exception ex)
+                                {
+                                    ex.fillInStackTrace();
+                                }
+
+                                }
+                                if(reportList.size()>0)
+                                {
+                                    bookingIdListPopUp();
+                                }
+                            }
                             break;
                     }
                     progressBar.setVisibility(View.GONE);
@@ -218,6 +370,29 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
             }
         }
         return false;
+    }
+
+    public void bookingIdListPopUp() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.list_layout, null);
+        ListView list=(ListView)dialogLayout.findViewById(R.id.listView);
+        list.setAdapter(new ListAdapter(reportList,LorryPass.this));
+        builder.setView(dialogLayout);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                model=reportList.get(position);
+                bookingIdValue=Integer.toString(model.getId());
+                setValue();
+                getData();
+                dialog.cancel();
+            }
+        });
+        dialog = builder.create();
+        dialog.show();
     }
     private void updateTable() {
         content.removeAllViews();
@@ -311,6 +486,69 @@ public JSONObject getApprovePassJSON(String rate,String broker,String mobile,Str
         switch (v.getId()) {
             case R.id.back:
                 finish();
+                break;
+            case R.id.id_search:
+                table.setVisibility(View.GONE);
+                reportList.clear();
+                clearAll();
+                isDateClicked=false;
+                isStartDateSelected=false;
+                isEndDateSelected=false;
+                startDate.setText("Select start date");
+                endDate.setText("Select end date");
+                id_search.setBackgroundColor(getResources().getColor(R.color.white));
+                id_search.setTextColor(getResources().getColor(R.color.purple));
+                date_search.setBackgroundColor(getResources().getColor(R.color.purple));
+                date_search.setTextColor(getResources().getColor(R.color.white));
+                idView.setVisibility(View.VISIBLE);
+                dateView.setVisibility(View.GONE);
+                break;
+            case R.id.date_search:
+                table.setVisibility(View.GONE);
+                isDateClicked=true;
+                search.setText("");
+                clearAll();
+                idView.setVisibility(View.GONE);
+                dateView.setVisibility(View.VISIBLE);
+                id_search.setBackgroundColor(getResources().getColor(R.color.purple));
+                id_search.setTextColor(getResources().getColor(R.color.white));
+                date_search.setBackgroundColor(getResources().getColor(R.color.white));
+                date_search.setTextColor(getResources().getColor(R.color.purple));
+                break;
+            case R.id.search_with_date:
+
+                if ((isStartDateSelected == true) && (isEndDateSelected == true)) {
+                    bookingIdValue="0";
+                    progressBar.setVisibility(View.VISIBLE);
+                    table.setVisibility(View.GONE);
+                    apiCall = searchBooking;
+                    controller.getWebApiCall().postData(Common.getPendigReport, getRequestJSON().toString(), callback);
+                } else {
+                    if (isStartDateSelected == false) {
+                        Utils.showToast(LorryPass.this, "Please choose start date");
+                    } else {
+                        Utils.showToast(LorryPass.this, "Please choose end date");
+                    }
+                }
+                break;
+            case R.id.startDate:
+                isStartDateClicked=true;
+                isEndDateClicked=false;
+                showDialog(999);
+                break;
+            case R.id.endDate:
+                isStartDateClicked=false;
+                isEndDateClicked=true;
+                showDialog(999);
+                break;
+
+            case R.id.bookingId:
+                if(reportList.size()>0)
+
+                {
+                    bookingIdListPopUp();
+                }
+
                 break;
         }
     }
