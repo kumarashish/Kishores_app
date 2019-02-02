@@ -323,8 +323,10 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                         }
                         break;
                         case 2:
+                            clearAll();
+                            content.removeAllViews();
                             Utils.showToast(LorryPass.this, "You have sucessfully approved pass");
-                            finish();
+
                             break;
 
                         case 3:
@@ -430,7 +432,7 @@ public class LorryPass extends Activity implements WebApiResponseCallback,View.O
                                     if (Utils.isNetworkAvailable(LorryPass.this)) {
                                         progressBar.setVisibility(View.VISIBLE);
                                         apiCall = approve;
-                                        table.setVisibility(View.GONE);
+                                        //table.setVisibility(View.GONE);
                                         controller.getWebApiCall().postData(Common.getLorryPassUrl, getApprovePassJSON(rate.getText().toString(), broker.getText().toString(), mobile.getText().toString(), approvedby.getText().toString()).toString(), callback);
 
                                     }
