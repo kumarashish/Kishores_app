@@ -81,15 +81,17 @@ public static void showToast(final Activity activity,final String message)
         }
         return null;
     }
-    public static String getMessage(String value)
-    {
-        try{
-            JSONObject jsonObject=new JSONObject(value);
-            return jsonObject.getString("Message");
-        }catch (Exception ex){
+
+    public static String getMessage(String value) {
+        String message = "";
+        try {
+            JSONObject jsonObject = new JSONObject(value);
+            message = jsonObject.getString("Message");
+        } catch (Exception ex) {
             ex.fillInStackTrace();
+            message = "Service not responding";
         }
-        return "";
+        return message;
     }
 
     public static String getBookingId(String value) {

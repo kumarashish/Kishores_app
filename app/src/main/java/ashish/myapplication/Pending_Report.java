@@ -199,13 +199,9 @@ public class Pending_Report extends Activity implements View.OnClickListener  ,W
         bookingIdValue = Integer.toString(model.getId());
         bookingId.setText(Integer.toString(model.getId()));
         lorryType.setText(model.getLorrytype());
-        ;
         item.setText(model.getItem());
-        ;
         source_dest.setText(model.Bookfrom + " - " + model.getBookto());
-        ;
         weight.setText(model.getWeight() + " kgs");
-        ;
         pckg.setText(model.getPackage());
         report.setVisibility(View.VISIBLE);
         SpannableString content = new SpannableString(bookingId.getText().toString());
